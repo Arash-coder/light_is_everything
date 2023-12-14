@@ -2,13 +2,13 @@
 const withNextIntl = require('next-intl/plugin')();
 
 const nextConfig = {
-    images: {
-        remotePatterns: [
-            {
-                hostname: 'swiperjs.com',
-            }
-        ],
-    },
-}
+  images: {
+    remotePatterns: [
+      {
+        hostname: 'swiperjs.com'
+      }
+    ]
+  }
+};
 
-module.exports = withNextIntl(nextConfig)
+module.exports = withNextIntl(nextConfig);
