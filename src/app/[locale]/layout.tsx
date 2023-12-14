@@ -1,4 +1,5 @@
 import { notFound } from 'next/navigation';
+import { NextIntlClientProvider, useMessages } from 'next-intl';
 
 // Can be imported from a shared config
 const locales = ['en', 'fa'];
@@ -22,9 +23,15 @@ export default function LocaleLayout({
   // Validate that the incoming `locale` parameter is valid
   if (!locales.includes(locale as any)) notFound();
 
+  const messages = useMessages();
+
   return (
     <html lang={locale} dir="rtl">
-      <body className="font-aria_regular">{children}</body>
+      <body className="font-aria_regular">
+        <NextIntlClientProvider locale={locale} messages={messages}>
+          {children}
+        </NextIntlClientProvider>
+      </body>
     </html>
   );
 }
