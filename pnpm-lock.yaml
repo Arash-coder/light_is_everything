@@ -38,14 +38,20 @@ devDependencies:
     specifier: ^10.0.1
     version: 10.4.16(postcss@8.4.32)
   eslint:
-    specifier: ^8
+    specifier: ^8.55.0
     version: 8.55.0
   eslint-config-next:
     specifier: 14.0.4
     version: 14.0.4(eslint@8.55.0)(typescript@5.3.3)
+  husky:
+    specifier: ^8.0.0
+    version: 8.0.3
   postcss:
     specifier: ^8
     version: 8.4.32
+  prettier:
+    specifier: 3.1.1
+    version: 3.1.1
   tailwindcss:
     specifier: ^3.3.0
     version: 3.3.6
@@ -1462,6 +1468,12 @@ packages:
       function-bind: 1.1.2
     dev: true
 
+  /husky@8.0.3:
+    resolution: {integrity: sha512-+dQSyqPh4x1hlO1swXBiNb2HzTDN1I2IGLQx1GrBuiqFJfoMrnZWwVmatvSiO+Iz8fBUnf+lekwNo4c2LlXItg==}
+    engines: {node: '>=14'}
+    hasBin: true
+    dev: true
+
   /ignore@5.3.0:
     resolution: {integrity: sha512-g7dmpshy+gD7mh88OC9NwSGTKoc3kyLAZQRU1mt53Aw/vnvfXnbC+F/7F7QoYVKbV+KNvJx8wArewKy1vXMtlg==}
     engines: {node: '>= 4'}
@@ -2149,6 +2161,12 @@ packages:
   /prelude-ls@1.2.1:
     resolution: {integrity: sha512-vkcDPrRZo1QZLbn5RLGPpg/WmIQ65qoWWhcGKf/b5eplkkarX0m9z8ppCat4mlOqUsWpyNuYgO3VRyrYHSzX5g==}
     engines: {node: '>= 0.8.0'}
+    dev: true
+
+  /prettier@3.1.1:
+    resolution: {integrity: sha512-22UbSzg8luF4UuZtzgiUOfcGM8s4tjBv6dJRT7j275NXsy2jb4aJa4NNveul5x4eqlF1wuhuR2RElK71RvmVaw==}
+    engines: {node: '>=14'}
+    hasBin: true
     dev: true
 
   /prop-types@15.8.1:
