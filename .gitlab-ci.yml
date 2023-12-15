@@ -9,7 +9,7 @@ cache:
 deploy:
   stage: deploy
   script:
-    - ls
+    - pwd
 
   only:
     - main
