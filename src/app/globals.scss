@@ -15,3 +15,8 @@ html {
   margin: 0;
   padding: 0;
 }
+
+.custom_container {
+  @apply w-[95%] max-w-[1150px] mx-auto
+}
+

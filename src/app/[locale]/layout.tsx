@@ -1,5 +1,6 @@
 import { notFound } from 'next/navigation';
 import { NextIntlClientProvider, useMessages } from 'next-intl';
+import Layout from '@/components/layout';
 
 // Can be imported from a shared config
 const locales = ['en', 'fa'];
@@ -27,9 +28,9 @@ export default function LocaleLayout({
 
   return (
     <html lang={locale} dir="rtl">
-      <body className="font-aria_black">
+      <body>
         <NextIntlClientProvider locale={locale} messages={messages}>
-          {children}
+          <Layout>{children}</Layout>
         </NextIntlClientProvider>
       </body>
     </html>
