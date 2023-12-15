@@ -1,13 +1,14 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@import url('/assets/fonts/_fonts.scss');
+@import './_fonts.scss';
 @import './../theme/dark.scss';
 @import './../theme/light.scss';
+
 body {
   margin: 0;
   padding: 0;
-  font-family: 'aria_thin' !important;
+  // font-family: aria_regular !important;
   // overflow-x: hidden;
 }
 html {

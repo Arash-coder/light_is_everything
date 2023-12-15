@@ -5,7 +5,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="fa">
-      <body>{children}</body>
+      <body className="font-aria_regular">{children}</body>
     </html>
   );
 }
