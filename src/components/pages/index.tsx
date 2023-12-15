@@ -3,6 +3,7 @@
 import Image from 'next/image';
 
 import headerBg from '@/../public/assets/images/header-bg.png';
+import cards from '@/../public/assets/images/cards.png';
 import headerBgGradient from '@/../public/assets/images/bg-headr-gradient.png';
 import purpleGirl from '@/../public/assets/images/purple-girl.jpg';
 import flask from '@/../public/assets/images/flask.jpg';
@@ -91,9 +92,17 @@ const HomePage = () => {
           <div className="mb-10 font-aria_normal text-3xl tracking-widest">
             LIFE IS EVERYTHING
           </div>
-          <CoverflowSlider />
+          {/* <CoverflowSlider /> */}
+          <div className="relative w-full h-[600px]">
+            <Image
+              src={cards}
+              alt="cards"
+              fill
+              className="object-cover -mt-[200px]"
+            />
+          </div>
         </div>
-        <div className="text-center py-16 bg-background_slider">
+        <div className="text-center py-16 bg-background_slider -mt-[200px]">
           <div className="text-7xl mb-6 font-aria_light">
             همین امروزبه ما بپیوندید
           </div>
@@ -104,28 +113,28 @@ const HomePage = () => {
         <div>
           <Image className="object-cover" alt="purple-girl" src={purpleGirl} />
         </div>
-        <div className="text-center custom_container relative h-screen flex justify-center items-center bg-light">
-          {/* <Image
+        <div className="text-center  relative h-screen flex justify-center items-center bg-light">
+          <Image
             src={flask}
-            className="absolute h-[400px] w-[200px] object-contain left-20"
+            className="absolute h-[400px] w-[300px] object-contain top-10 left-20"
             alt="flask"
           />
           <Image
             src={flask}
-            className="absolute h-[400px] w-[200px] object-contain left-60 top-40"
+            className="absolute h-[400px] w-[300px] object-contain left-60 top-40"
             alt="flask"
           />
           <Image
             src={flask}
-            className="absolute h-[400px] w-[200px] object-contain right-0 z-10"
+            className="absolute h-[400px] w-[300px] object-contain right-0 top-10 z-10"
             alt="flask"
           />
           <Image
             src={flask}
-            className="absolute h-[400px] w-[200px] object-contain right-40 top-40"
+            className="absolute h-[400px] w-[300px] object-contain right-40 top-40"
             alt="flask"
-          /> */}
-          <div className="">
+          />
+          <div className="custom_container">
             <h2 className="font-aria_xbold text-3xl">
               نور آغازی است برای تحقق رویاها و <br /> پرتویی که دل ها رو به سمت
               امید!
