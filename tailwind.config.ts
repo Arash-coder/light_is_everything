@@ -9,7 +9,8 @@ const config: Config = {
         secondary: 'var(--secondary-color)',
         third: 'var(--third-color)',
         forth: 'var(--forth-color)',
-        background: 'var(--background)'
+        background: 'var(--background)',
+        light: 'var(--light-color)'
       },
       fontFamily: {
         aria_regular: ['aria_regular'],

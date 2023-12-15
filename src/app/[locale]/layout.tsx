@@ -28,7 +28,7 @@ export default function LocaleLayout({
 
   return (
     <html lang={locale} dir="rtl">
-      <body>
+      <body className="dark">
         <NextIntlClientProvider locale={locale} messages={messages}>
           <Layout>{children}</Layout>
         </NextIntlClientProvider>

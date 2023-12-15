@@ -9,7 +9,7 @@
   height: 2px;
   bottom: 0px;
   transition: all 0.3s;
-  @apply bg-black;
+  @apply bg-primary;
 }
 
 .link:hover::before {
