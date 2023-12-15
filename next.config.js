@@ -8,7 +8,8 @@ const nextConfig = {
         hostname: 'swiperjs.com'
       }
     ]
-  }
+  },
+  output: 'standalone'
 };
 
 module.exports = withNextIntl(nextConfig);
