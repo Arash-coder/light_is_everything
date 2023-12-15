@@ -6,14 +6,15 @@ stages:
 cache:
   paths:
     - node_modules
+
 deploy:
   stage: deploy
   script:
     - cd ~ &&
       cd /var/www/light_is_everything_front &&
-      git pull &&
-      docker compose down &&
-      docker compose up
+      ssh-agent bash -c 'ssh-add /path/to/your/private/key; git pull' &&
+      docker-compose down &&
+      docker-compose up
 
   only:
     - main
