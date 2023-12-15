@@ -9,6 +9,7 @@ cache:
 deploy:
   stage: deploy
   script:
+    - sudo su
     - cd ~ &&
       cd /var/www/light_is_everything_front &&
       git pull &&
@@ -19,26 +20,3 @@ deploy:
     - main
   tags:
     - light_is_everything
-# variables:
-#   SSH_OPTS: '-o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null'
-#   SSH_USER: root
-#   DEPLOY_HOST: 194.5.195.36
-
-# before_script:
-#   - 'command -v ssh-agent >/dev/null || ( apt-get update -y && apt-get install openssh-client -y )'
-#   - eval $(ssh-agent -s)
-#   - echo "${SSH_PRIVATE_KEY}" | ssh-add -
-#   - mkdir -p ~/.ssh
-#   - chmod 700 ~/.ssh
-#   - ssh-keyscan $DEPLOY_HOST >> ~/.ssh/known_hosts
-#   - chmod 644 ~/.ssh/known_hosts
-# script:
-#   - ssh $SSH_USER@$DEPLOY_HOST "
-#     cd /var/www/frontend &&
-#     git config --global --add safe.directory /var/www/frontend &&
-#     git checkout main -f &&
-#     git fetch --all &&
-#     git reset --hard origin/main &&
-#     git pull origin main &&
-#     cd /var/www &&
-#     docker-compose up -d --build nextjs"
