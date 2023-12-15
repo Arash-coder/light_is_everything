@@ -1,17 +1,17 @@
-.link{
-    position: relative;
+.link {
+  position: relative;
 }
 
-.link::before{
-    content: " ";
-    width: 0;
-    position: absolute;
-    height: 2px;
-    bottom: 0px;
-    transition: all 0.3s;
-    @apply bg-black
+.link::before {
+  content: ' ';
+  width: 0;
+  position: absolute;
+  height: 2px;
+  bottom: 0px;
+  transition: all 0.3s;
+  @apply bg-black;
 }
 
-.link:hover::before{
-    width: 100%;
+.link:hover::before {
+  width: 100%;
 }
