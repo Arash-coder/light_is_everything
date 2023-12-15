@@ -9,7 +9,6 @@ cache:
 deploy:
   stage: deploy
   script:
-    - sudo su
     - cd ~ &&
       cd /var/www/light_is_everything_front &&
       git pull &&
