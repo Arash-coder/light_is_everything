@@ -1,8 +1,5 @@
 image: node:16
 
-variables:
-  DEPLOY_HOST: 37.32.21.139
-
 stages:
   - deploy
 
@@ -11,14 +8,6 @@ cache:
     - node_modules
 deploy:
   stage: deploy
-  before_script:
-    - 'command -v ssh-agent >/dev/null || ( apt-get update -y && apt-get install openssh-client -y )'
-    - eval $(ssh-agent -s)
-    - echo "${SSH_PRIVATE_KEY}" | ssh-add -
-    - mkdir -p ~/.ssh
-    - chmod 700 ~/.ssh
-    - ssh-keyscan -v $DEPLOY_HOST 2>&1 | tee -a ~/.ssh/known_hosts
-    - chmod 644 ~/.ssh/known_hosts
   script:
     - cd ~ &&
       cd /var/www/light_is_everything_front &&
