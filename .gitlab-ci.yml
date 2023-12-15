@@ -12,7 +12,9 @@ deploy:
   script:
     - cd ~ &&
       cd /var/www/light_is_everything_front &&
-      ssh-agent bash -c 'ssh-add /path/to/your/private/key; git pull' &&
+      eval $(ssh-agent -s) &&
+      ssh-add ~/.ssh/id_rsa &&
+      git pull &&
       docker-compose down &&
       docker-compose up
 
