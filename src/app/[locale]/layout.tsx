@@ -27,7 +27,7 @@ export default function LocaleLayout({
 
   return (
     <html lang={locale} dir="rtl">
-      <body className="font-aria_regular">
+      <body className="font-aria_black">
         <NextIntlClientProvider locale={locale} messages={messages}>
           {children}
         </NextIntlClientProvider>
