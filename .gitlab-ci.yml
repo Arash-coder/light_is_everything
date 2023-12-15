@@ -9,7 +9,11 @@ cache:
 deploy:
   stage: deploy
   script:
-    - whoami
+    - cd ~ &&
+      cd /var/www/light_is_everything_front &&
+      git pull &&
+      docker compose down &&
+      docker compose up
 
   only:
     - main
