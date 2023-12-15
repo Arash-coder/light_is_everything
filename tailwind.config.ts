@@ -10,7 +10,9 @@ const config: Config = {
         third: 'var(--third-color)',
         forth: 'var(--forth-color)',
         background: 'var(--background)',
-        light: 'var(--light-color)'
+        light: 'var(--light-color)',
+        background_slider: 'var(--background-slider)',
+        blue: 'var(--primary-blue)'
       },
       fontFamily: {
         aria_regular: ['aria_regular'],

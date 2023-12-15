@@ -8,6 +8,7 @@
 body {
   margin: 0;
   padding: 0;
+  overflow-x: hidden;
   // font-family: aria_regular !important;
   // overflow-x: hidden;
 }
@@ -18,4 +19,16 @@ html {
 
 .custom_container {
   @apply w-[95%] max-w-[1150px] mx-auto;
+}
+
+ .swiper-pagination-bullet-active{
+background-color: white !important;
+width: 12px !important;
+height: 12px !important;
+}
+
+.swiper-pagination-bullet{
+  background-color: lightgray !important;
+width: 12px !important;
+height: 12px !important;
 }

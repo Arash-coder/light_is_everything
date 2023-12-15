@@ -87,22 +87,25 @@ const HomePage = () => {
             />
           </div>
         </section>
-        <div className="mt-28 text-center mb-10">
-          <div className="mb-10">LIFE IS EVERYTHING</div>
-
+        <div className="pt-28 text-center bg-background_slider">
+          <div className="mb-10 font-aria_normal text-3xl tracking-widest">
+            LIFE IS EVERYTHING
+          </div>
           <CoverflowSlider />
         </div>
-        <div className="text-center mb-24">
-          <div className="text-6xl mb-6">همین امروز به ما بپیوندید</div>
-          <button className="rounded-full bg-black text-white px-4 py-2">
-            به ما بپیوندید
+        <div className="text-center py-16 bg-background_slider">
+          <div className="text-7xl mb-6 font-aria_light">
+            همین امروزبه ما بپیوندید
+          </div>
+          <button className="bg-primary font-aria_sbold text-light mt-4 py-2 px-5 text-2xl rounded-3xl">
+            به‌ما‌بپیوندید
           </button>
         </div>
         <div>
           <Image className="object-cover" alt="purple-girl" src={purpleGirl} />
         </div>
-        <div className="text-center relative h-screen flex justify-center items-center">
-          <Image
+        <div className="text-center custom_container relative h-screen flex justify-center items-center bg-light">
+          {/* <Image
             src={flask}
             className="absolute h-[400px] w-[200px] object-contain left-20"
             alt="flask"
@@ -121,23 +124,30 @@ const HomePage = () => {
             src={flask}
             className="absolute h-[400px] w-[200px] object-contain right-40 top-40"
             alt="flask"
-          />
-          <div className="max-w-sm m-auto">
-            <div>
-              نور آغازی است برای تحقق رویاها و پرتویی که دل ها رو به سمت امید!
-            </div>
-            <div>
-              محصولات نور به دسته‌ای از محصولات اشاره دارد که به نوعی با استفاده
-              از نور یا برای تولید نور، کنترل نور یا بهره‌برداری از خواص نور
-              طراحی شده‌اند. این محصولات می‌توانند در زمینه‌های مختلفی مانند
-              روشنایی، نمایش، فناوری، پزشکی و بسیاری دیگر از حوزه‌ها کاربرد
-              داشته باشند
-            </div>
+          /> */}
+          <div className="">
+            <h2 className="font-aria_xbold text-3xl">
+              نور آغازی است برای تحقق رویاها و <br /> پرتویی که دل ها رو به سمت
+              امید!
+            </h2>
+            <p className="font-aria_normal text-2xl mt-8">
+              محصولات نور به دسته‌ای از محصولات اشاره <br /> دارد که به نوعی با
+              استفاده از نور یا برای تولید نور، کنترل <br /> نور یا بهره‌برداری
+              از خواص نور طراحی شده‌اند. این <br /> محصولات می‌توانند در
+              زمینه‌های مختلفی مانند <br /> روشنایی، نمایش، فناوری، پزشکی و
+              بسیاری دیگر از <br /> حوزه‌ها کاربرد داشته باشند
+            </p>
+            <p className="text-blue font-aria_bold text-xl mt-8">به‌زودی...</p>
           </div>
         </div>
-        <div className="mb-20">
-          <Slider2 />
-        </div>
+        <section className="w-full h-[90vh] bg-primary flex flex-col justify-center items-center">
+          <h2 className="font-aria_bold text-light text-6xl">
+            نظرات‌همراهان‌ما
+          </h2>
+          <div className="mt-16 h-[60%]">
+            <Slider2 />
+          </div>
+        </section>
       </main>
     </>
   );
