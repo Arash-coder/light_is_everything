@@ -1,5 +1,8 @@
 image: node:16
 
+variables:
+  DEPLOY_HOST: 37.32.21.139
+
 stages:
   - deploy
 
