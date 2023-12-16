@@ -4,7 +4,8 @@ import Image from 'next/image';
 
 import headerBg from '@/../public/assets/images/header-bg.png';
 import cards from '@/../public/assets/images/cards.png';
-import headerBgGradient from '@/../public/assets/images/bg-headr-gradient.png';
+import zarinpal from '@/../public/assets/images/zarinpal.png';
+import donate from '@/../public/assets/images/donate.jpg';
 import purpleGirl from '@/../public/assets/images/purple-girl.jpg';
 import flask from '@/../public/assets/images/flask.jpg';
 import Slider1 from '@/components/Slider1';
@@ -18,7 +19,13 @@ const HomePage = () => {
     <>
       <main>
         <section className="h-screen relative flex justify-center items-center">
-          <Image className="object-cover" fill alt="header-bg" src={headerBg} />
+          <Image
+            priority
+            className="object-cover"
+            fill
+            alt="header-bg"
+            src={headerBg}
+          />
           {/* <Image
             className=" h-screen object-cover -bottom-[200px]	absolute z-10"
             alt="header-bg"
@@ -155,6 +162,29 @@ const HomePage = () => {
           </h2>
           <div className="mt-16 h-[60%]">
             <Slider2 />
+          </div>
+        </section>
+        <section className="w-full relative h-[50vh] flex items-center">
+          <Image
+            src={donate}
+            alt="donate"
+            className="-z-10 absolute w-full h-full"
+          />
+          <div className="flex justify-between items-center custom_container !max-w-3xl z-10">
+            <button className="bg-primary font-aria_sbold text-light  py-3 px-5 text-2xl rounded-3xl">
+              ازماحمایت‌کنید
+            </button>
+            <div className="flex items-center gap-5 text-justify">
+              <div>
+                <p className="font-aria_bold text-4xl">
+                  ازخانواده‌نور‌حمایت‌کنید
+                </p>
+                <p className="font-aria_light text-2xl tracking-widest mt-2">
+                  مابه‌‌کمک‌های‌شما‌دلگرم‌هستیم
+                </p>
+              </div>
+              <Image src={zarinpal} alt="zarinpal" width={60} />
+            </div>
           </div>
         </section>
       </main>
