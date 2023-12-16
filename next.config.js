@@ -2,6 +2,9 @@
 const withNextIntl = require('next-intl/plugin')();
 
 const nextConfig = {
+  env: {
+    BASE_URL: process.env.BASE_URL
+  },
   images: {
     remotePatterns: [
       {

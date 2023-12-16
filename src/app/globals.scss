@@ -1,6 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
 @import './_fonts.scss';
 @import './../theme/dark.scss';
 @import './../theme/light.scss';
@@ -31,4 +32,10 @@ html {
   background-color: lightgray !important;
   width: 12px !important;
   height: 12px !important;
+}
+.text-align-last-center {
+  text-align-last: center;
+}
+.text-align-last-start {
+  text-align-last: right;
 }

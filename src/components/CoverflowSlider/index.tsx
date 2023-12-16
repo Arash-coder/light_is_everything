@@ -11,6 +11,7 @@ import 'swiper/css/pagination';
 
 // import required modules
 import { EffectCoverflow, Pagination } from 'swiper/modules';
+import MemberItem from '../MemberItem';
 
 export default function CoverflowSlider() {
   const element = (
@@ -28,21 +29,22 @@ export default function CoverflowSlider() {
         centeredSlides={true}
         slidesPerView={'auto'}
         coverflowEffect={{
-          rotate: 50,
+          rotate: 20,
           stretch: 0,
           depth: 100,
           modifier: 1,
           slideShadows: true
         }}
-        pagination={true}
+        pagination={false}
         modules={[EffectCoverflow, Pagination]}
         className=" "
         autoHeight={true}
-        initialSlide={Math.floor([1, 2, 3, 4, 5, 6].length / 2)} // Set the initial slide to the middle index
+        initialSlide={Math.floor([1, 2, 3, 4, 5].length / 2)} // Set the initial slide to the middle index
       >
-        {[1, 2, 3, 4, 5, 6].map((_, index) => (
-          <SwiperSlide key={index.toString()} className="!h-[300px] !w-[300px]">
-            <img src="https://swiperjs.com/demos/images/nature-1.jpg" />
+        {[1, 2, 3, 4, 5].map((_, index) => (
+          <SwiperSlide key={index.toString()} className="!h-60 !w-48">
+            {/* <img src="https://swiperjs.com/demos/images/nature-1.jpg" /> */}
+            <MemberItem />
           </SwiperSlide>
         ))}
         {/* <SwiperSlide>

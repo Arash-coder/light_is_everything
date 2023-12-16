@@ -7,17 +7,22 @@ import cards from '@/../public/assets/images/cards.png';
 import zarinpal from '@/../public/assets/images/zarinpal.png';
 import donate from '@/../public/assets/images/donate.jpg';
 import purpleGirl from '@/../public/assets/images/purple-girl.jpg';
-import flask from '@/../public/assets/images/flask.jpg';
+import flask from '@/../public/assets/images/flask.png';
 import Slider1 from '@/components/Slider1';
 import CoverflowSlider from '@/components/CoverflowSlider';
 import Slider2 from '@/components/Slider2';
 import CountUp from 'react-countup';
 import { VscTriangleDown } from 'react-icons/vsc';
+import { useTranslations } from 'next-intl';
+import { lumosAPI } from '@/api';
+
 
 const HomePage = () => {
+  const t = useTranslations("Index")
+  const { data, error, isLoading } = lumosAPI.useLandingInfoQuery('bulbasaur')
   return (
     <>
-      <main>
+      <main className='overflow-x-hidden'>
         <section className="h-screen relative flex justify-center items-center">
           <Image
             priority
@@ -31,11 +36,11 @@ const HomePage = () => {
             alt="header-bg"
             src={headerBgGradient}
           /> */}
-          <div className=" relative">
-            <div className="absolute top-0 -translate-y-[65%] right-0">
-              <h2 className="font-aria_xbold text-8xl">نورهمه‌چیزه...</h2>
+          <div className="w-full relative text-center md:text-left ">
+            <div className=" w-full absolute top-0 flex flex-col items-center md:items-end px-3 -translate-y-[100%]  md:-translate-y-[65%] -translate-x-[50%]  left-[50%] md:right-0 md:translate-x-0">
+              <h2 className="font-aria_xbold  text-calc_10vw lg:text-8xl">نورهمه‌چیزه...</h2>
               <p className="font-aria_sbold text-xl mt-4">
-                نورزبانی‌است‌که‌بی‌اراده‌مارابهم‌وصل‌می‌کند٬مارابهم‌متصل‌می‌کند.
+                نور زبانی‌ است‌ که‌ بی‌ اراده‌ ما را بهم‌ وصل ‌می‌کند٬ ما را بهم‌ متصل‌ می‌کند.
               </p>
               <button className="bg-primary font-aria_sbold text-light mt-4 py-2 px-5 text-base rounded-3xl">
                 به‌ما‌بپیوندید
@@ -52,7 +57,7 @@ const HomePage = () => {
               نور آغازی است برای تحقق رویاها و پرتویی لطیف <br /> که دل ها رو به
               سمت امید هدایت می کند!
             </div>
-            <div className="text-light text-center font-aria_regular text-xl mt-8">
+            <div className="text-light text-justify text-last text-align-last-center   font-aria_regular text-xl mt-8">
               اواخر پاییز ۹۷، وسط یه کافه خلوت، داستان ساعت‌شنی از پرسیدن یه
               سوال شروع شد؛ چرا دوره ویدئویی یا محتوای فارسی باکیفیت توی حوزه‌ی
               هنرهای دیجیتال وجود نداره؟! بعد از مطالعه و بررسی‌ها تصمیم گرفتیم
@@ -64,7 +69,7 @@ const HomePage = () => {
               نداشتیم.
             </div>
           </div>
-          <div className="flex justify-between items-center text-light mt-16 custom_container">
+          <div className="flex gap-10 flex-col md:flex-row justify-between items-center text-light mt-16 custom_container">
             <div className="flex flex-col flex-1 items-center ">
               <div className="text-9xl font-aria_sbold">
                 <CountUp end={93} duration={5} />
@@ -99,66 +104,76 @@ const HomePage = () => {
           <div className="mb-10 font-aria_normal text-3xl tracking-widest">
             LIFE IS EVERYTHING
           </div>
-          {/* <CoverflowSlider /> */}
-          <div className="relative w-full h-[600px]">
+
+
+          <CoverflowSlider />
+
+          {/* <div className="relative w-full h-[600px]">
             <Image
               src={cards}
               alt="cards"
               fill
               className="object-cover -mt-[200px]"
             />
-          </div>
+          </div> */}
         </div>
-        <div className="text-center py-16 bg-background_slider -mt-[200px]">
+        <div className="text-center py-16 bg-background_slider ">
           <div className="text-7xl mb-6 font-aria_light">
-            همین امروزبه ما بپیوندید
+            همین امروز به ما بپیوندید
           </div>
           <button className="bg-primary font-aria_sbold text-light mt-4 py-2 px-5 text-2xl rounded-3xl">
-            به‌ما‌بپیوندید
+            به‌ ما‌ بپیوندید
           </button>
         </div>
-        <div>
-          <Image className="object-cover" alt="purple-girl" src={purpleGirl} />
-        </div>
+
+        {/* <Image
+            
+            className="object-cover"
+            fill
+            alt="purple-girl"
+            src={purpleGirl}
+          /> */}
+        <Image className="object-cover w-full h-72" alt="purple-girl" src={purpleGirl} />
+
         <div className="text-center  relative h-screen flex justify-center items-center bg-light -z-10">
           <Image
             src={flask}
-            className="absolute h-[400px] w-[300px] object-contain top-10 left-20"
+            className="absolute h-[400px] object-contain top-10 -left-16 hidden lg:block"
             alt="flask"
           />
           <Image
             src={flask}
-            className="absolute h-[400px] w-[300px] object-contain left-60 top-40"
+            className="absolute h-[400px] object-contain left-8 top-40 hidden lg:block"
             alt="flask"
           />
           <Image
             src={flask}
-            className="absolute h-[400px] w-[300px] object-contain right-0 top-10 z-10"
+            className="absolute h-[400px] object-contain -right-44 top-10 z-10 hidden lg:block"
             alt="flask"
           />
           <Image
             src={flask}
-            className="absolute h-[400px] w-[300px] object-contain right-40 top-40"
+            className="absolute h-[400px] object-contain -right-20 top-40 hidden lg:block"
             alt="flask"
           />
-          <div className="custom_container">
+          <div className="custom_container   flex flex-col items-center text-justify text-align-last-center p-3  !max-w-md">
             <h2 className="font-aria_xbold text-3xl">
-              نور آغازی است برای تحقق رویاها و <br /> پرتویی که دل ها رو به سمت
+              نور آغازی است برای تحقق رویاها و  پرتویی که دل ها رو به سمت
               امید!
             </h2>
-            <p className="font-aria_normal text-2xl mt-8">
-              محصولات نور به دسته‌ای از محصولات اشاره <br /> دارد که به نوعی با
-              استفاده از نور یا برای تولید نور، کنترل <br /> نور یا بهره‌برداری
-              از خواص نور طراحی شده‌اند. این <br /> محصولات می‌توانند در
-              زمینه‌های مختلفی مانند <br /> روشنایی، نمایش، فناوری، پزشکی و
-              بسیاری دیگر از <br /> حوزه‌ها کاربرد داشته باشند
+            <p className="font-aria_normal text-2xl mt-8 ">
+              محصولات نور به دسته‌ای از محصولات اشاره  دارد که به نوعی با
+              استفاده از نور یا برای تولید نور، کنترل  نور یا بهره‌برداری
+              از خواص نور طراحی شده‌اند. این  محصولات می‌توانند در
+              زمینه‌های مختلفی مانند  روشنایی، نمایش، فناوری، پزشکی و
+              بسیاری دیگر از حوزه‌ها کاربرد داشته باشند
             </p>
-            <p className="text-blue font-aria_bold text-xl mt-8">به‌زودی...</p>
+            <p className="text-blue font-aria_bold text-xl mt-8">به‌ زودی ...</p>
           </div>
         </div>
         <section className="w-full h-[90vh] bg-primary flex flex-col justify-center items-center">
-          <h2 className="font-aria_bold text-light text-6xl">
-            نظرات‌همراهان‌ما
+          <h2 className="font-aria_bold text-light text-calc_10vw lg:text-6xl ">
+            نظرات‌ همراهان‌ ما
           </h2>
           <div className="mt-16 h-[60%]">
             <Slider2 />
@@ -170,17 +185,17 @@ const HomePage = () => {
             alt="donate"
             className="-z-10 absolute w-full h-full"
           />
-          <div className="flex justify-between items-center custom_container !max-w-3xl z-10">
+          <div className="flex gap-5 flex-col md:flex-row justify-between items-center custom_container !max-w-3xl z-10">
             <button className="bg-primary font-aria_sbold text-light  py-3 px-5 text-2xl rounded-3xl">
-              ازماحمایت‌کنید
+              از ما حمایت‌ کنید
             </button>
-            <div className="flex items-center gap-5 text-justify">
+            <div className="flex  items-center gap-5 text-justify">
               <div>
                 <p className="font-aria_bold text-4xl">
-                  ازخانواده‌نور‌حمایت‌کنید
+                  از خانواده‌ نور‌ حمایت‌ کنید
                 </p>
                 <p className="font-aria_light text-2xl tracking-widest mt-2">
-                  مابه‌‌کمک‌های‌شما‌دلگرم‌هستیم
+                  ما به‌‌ کمک‌ های‌ شما‌ دلگرم‌ هستیم
                 </p>
               </div>
               <Image src={zarinpal} alt="zarinpal" width={60} />

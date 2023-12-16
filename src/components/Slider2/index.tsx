@@ -12,7 +12,7 @@ type Props = {
 
 const Slider2 = ({ className }: Props) => {
   return (
-    <div className="w-full h-full">
+    <div className="">
       <Swiper
         autoplay={{
           delay: 500
@@ -20,7 +20,7 @@ const Slider2 = ({ className }: Props) => {
         pagination={true}
         navigation={false}
         modules={[Pagination, Autoplay, Navigation]}
-        className={`text-white text-center h-full ${className}`}
+        className={`text-white text-center h-full ${className} select-none`}
       >
         <SwiperSlide>
           <div className="text-black flex flex-col items-center">
