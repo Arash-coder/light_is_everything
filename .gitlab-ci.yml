@@ -11,6 +11,7 @@ deploy:
   script:
     - cd ~ &&
       cd /var/www/light_is_everything_front &&
+      git config --global --unset http.proxy &&
       git reset --hard &&
       git pull &&
       docker compose down &&
