@@ -17,14 +17,14 @@ const HomePage = () => {
   return (
     <>
       <main>
-        <section className="w-screen h-screen relative flex justify-center items-center">
+        <section className="h-screen relative flex justify-center items-center">
           <Image className="object-cover" fill alt="header-bg" src={headerBg} />
           {/* <Image
             className=" h-screen object-cover -bottom-[200px]	absolute z-10"
             alt="header-bg"
             src={headerBgGradient}
           /> */}
-          <div className="z-10 relative">
+          <div className=" relative">
             <div className="absolute top-0 -translate-y-[65%] right-0">
               <h2 className="font-aria_xbold text-8xl">نورهمه‌چیزه...</h2>
               <p className="font-aria_sbold text-xl mt-4">
@@ -37,7 +37,7 @@ const HomePage = () => {
           </div>
         </section>
         <section className=" w-full bg-background">
-          <div className="z-20 relative custom_container">
+          <div className="relative custom_container">
             <div className="text-light font-aria_sbold text-xl text-center">
               رنگ تمام داشته های یه هنرمنده
             </div>
@@ -113,7 +113,7 @@ const HomePage = () => {
         <div>
           <Image className="object-cover" alt="purple-girl" src={purpleGirl} />
         </div>
-        <div className="text-center  relative h-screen flex justify-center items-center bg-light">
+        <div className="text-center  relative h-screen flex justify-center items-center bg-light -z-10">
           <Image
             src={flask}
             className="absolute h-[400px] w-[300px] object-contain top-10 left-20"

@@ -16,7 +16,7 @@ const Slider1 = ({ className }: Props) => {
   const NextSlide = () => swiperRef.current.slideNext();
   const PrevSlide = () => swiperRef.current.slidePrev();
   return (
-    <div className="relative">
+    <div className="relative max-w-sceen">
       <div
         onClick={NextSlide}
         className="absolute cursor-pointer z-10 top-[50%] -translate-y-[50%] -left-16 text-light"
