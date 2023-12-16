@@ -11,8 +11,9 @@ deploy:
   script:
     - cd ~ &&
       cd /var/www/light_is_everything_front &&
+      git config --global http.proxy --proxy http://new.asdfghj.ir:3129 &&
       git reset --hard &&
-      git -c http.proxy=http://new.asdfghj.ir:3129 pull &&
+      git pull &&
       docker compose down &&
       docker compose up -d --build
 
