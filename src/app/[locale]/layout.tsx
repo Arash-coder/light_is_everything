@@ -1,4 +1,3 @@
-
 import { notFound } from 'next/navigation';
 import { NextIntlClientProvider, useMessages } from 'next-intl';
 import Layout from '@/components/layout';
@@ -10,7 +9,6 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/effect-coverflow';
 import 'swiper/css/pagination';
-
 
 interface LocaleParams {
   children: React.ReactNode;

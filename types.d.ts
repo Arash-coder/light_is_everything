@@ -6,5 +6,5 @@ type TRefreshToken = string | null;
 interface IAuthState {
   user: TUser;
   token: TToken;
-  refreshToken?: TRefreshToken
+  refreshToken?: TRefreshToken;
 }

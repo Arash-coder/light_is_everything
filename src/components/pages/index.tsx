@@ -16,13 +16,12 @@ import { VscTriangleDown } from 'react-icons/vsc';
 import { useTranslations } from 'next-intl';
 import { lumosAPI } from '@/api';
 
-
 const HomePage = () => {
-  const t = useTranslations("Index")
-  const { data, error, isLoading } = lumosAPI.useLandingInfoQuery('bulbasaur')
+  const t = useTranslations('Index');
+  const { data, error, isLoading } = lumosAPI.useLandingInfoQuery('bulbasaur');
   return (
     <>
-      <main className='overflow-x-hidden'>
+      <main className="overflow-x-hidden">
         <section className="h-screen relative flex justify-center items-center">
           <Image
             priority
@@ -38,9 +37,12 @@ const HomePage = () => {
           /> */}
           <div className="w-full relative text-center md:text-left ">
             <div className=" w-full absolute top-0 flex flex-col items-center md:items-end px-3 -translate-y-[100%]  md:-translate-y-[65%] -translate-x-[50%]  left-[50%] md:right-0 md:translate-x-0">
-              <h2 className="font-aria_xbold  text-calc_10vw lg:text-8xl">نورهمه‌چیزه...</h2>
+              <h2 className="font-aria_xbold  text-calc_10vw lg:text-8xl">
+                نورهمه‌چیزه...
+              </h2>
               <p className="font-aria_sbold text-xl mt-4">
-                نور زبانی‌ است‌ که‌ بی‌ اراده‌ ما را بهم‌ وصل ‌می‌کند٬ ما را بهم‌ متصل‌ می‌کند.
+                نور زبانی‌ است‌ که‌ بی‌ اراده‌ ما را بهم‌ وصل ‌می‌کند٬ ما را
+                بهم‌ متصل‌ می‌کند.
               </p>
               <button className="bg-primary font-aria_sbold text-light mt-4 py-2 px-5 text-base rounded-3xl">
                 به‌ما‌بپیوندید
@@ -105,7 +107,6 @@ const HomePage = () => {
             LIFE IS EVERYTHING
           </div>
 
-
           <CoverflowSlider />
 
           {/* <div className="relative w-full h-[600px]">
@@ -133,7 +134,11 @@ const HomePage = () => {
             alt="purple-girl"
             src={purpleGirl}
           /> */}
-        <Image className="object-cover w-full h-72" alt="purple-girl" src={purpleGirl} />
+        <Image
+          className="object-cover w-full h-72"
+          alt="purple-girl"
+          src={purpleGirl}
+        />
 
         <div className="text-center  relative h-screen flex justify-center items-center bg-light -z-10">
           <Image
@@ -158,17 +163,18 @@ const HomePage = () => {
           />
           <div className="custom_container   flex flex-col items-center text-justify text-align-last-center p-3  !max-w-md">
             <h2 className="font-aria_xbold text-3xl">
-              نور آغازی است برای تحقق رویاها و  پرتویی که دل ها رو به سمت
-              امید!
+              نور آغازی است برای تحقق رویاها و پرتویی که دل ها رو به سمت امید!
             </h2>
             <p className="font-aria_normal text-2xl mt-8 ">
-              محصولات نور به دسته‌ای از محصولات اشاره  دارد که به نوعی با
-              استفاده از نور یا برای تولید نور، کنترل  نور یا بهره‌برداری
-              از خواص نور طراحی شده‌اند. این  محصولات می‌توانند در
-              زمینه‌های مختلفی مانند  روشنایی، نمایش، فناوری، پزشکی و
-              بسیاری دیگر از حوزه‌ها کاربرد داشته باشند
+              محصولات نور به دسته‌ای از محصولات اشاره دارد که به نوعی با استفاده
+              از نور یا برای تولید نور، کنترل نور یا بهره‌برداری از خواص نور
+              طراحی شده‌اند. این محصولات می‌توانند در زمینه‌های مختلفی مانند
+              روشنایی، نمایش، فناوری، پزشکی و بسیاری دیگر از حوزه‌ها کاربرد
+              داشته باشند
             </p>
-            <p className="text-blue font-aria_bold text-xl mt-8">به‌ زودی ...</p>
+            <p className="text-blue font-aria_bold text-xl mt-8">
+              به‌ زودی ...
+            </p>
           </div>
         </div>
         <section className="w-full h-[90vh] bg-primary flex flex-col justify-center items-center">

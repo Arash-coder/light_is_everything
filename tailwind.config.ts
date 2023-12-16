@@ -32,11 +32,8 @@ const config: Config = {
         calc_5vw: 'calc(5vw )',
         calc_10vw: 'calc(10vw )',
         calc_15vw: 'calc(15vw )',
-        calc_20vw: 'calc(20vw )',
-
-
-      },
-
+        calc_20vw: 'calc(20vw )'
+      }
     }
   },
   plugins: []

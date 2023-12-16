@@ -1,11 +1,10 @@
-import { PayloadAction, createSlice } from "@reduxjs/toolkit";
-
+import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
   uset: null,
   token: null,
   refreshToken: null
-}
+};
 
 export const authSlice = createSlice({
   name: 'authSlice',
@@ -13,7 +12,7 @@ export const authSlice = createSlice({
   reducers: {
     resetAuth: (state, _: PayloadAction<IAuthState>) => {
       state = initialState;
-      return state
+      return state;
     }
-  },
-})
+  }
+});
