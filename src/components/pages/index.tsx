@@ -141,40 +141,44 @@ const HomePage = () => {
         />
 
         <div className="text-center  relative h-screen flex justify-center items-center bg-light -z-10">
-          <Image
-            src={flask}
-            className="absolute h-[400px] object-contain top-10 -left-16 hidden lg:block"
-            alt="flask"
-          />
-          <Image
-            src={flask}
-            className="absolute h-[400px] object-contain left-8 top-40 hidden lg:block"
-            alt="flask"
-          />
-          <Image
-            src={flask}
-            className="absolute h-[400px] object-contain -right-44 top-10 z-10 hidden lg:block"
-            alt="flask"
-          />
-          <Image
-            src={flask}
-            className="absolute h-[400px] object-contain -right-20 top-40 hidden lg:block"
-            alt="flask"
-          />
-          <div className="custom_container   flex flex-col items-center text-justify text-align-last-center p-3  !max-w-md">
-            <h2 className="font-aria_xbold text-3xl">
-              نور آغازی است برای تحقق رویاها و پرتویی که دل ها رو به سمت امید!
-            </h2>
-            <p className="font-aria_normal text-2xl mt-8 ">
-              محصولات نور به دسته‌ای از محصولات اشاره دارد که به نوعی با استفاده
-              از نور یا برای تولید نور، کنترل نور یا بهره‌برداری از خواص نور
-              طراحی شده‌اند. این محصولات می‌توانند در زمینه‌های مختلفی مانند
-              روشنایی، نمایش، فناوری، پزشکی و بسیاری دیگر از حوزه‌ها کاربرد
-              داشته باشند
-            </p>
-            <p className="text-blue font-aria_bold text-xl mt-8">
-              به‌ زودی ...
-            </p>
+
+          <div className='relative'>
+
+            <div className="custom_container   flex flex-col items-center text-justify text-align-last-center p-3  !max-w-md">
+              <h2 className="font-aria_xbold text-3xl">
+                نور آغازی است برای تحقق رویاها و پرتویی که دل ها رو به سمت امید!
+              </h2>
+              <p className="font-aria_normal text-2xl mt-8 ">
+                محصولات نور به دسته‌ای از محصولات اشاره دارد که به نوعی با استفاده
+                از نور یا برای تولید نور، کنترل نور یا بهره‌برداری از خواص نور
+                طراحی شده‌اند. این محصولات می‌توانند در زمینه‌های مختلفی مانند
+                روشنایی، نمایش، فناوری، پزشکی و بسیاری دیگر از حوزه‌ها کاربرد
+                داشته باشند
+              </p>
+              <p className="text-blue font-aria_bold text-xl mt-8">
+                به‌ زودی ...
+              </p>
+            </div>
+            <Image
+              src={flask}
+              className="absolute h-[400px] object-contain top-10 -left-96  hidden lg:block"
+              alt="flask"
+            />
+            <Image
+              src={flask}
+              className="absolute h-[400px] object-contain -left-52 top-40 hidden  md:block"
+              alt="flask"
+            />
+            <Image
+              src={flask}
+              className="absolute h-[400px] object-contain -right-[500px] top-10 z-10 hidden lg:block"
+              alt="flask"
+            />
+            <Image
+              src={flask}
+              className="absolute h-[400px] object-contain -right-80 top-40  hidden  md:block"
+              alt="flask"
+            />
           </div>
         </div>
         <section className="w-full h-[90vh] bg-primary flex flex-col justify-center items-center">
