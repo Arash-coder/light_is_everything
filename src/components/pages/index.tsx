@@ -56,8 +56,8 @@ const HomePage = () => {
               رنگ تمام داشته های یه هنرمنده
             </div>
             <div className="text-light text-center text-2xl font-aria_xbold mt-4">
-              نور آغازی است برای تحقق رویاها و پرتویی لطیف  که دل ها رو به
-              سمت امید هدایت می کند!
+              نور آغازی است برای تحقق رویاها و پرتویی لطیف که دل ها رو به سمت
+              امید هدایت می کند!
             </div>
             <div className="text-light text-justify text-last text-align-last-center   font-aria_regular text-xl mt-8">
               اواخر پاییز ۹۷، وسط یه کافه خلوت، داستان ساعت‌شنی از پرسیدن یه
