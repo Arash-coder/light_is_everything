@@ -56,7 +56,7 @@ const HomePage = () => {
               رنگ تمام داشته های یه هنرمنده
             </div>
             <div className="text-light text-center text-2xl font-aria_xbold mt-4">
-              نور آغازی است برای تحقق رویاها و پرتویی لطیف <br /> که دل ها رو به
+              نور آغازی است برای تحقق رویاها و پرتویی لطیف  که دل ها رو به
               سمت امید هدایت می کند!
             </div>
             <div className="text-light text-justify text-last text-align-last-center   font-aria_regular text-xl mt-8">
