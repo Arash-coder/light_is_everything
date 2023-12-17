@@ -183,8 +183,7 @@ const HomePage = () => {
           <h2 className="font-aria_bold text-light text-calc_10vw md:text-calc_5vw lg:text-6xl my-10 ">
             نظرات‌ همراهان‌ ما
           </h2>
-            <Slider2 />
-
+          <Slider2 />
         </section>
         <section className="w-full relative h-[50vh] flex items-center">
           <Image
