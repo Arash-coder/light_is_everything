@@ -179,13 +179,12 @@ const HomePage = () => {
             />
           </div>
         </div>
-        <section className="w-full h-[90vh] bg-primary flex flex-col justify-center items-center">
-          <h2 className="font-aria_bold text-light text-calc_10vw lg:text-6xl ">
+        <section className="w-full h-full bg-primary flex flex-col justify-center items-center select-none">
+          <h2 className="font-aria_bold text-light text-calc_10vw md:text-calc_5vw lg:text-6xl my-10 ">
             نظرات‌ همراهان‌ ما
           </h2>
-          <div className="mt-16 h-[60%]">
             <Slider2 />
-          </div>
+
         </section>
         <section className="w-full relative h-[50vh] flex items-center">
           <Image

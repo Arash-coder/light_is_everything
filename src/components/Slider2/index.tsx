@@ -1,32 +1,22 @@
-'use client';
-import React from 'react';
+import React, { useRef, useState } from 'react';
+// Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Pagination, Autoplay, Navigation } from 'swiper/modules';
-import clip from '@/../public/assets/images/clip.jpg';
-import Image from 'next/image';
 import profile from '@/../public/assets/images/profile.png';
 
-type Props = {
-  className?: string;
-};
 
-const Slider2 = ({ className }: Props) => {
+
+
+
+// import required modules
+import { Pagination } from 'swiper/modules';
+import Image from 'next/image';
+
+const CommentsComponent = () => {
   return (
-    <div className="">
-      <Swiper
-        autoplay={{
-          delay: 500
-        }}
-        pagination={true}
-        navigation={false}
-        modules={[Pagination, Autoplay, Navigation]}
-        className={`text-white text-center h-full ${className} select-none`}
-      >
-        <SwiperSlide>
-          <div className="text-black flex flex-col items-center">
+    <div className="bg-black flex flex-col h-full items-center p-3">
             <Image
               alt="profile"
-              className="rounded-full object-cover"
+        className="rounded-full !h-20 !w-20 object-cover"
               src={profile}
             />
             <h3 className="text-light font-aria_regular text-xl mt-4">
@@ -38,44 +28,33 @@ const Slider2 = ({ className }: Props) => {
               طراحی شده‌اند.
             </p>
           </div>
-        </SwiperSlide>
-        <SwiperSlide>
-          <div className="text-black flex flex-col items-center">
-            <Image
-              alt="profile"
-              className="rounded-full object-cover"
-              src={profile}
-            />
-            <h3 className="text-light font-aria_regular text-xl mt-4">
-              مهتا jsjsjsj
-            </h3>
-            <p className="text-light mt-4 max-w-md text-center text-lg font-aria_normal">
-              محصولات نور به دسته‌ای از محصولات اشاره دارد که به نوعی با استفاده
-              از نور یا برافی تولید نور، کنترل نور یا بهره‌برداری از خواص نور
-              طراحی شده‌اند.
-            </p>
-          </div>
-        </SwiperSlide>
-        <SwiperSlide>
-          <div className="text-black flex flex-col items-center">
-            <Image
-              alt="profile"
-              className="rounded-full object-cover"
-              src={profile}
-            />
-            <h3 className="text-light font-aria_regular text-xl mt-4">
-              sjsjsjs پارسافر
-            </h3>
-            <p className="text-light mt-4 max-w-md text-center text-lg font-aria_normal">
-              محصولات نور به دسته‌ای از محصولات اشاره دارد که به نوعی با استفاده
-              از نور یا برافی تولید نور، کنترل نور یا بهره‌برداری از خواص نور
-              طراحی شده‌اند.
-            </p>
-          </div>
-        </SwiperSlide>
-      </Swiper>
-    </div>
-  );
-};
+  )
+}
 
-export default Slider2;
+export default function App() {
+
+
+
+  return (
+    <>
+      <Swiper
+        pagination={{
+          dynamicBullets: true,
+        }}
+        modules={[Pagination]}
+        className="mySwiper !h-[300px] !w-full !bg-black "
+      >
+        <SwiperSlide>
+          <CommentsComponent />
+        </SwiperSlide>
+        <SwiperSlide>
+          <CommentsComponent />
+        </SwiperSlide>
+        <SwiperSlide>
+          <CommentsComponent />
+        </SwiperSlide>
+
+      </Swiper>
+    </>
+  );
+}
