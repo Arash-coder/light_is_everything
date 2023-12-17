@@ -119,7 +119,7 @@ const HomePage = () => {
           </div> */}
         </div>
         <div className="text-center py-16 bg-background_slider ">
-          <div className="text-7xl mb-6 font-aria_light">
+          <div className="text-calc_10vw md:text-7xl mb-6 font-aria_light">
             همین امروز به ما بپیوندید
           </div>
           <button className="bg-primary font-aria_sbold text-light mt-4 py-2 px-5 text-2xl rounded-3xl">
@@ -199,10 +199,10 @@ const HomePage = () => {
             </button>
             <div className="flex  items-center gap-5 text-justify">
               <div>
-                <p className="font-aria_bold text-4xl">
+                <p className="font-aria_bold text-calc_15/2vw sm:text-4xl">
                   از خانواده‌ نور‌ حمایت‌ کنید
                 </p>
-                <p className="font-aria_light text-2xl tracking-widest mt-2">
+                <p className="font-aria_light text-2xl text-calc_5vw sm:text-2xl tracking-widest mt-2">
                   ما به‌‌ کمک‌ های‌ شما‌ دلگرم‌ هستیم
                 </p>
               </div>
