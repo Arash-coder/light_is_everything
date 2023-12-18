@@ -10,10 +10,11 @@ jobs:
     runs-on: self-hosted
 
     steps:
-      - name: Print Working Directory
+      - name: Deploy on server
         run: |
-          pwd
-
-      - name: Display User
-        run: |
-          whoami
+          cd ~ && 
+          cd /var/www/light_is_everything_front/ &&
+          git reset --hard &&
+          git pull &&
+          docker compose down &&
+          docker compose up -d --build
