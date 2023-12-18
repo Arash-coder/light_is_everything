@@ -15,5 +15,4 @@ jobs:
           cd /var/www/light_is_everything_front/ && 
           git reset --hard &&
           git pull origin main &&
-          docker compose down &&
           docker compose up -d --build

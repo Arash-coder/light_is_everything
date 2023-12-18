@@ -2,7 +2,6 @@ FROM --platform=linux/amd64 node:18-alpine AS dependencies
 RUN apk update && apk add --no-cache libc6-compat
 WORKDIR /home/app
 COPY package.json ./
-RUN npm config set proxy http://new.asdfghj.ir:3129
 RUN npm i
 COPY . .
 ENV NEXT_TELEMETRY_DISABLED 1
