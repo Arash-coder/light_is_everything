@@ -13,4 +13,7 @@ jobs:
       - name: Deploy on server
         run: |
           cd /var/www/light_is_everything_front/ && 
-          sudo git reset --hard
+          git reset --hard &&
+          git pull &&
+          docker compose down &&
+          docker compose up -d --build
