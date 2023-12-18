@@ -6,6 +6,6 @@ services:
       - 3000:3000
     networks:
       - light
-    networls:
-      light:
-        external: true
+networks:
+  light:
+    external: true
