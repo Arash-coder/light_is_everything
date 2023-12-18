@@ -6,10 +6,11 @@ on:
       - main
 
 jobs:
-  self_hosted_runner_commands:
+  Deploy_Light_is_everything:
     runs-on: self-hosted
 
     steps:
       - name: Deploy on server
         run: |
-          cd /var/www/light_is_everything_front/
+          cd /var/www/light_is_everything_front/ && 
+          git reset --hard
