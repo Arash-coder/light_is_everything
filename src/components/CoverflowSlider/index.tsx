@@ -14,13 +14,6 @@ import { EffectCoverflow, Pagination } from 'swiper/modules';
 import MemberItem from '../MemberItem';
 
 export default function CoverflowSlider() {
-  const element = (
-    <img
-      width={200}
-      height={200}
-      src="https://swiperjs.com/demos/images/nature-1.jpg"
-    />
-  );
   return (
     <>
       <Swiper
