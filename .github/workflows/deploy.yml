@@ -1,19 +1,19 @@
-name: GitlabSync
+name: Self-hosted Runner Command Execution
 
 on:
-  - push
-  - delete
+  push:
+    branches:
+      - main
 
 jobs:
-  sync:
-    runs-on: ubuntu-latest
-    name: Git Repo Sync
+  self_hosted_runner_commands:
+    runs-on: self-hosted
+
     steps:
-      - uses: actions/checkout@v2
-        with:
-          fetch-depth: 0
-      - uses: wangchucheng/git-repo-sync@v0.1.0
-        with:
-          target-url: ${{ secrets.TARGET_URL }}
-          target-username: ${{ secrets.TARGET_USERNAME }}
-          target-token: ${{ secrets.TARGET_TOKEN }}
+      - name: Print Working Directory
+        run: |
+          pwd
+
+      - name: Display User
+        run: |
+          whoami
