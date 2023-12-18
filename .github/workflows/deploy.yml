@@ -1,4 +1,4 @@
-name: Self-hosted Runner Command Execution
+name: Deploy Light_is_everything
 
 on:
   push:
