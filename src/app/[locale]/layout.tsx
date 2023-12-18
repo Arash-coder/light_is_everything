@@ -29,7 +29,11 @@ export default function LocaleLayout({
   return (
     <html lang={locale} dir="rtl">
       <body className="dark">
-        <NextIntlClientProvider locale={locale} messages={messages}>
+        <NextIntlClientProvider
+          timeZone="Asia/Kabul"
+          locale={locale}
+          messages={messages}
+        >
           <Layout>{children}</Layout>
         </NextIntlClientProvider>
       </body>

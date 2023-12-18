@@ -13,11 +13,9 @@ import CoverflowSlider from '@/components/CoverflowSlider';
 import Slider2 from '@/components/Slider2';
 import CountUp from 'react-countup';
 import { VscTriangleDown } from 'react-icons/vsc';
-import { useTranslations } from 'next-intl';
 import { lumosAPI } from '@/api';
 
 const HomePage = () => {
-  const t = useTranslations('Index');
   const { data, error, isLoading } = lumosAPI.useLandingInfoQuery('bulbasaur');
   return (
     <>
@@ -35,14 +33,11 @@ const HomePage = () => {
             alt="header-bg"
             src={headerBgGradient}
           /> */}
-          <div className="w-full relative text-center md:text-left ">
-            <div className=" w-full absolute top-0 flex flex-col items-center md:items-end px-3 -translate-y-[100%]  md:-translate-y-[65%] -translate-x-[50%]  left-[50%] md:right-0 md:translate-x-0">
-              <h2 className="font-aria_xbold  text-calc_10vw lg:text-8xl">
-                نورهمه‌چیزه...
-              </h2>
+          <div className="z-10 relative">
+            <div className="absolute top-0 -translate-y-[65%] right-0">
+              <h2 className="font-aria_xbold text-8xl">نورهمه‌چیزه...</h2>
               <p className="font-aria_sbold text-xl mt-4">
-                نور زبانی‌ است‌ که‌ بی‌ اراده‌ ما را بهم‌ وصل ‌می‌کند٬ ما را
-                بهم‌ متصل‌ می‌کند.
+                نورزبانی‌است‌که‌بی‌اراده‌مارابهم‌وصل‌می‌کند٬مارابهم‌متصل‌می‌کند.
               </p>
               <button className="bg-primary font-aria_sbold text-light mt-4 py-2 px-5 text-base rounded-3xl">
                 به‌ما‌بپیوندید
