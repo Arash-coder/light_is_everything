@@ -16,10 +16,11 @@ import { lumosAPI } from '@/api';
 
 const HomePage = () => {
   const { data, error, isLoading } = lumosAPI.useLandingInfoQuery('bulbasaur');
+
   return (
     <>
       <main className="overflow-x-hidden">
-        <section className="h-screen relative flex justify-center items-center">
+        <section className="h-[80vh] md:h-screen relative flex justify-center items-center">
           <Image
             priority
             className="object-cover"
@@ -27,15 +28,20 @@ const HomePage = () => {
             alt="header-bg"
             src={headerBg}
           />
-          <div className="z-10 relative">
-            <div className="absolute top-0 -translate-y-[65%] right-0">
-              <h2 className="font-aria_xbold text-8xl">نورهمه‌چیزه...</h2>
-              <p className="font-aria_sbold text-xl mt-4">
-                نورزبانی‌است‌که‌بی‌اراده‌مارابهم‌وصل‌می‌کند٬مارابهم‌متصل‌می‌کند.
+          <div className="z-10 md:relative w-full md:w-auto">
+            <div className="md:absolute w-full md:w-auto top-0 -translate-y-[65%] right-0">
+              <h2 className="font-aria_xbold text-4xl md:text-8xl text-center">
+                نورهمه‌چیزه...
+              </h2>
+              <p className="font-aria_sbold md:text-xl mt-4 text-center md:text-right">
+                نورزبانی‌است‌که‌بی‌اراده‌مارابهم‌وصل‌می‌کند٬{' '}
+                <br className="md:hidden" /> مارابهم‌متصل‌می‌کند.
               </p>
-              <button className="bg-primary font-aria_sbold text-light mt-4 py-2 px-5 text-base rounded-3xl">
-                به‌ما‌بپیوندید
-              </button>
+              <div className="flex justify-center md:justify-start">
+                <button className="bg-primary font-aria_sbold text-light mt-4 py-2 px-5 text-base  rounded-3xl">
+                  به‌ما‌بپیوندید
+                </button>
+              </div>
             </div>
           </div>
         </section>
@@ -48,7 +54,7 @@ const HomePage = () => {
               نور آغازی است برای تحقق رویاها و پرتویی لطیف که دل ها رو به سمت
               امید هدایت می کند!
             </div>
-            <div className="text-light text-justify text-last text-align-last-center   font-aria_regular text-xl mt-8">
+            <div className="text-light text-justify text-last text-align-last-center font-aria_regular text-lg md:text-xl mt-8">
               اواخر پاییز ۹۷، وسط یه کافه خلوت، داستان ساعت‌شنی از پرسیدن یه
               سوال شروع شد؛ چرا دوره ویدئویی یا محتوای فارسی باکیفیت توی حوزه‌ی
               هنرهای دیجیتال وجود نداره؟! بعد از مطالعه و بررسی‌ها تصمیم گرفتیم
@@ -62,7 +68,7 @@ const HomePage = () => {
           </div>
           <div className="flex gap-10 flex-col md:flex-row justify-between items-center text-light mt-16 custom_container">
             <div className="flex flex-col flex-1 items-center ">
-              <div className="text-9xl font-aria_sbold">
+              <div className="text-7xl md:text-9xl font-aria_sbold">
                 <CountUp end={93} duration={5} />
               </div>
               <div className="font-aria_sbold text-lg">
@@ -70,13 +76,13 @@ const HomePage = () => {
               </div>
             </div>
             <div className="flex flex-col flex-1 items-center">
-              <div className="text-9xl font-aria_sbold">
+              <div className="text-7xl md:text-9xl font-aria_sbold">
                 <CountUp end={350} duration={5} />
               </div>
               <div className="font-aria_sbold text-lg">نفر با ما همراه شدن</div>
             </div>
             <div className="flex flex-col flex-1 items-center ">
-              <div className="text-9xl font-aria_sbold">
+              <div className="text-7xl md:text-9xl font-aria_sbold">
                 <CountUp end={17} duration={5} />
               </div>
               <div className="font-aria_sbold text-lg">دورهمی برکزار شده</div>
@@ -91,12 +97,12 @@ const HomePage = () => {
             />
           </div>
         </section>
-        <div className="pt-28 text-center bg-background_slider">
-          <div className="mb-10 font-aria_normal text-3xl tracking-widest">
+        <div className="pt-14 md:pt-28 text-center bg-background_slider">
+          <div className="mb-10 font-aria_normal text-xl md:text-3xl tracking-widest">
             LIGHT IS EVERYTHING
           </div>
 
-          <div className="relative w-full ">
+          <div className="relative md:w-full w-[90%] mx-auto">
             <Image
               src={cards}
               alt="cards"
@@ -106,7 +112,7 @@ const HomePage = () => {
             />
           </div>
         </div>
-        <div className="text-center py-16 bg-background_slider ">
+        <div className="text-center py-8 md:py-16 bg-background_slider ">
           <div className="text-calc_10vw md:text-7xl mb-6 font-aria_light">
             همین امروز به ما بپیوندید
           </div>
@@ -115,7 +121,7 @@ const HomePage = () => {
           </button>
         </div>
 
-        <div className="relative h-[75vh]">
+        <div className="relative h-[40vh] md:h-[75vh]">
           <Image
             className="object-cover w-full "
             alt="purple-girl"
@@ -124,20 +130,20 @@ const HomePage = () => {
           />
         </div>
 
-        <div className="text-center relative pt-16 pb-32 flex justify-center items-center bg-light -z-10">
+        <div className="text-center relative pt-8 md:pt-16 pb-16 md:pb-32 flex justify-center items-center bg-light -z-10">
           <div className="relative">
             <div className="custom_container flex flex-col items-center text-justify text-align-last-center p-3 !max-w-md">
-              <h2 className="font-aria_xbold text-3xl">
+              <h2 className="font-aria_xbold text-xl md:text-3xl">
                 نور آغازی است برای تحقق رویاها و پرتویی که دل ها رو به سمت امید!
               </h2>
-              <p className="font-aria_normal text-2xl mt-8">
+              <p className="font-aria_normal text-lg md:text-2xl mt-8">
                 محصولات نور به دسته‌ای از محصولات اشاره دارد که به نوعی با
                 استفاده از نور یا برای تولید نور، کنترل نور یا بهره‌برداری از
                 خواص نور طراحی شده‌اند. این محصولات می‌توانند در زمینه‌های
                 مختلفی مانند روشنایی، نمایش، فناوری، پزشکی و بسیاری دیگر از
                 حوزه‌ها کاربرد داشته باشند
               </p>
-              <p className="text-blue font-aria_bold text-xl mt-8">
+              <p className="text-blue font-aria_bold text-base md:text-xl mt-8">
                 به‌ زودی ...
               </p>
             </div>
@@ -163,8 +169,8 @@ const HomePage = () => {
             />
           </div>
         </div>
-        <section className="w-full py-28 h-full bg-primary flex flex-col justify-center items-center select-none">
-          <h2 className="font-aria_bold text-light text-calc_10vw md:text-calc_5vw lg:text-6xl my-10 ">
+        <section className="w-full py-14 md:py-28 h-full bg-primary flex flex-col justify-center items-center select-none">
+          <h2 className="font-aria_bold text-light text-calc_10vw md:text-calc_5vw lg:text-6xl my-5 md:my-10 ">
             نظرات‌ همراهان‌ ما
           </h2>
           <Slider2 />
@@ -181,10 +187,10 @@ const HomePage = () => {
             </button>
             <div className="flex  items-center gap-5 text-justify">
               <div>
-                <p className="font-aria_bold text-calc_15/2vw sm:text-4xl">
+                <p className="font-aria_bold text-lg md:text-4xl">
                   از خانواده‌ نور‌ حمایت‌ کنید
                 </p>
-                <p className="font-aria_light text-2xl text-calc_5vw sm:text-2xl tracking-widest mt-2">
+                <p className="font-aria_light text-sm md:text-2xl sm:text-2xl md:tracking-widest mt-2">
                   ما به‌‌ کمک‌ های‌ شما‌ دلگرم‌ هستیم
                 </p>
               </div>

@@ -12,13 +12,13 @@ const CommentsComponent = () => {
     <div className="bg-black flex flex-col h-full items-center p-3">
       <Image
         alt="profile"
-        className="rounded-full !h-28 !w-28 object-cover"
+        className="rounded-full md:!h-28 !h-16 md:!w-28 !w-16 object-cover"
         src={profile}
       />
       <h3 className="text-light font-aria_regular text-xl mt-2">
         مهتا پارسافر
       </h3>
-      <p className="text-light mt-4 max-w-md text-center text-lg font-aria_normal">
+      <p className="text-light mt-4 max-w-md text-center text-base md:text-lg font-aria_normal">
         محصولات نور به دسته‌ای از محصولات اشاره دارد که به نوعی با استفاده از
         نور یا برافی تولید نور، کنترل نور یا بهره‌برداری از خواص نور طراحی
         شده‌اند.

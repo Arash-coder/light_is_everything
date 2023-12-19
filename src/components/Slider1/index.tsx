@@ -40,53 +40,15 @@ const Slider1 = ({ className }: Props) => {
             <div className="bg-light p-1 rounded-md">
               <FaLocationDot color="var(--background)" />
             </div>
-            <p className="text-light font-aria_regular text-base ms-4">
+            <p className="text-light font-aria_regular text-xs md:text-base ms-1 md:ms-4">
               هفته‌ی شانزدهم
             </p>
-            <p className="font-aria_regular text-light ms-4">|</p>
-            <p className="text-light font-aria_regular text-base ms-4">
+            <p className="font-aria_regular text-light ms-1 md:ms-4">|</p>
+            <p className="text-light font-aria_regular text-xs md:text-base ms-4">
               محله‌ی دیباجی جنوبی
             </p>
-            <p className="font-aria_regular text-light ms-4">|</p>
-            <p className="text-light font-aria_regular text-base ms-4">
-              14 مهر 1402
-            </p>
-          </div>
-        </SwiperSlide>
-        <SwiperSlide>
-          <Image className="rounded-3xl object-cover" alt="clip" src={clip} />
-          <div className="flex mt-4 mb-16 items-center">
-            <div className="bg-light p-1 rounded-md">
-              <FaLocationDot color="var(--background)" />
-            </div>
-            <p className="text-light font-aria_regular text-base ms-4">
-              هفته‌ی شانزدهم
-            </p>
-            <p className="font-aria_regular text-light ms-4">|</p>
-            <p className="text-light font-aria_regular text-base ms-4">
-              محله‌ی دیباجی جنوبی
-            </p>
-            <p className="font-aria_regular text-light ms-4">|</p>
-            <p className="text-light font-aria_regular text-base ms-4">
-              14 مهر 1402
-            </p>
-          </div>
-        </SwiperSlide>
-        <SwiperSlide>
-          <Image className="rounded-3xl object-cover" alt="clip" src={clip} />
-          <div className="flex mt-4 mb-16 items-center">
-            <div className="bg-light p-1 rounded-md">
-              <FaLocationDot color="var(--background)" />
-            </div>
-            <p className="text-light font-aria_regular text-base ms-4">
-              هفته‌ی شانزدهم
-            </p>
-            <p className="font-aria_regular text-light ms-4">|</p>
-            <p className="text-light font-aria_regular text-base ms-4">
-              محله‌ی دیباجی جنوبی
-            </p>
-            <p className="font-aria_regular text-light ms-4">|</p>
-            <p className="text-light font-aria_regular text-base ms-4">
+            <p className="font-aria_regular text-light ms-1 md:ms-4">|</p>
+            <p className="text-light font-aria_regular text-xs md:text-base ms-4">
               14 مهر 1402
             </p>
           </div>
