@@ -34,6 +34,9 @@ const config: Config = {
         calc_10vw: 'calc(10vw )',
         calc_15vw: 'calc(15vw )',
         calc_20vw: 'calc(20vw )'
+      },
+      backgroundImage: {
+        'bg-sign-in': "url('/assets/images/bg-sign-in.svg')"
       }
     }
   },
