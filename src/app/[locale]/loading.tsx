@@ -3,7 +3,7 @@ import Image from 'next/image';
 
 const Index = () => {
   return (
-    <div className="w-screen h-screen flex items-center justify-center bg-red-600">
+    <div className="w-screen h-screen flex items-center justify-center bg-primary">
       <Image src={gif} alt="gif" width={100} height={100} />
     </div>
   );

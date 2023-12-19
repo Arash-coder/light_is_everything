@@ -14,7 +14,7 @@ const Header = () => {
     mobileNavRef.current?.classList.toggle(styles.openMenu);
   };
   return (
-    <header className=" absolute top-0 z-10 w-full">
+    <header className="absolute top-0 z-10 w-full">
       <nav className="hidden md:flex custom_container  items-center justify-between py-10">
         <ul className="flex items-center gap-10">
           <li className="font-aria_sbold">
@@ -22,7 +22,7 @@ const Header = () => {
               <Image
                 src={Logo}
                 alt="logo"
-                width={25}
+                width={30}
                 height={30}
                 className="rounded-md cursor-pointer mx-auto"
                 priority
