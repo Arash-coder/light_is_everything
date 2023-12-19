@@ -9,7 +9,6 @@ import donate from '@/../public/assets/images/donate.jpg';
 import purpleGirl from '@/../public/assets/images/purple-girl.jpg';
 import flask from '@/../public/assets/images/flask.png';
 import Slider1 from '@/components/Slider1';
-import CoverflowSlider from '@/components/CoverflowSlider';
 import Slider2 from '@/components/Slider2';
 import CountUp from 'react-countup';
 import { VscTriangleDown } from 'react-icons/vsc';
@@ -28,11 +27,6 @@ const HomePage = () => {
             alt="header-bg"
             src={headerBg}
           />
-          {/* <Image
-            className=" h-screen object-cover -bottom-[200px]	absolute z-10"
-            alt="header-bg"
-            src={headerBgGradient}
-          /> */}
           <div className="z-10 relative">
             <div className="absolute top-0 -translate-y-[65%] right-0">
               <h2 className="font-aria_xbold text-8xl">نورهمه‌چیزه...</h2>
@@ -47,7 +41,7 @@ const HomePage = () => {
         </section>
         <section className=" w-full bg-background">
           <div className="relative custom_container">
-            <div className="text-light font-aria_sbold text-xl text-center">
+            <div className="text-light font-aria_sbold text-xl text-center pt-16">
               رنگ تمام داشته های یه هنرمنده
             </div>
             <div className="text-light text-center text-2xl font-aria_xbold mt-4">
@@ -99,49 +93,44 @@ const HomePage = () => {
         </section>
         <div className="pt-28 text-center bg-background_slider">
           <div className="mb-10 font-aria_normal text-3xl tracking-widest">
-            LIFE IS EVERYTHING
+            LIGHT IS EVERYTHING
           </div>
 
-          <CoverflowSlider />
-
-          {/* <div className="relative w-full h-[600px]">
+          <div className="relative w-full ">
             <Image
               src={cards}
               alt="cards"
-              fill
-              className="object-cover -mt-[200px]"
+              width={1200}
+              height={100}
+              className="object-cover mx-auto"
             />
-          </div> */}
+          </div>
         </div>
         <div className="text-center py-16 bg-background_slider ">
           <div className="text-calc_10vw md:text-7xl mb-6 font-aria_light">
             همین امروز به ما بپیوندید
           </div>
-          <button className="bg-primary font-aria_sbold text-light mt-4 py-2 px-5 text-2xl rounded-3xl">
+          <button className="bg-primary font-aria_sbold text-light mt-4 py-2 px-5 text-base rounded-3xl">
             به‌ ما‌ بپیوندید
           </button>
         </div>
 
-        {/* <Image
-            
-            className="object-cover"
-            fill
+        <div className="relative h-[75vh]">
+          <Image
+            className="object-cover w-full "
             alt="purple-girl"
+            fill
             src={purpleGirl}
-          /> */}
-        <Image
-          className="object-cover w-full h-72"
-          alt="purple-girl"
-          src={purpleGirl}
-        />
+          />
+        </div>
 
-        <div className="text-center  relative h-screen flex justify-center items-center bg-light -z-10">
+        <div className="text-center relative pt-16 pb-32 flex justify-center items-center bg-light -z-10">
           <div className="relative">
-            <div className="custom_container   flex flex-col items-center text-justify text-align-last-center p-3  !max-w-md">
+            <div className="custom_container flex flex-col items-center text-justify text-align-last-center p-3 !max-w-md">
               <h2 className="font-aria_xbold text-3xl">
                 نور آغازی است برای تحقق رویاها و پرتویی که دل ها رو به سمت امید!
               </h2>
-              <p className="font-aria_normal text-2xl mt-8 ">
+              <p className="font-aria_normal text-2xl mt-8">
                 محصولات نور به دسته‌ای از محصولات اشاره دارد که به نوعی با
                 استفاده از نور یا برای تولید نور، کنترل نور یا بهره‌برداری از
                 خواص نور طراحی شده‌اند. این محصولات می‌توانند در زمینه‌های
@@ -174,7 +163,7 @@ const HomePage = () => {
             />
           </div>
         </div>
-        <section className="w-full h-full bg-primary flex flex-col justify-center items-center select-none">
+        <section className="w-full py-28 h-full bg-primary flex flex-col justify-center items-center select-none">
           <h2 className="font-aria_bold text-light text-calc_10vw md:text-calc_5vw lg:text-6xl my-10 ">
             نظرات‌ همراهان‌ ما
           </h2>
@@ -187,7 +176,7 @@ const HomePage = () => {
             className="-z-10 absolute w-full h-full"
           />
           <div className="flex gap-5 flex-col md:flex-row justify-between items-center custom_container !max-w-3xl z-10">
-            <button className="bg-primary font-aria_sbold text-light  py-3 px-5 text-2xl rounded-3xl">
+            <button className="bg-primary font-aria_sbold text-light  py-3 px-5 text-base rounded-3xl">
               از ما حمایت‌ کنید
             </button>
             <div className="flex  items-center gap-5 text-justify">

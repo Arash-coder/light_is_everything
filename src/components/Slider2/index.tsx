@@ -12,10 +12,10 @@ const CommentsComponent = () => {
     <div className="bg-black flex flex-col h-full items-center p-3">
       <Image
         alt="profile"
-        className="rounded-full !h-20 !w-20 object-cover"
+        className="rounded-full !h-28 !w-28 object-cover"
         src={profile}
       />
-      <h3 className="text-light font-aria_regular text-xl mt-4">
+      <h3 className="text-light font-aria_regular text-xl mt-2">
         مهتا پارسافر
       </h3>
       <p className="text-light mt-4 max-w-md text-center text-lg font-aria_normal">
@@ -32,7 +32,8 @@ export default function App() {
     <>
       <Swiper
         pagination={{
-          dynamicBullets: true
+          dynamicBullets: false,
+          clickable: true
         }}
         modules={[Pagination]}
         className="mySwiper !h-[300px] !w-full !bg-black "

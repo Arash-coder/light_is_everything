@@ -3,7 +3,9 @@ import Link from 'next/link';
 import { HeaderLinks } from '../navigation';
 import styles from './index.module.scss';
 import { MdMenu } from 'react-icons/md';
-import { RefObject, createRef, useRef } from 'react';
+import { createRef } from 'react';
+import Logo from '@/../public/assets/images/logo.png';
+import Image from 'next/image';
 
 const Header = () => {
   const mobileNavRef = createRef<HTMLDivElement>();
@@ -15,7 +17,18 @@ const Header = () => {
     <header className=" absolute top-0 z-10 w-full">
       <nav className="hidden md:flex custom_container  items-center justify-between py-10">
         <ul className="flex items-center gap-10">
-          <li className="font-aria_sbold">icon</li>
+          <li className="font-aria_sbold">
+            <Link href={'/'}>
+              <Image
+                src={Logo}
+                alt="logo"
+                width={25}
+                height={30}
+                className="rounded-md cursor-pointer mx-auto"
+                priority
+              />
+            </Link>
+          </li>
           {HeaderLinks.map((link) => {
             return (
               <li key={link.name} className={`font-aria_sbold ${styles.link}`}>
@@ -26,10 +39,10 @@ const Header = () => {
         </ul>
         <ul className="flex items-center gap-10">
           <li className={`font-aria_sbold ${styles.link}`}>
-            <Link href={'/'}>ورود</Link>
+            <Link href={'/authentication/sign-in'}>ورود</Link>
           </li>
           <li className={`font-aria_sbold ${styles.link}`}>
-            <Link href={'/'}>ثبت‌نام</Link>
+            <Link href={'/authentication/sign-up'}>ثبت‌نام</Link>
           </li>
         </ul>
       </nav>

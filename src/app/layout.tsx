@@ -1,7 +1,17 @@
-export default function RootLayout({
-  children
-}: {
+interface LocaleParams {
   children: React.ReactNode;
-}) {
-  return children;
+  params: {
+    locale: string;
+  };
+}
+
+export default function RootLayout({
+  children,
+  params: { locale }
+}: LocaleParams) {
+  return (
+    <html lang={locale} dir="rtl">
+      <body className="dark">{children}</body>
+    </html>
+  );
 }
