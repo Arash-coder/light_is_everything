@@ -1,14 +1,12 @@
 'use client';
+
 import Image, { StaticImageData } from 'next/image';
 import React, { useEffect } from 'react';
 import { CiSearch } from 'react-icons/ci';
 import profile2 from '@/../public/assets/images/profile-2.png';
 import Link from 'next/link';
-import { MdArrowBackIos, MdArrowForwardIos } from 'react-icons/md';
-import { ConfigProvider, Pagination } from 'antd';
+import { Pagination } from 'antd';
 import styled from 'styled-components';
-
-type Props = {};
 
 interface IMemberItem
   extends React.DetailedHTMLProps<
@@ -30,21 +28,23 @@ const MemberItem = ({
   return (
     <div {...props}>
       <div
-        className={`bg-white text-center rounded-xl break-words overflow-hidden`}
+        className={`bg-white text-center rounded-2xl break-words overflow-hidden`}
       >
-        <div className="p-4">
+        <div className="pt-4">
           <Image
-            className="w-32 h-32 object-contain m-auto mb-2"
+            className="w-28 h-28 object-contain m-auto mb-2"
             src={profilePicture}
             alt="profile-2"
           />
-          <div className="font-aria_xbold mb-2">{name}</div>
-          <div className="mb-4">{career}</div>
-          <div className="font-aria_sbold text-justify">{description}</div>
+          <div className="font-aria_xbold mb-2 text-sm">{name}</div>
+          <div className="mb-2 text-sm">{career}</div>
+          <div className="font-aria_sbold text-justify px-8 text-[13px]">
+            {description}
+          </div>
         </div>
         <Link
           href={'#'}
-          className="p-3 bg-black text-white flex justify-center items-center"
+          className="p-3 mt-4 bg-black text-white flex justify-center items-center"
         >
           دیدن پروفایل
         </Link>
@@ -91,10 +91,8 @@ const StyledPagination = styled(Pagination)`
 `;
 const mockName = 'فاطمه یکتا ریاحی فرد';
 const mockCareer = 'عکاس';
-const mockDescription =
-  'پیشتر از ۱۰ سال هست که در زمینه‌های عکاسی و گرافیک به صورت حرفه ای مشغول به کار هستم. در این مدت با مجموعه‌ها و سازمان‌‌های مختلف همکاری کردم و در کنار هنرمندان و اساتید مختلف تجربه کسب کردم. چند سال مشغول به طراحی پوستر بودم';
-
-const Dashboard = () => {
+const mockDescription = `پیشتر از ۱۰ سال هست که در زمینه‌های عکاسی و گرافیک به صورت حرفه ای مشغول به کار هستم. در این مدت با مجموعه‌ها و سازمان‌‌های مختلف همکاری کردم و در کنار هنرمندان و اساتید مختلف تجربه کسب کردم. چند سال مشغول به طراحی پوستر بودم`;
+const Index = () => {
   useEffect(() => {
     const body = document.body;
 
@@ -150,4 +148,4 @@ const Dashboard = () => {
   );
 };
 
-export default Dashboard;
+export default Index;
