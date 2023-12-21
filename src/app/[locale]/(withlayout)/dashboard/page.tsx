@@ -44,7 +44,7 @@ const MemberItem = ({
         </div>
         <Link
           href={'#'}
-          className="p-3 bg-secondary text-primary flex justify-center items-center"
+          className="p-3 bg-black text-white flex justify-center items-center"
         >
           دیدن پروفایل
         </Link>
@@ -101,12 +101,14 @@ const Dashboard = (props: Props) => {
         <h2 className="text-4xl ">Light Is Everything</h2>
         <h2 className="">نور زبانی است که بی اراده ما را به هم متصل می کند</h2>
       </div>
-      <div className="flex items-center w-full rounded-lg p-2  bg-white  mb-7 ">
-        <CiSearch size={25} className="fill-slate-400" />
-        <input
-          placeholder="نام کاربر را جستجو کنید"
-          className="outline-none w-full px-2"
-        />
+      <div className="px-3">
+        <div className="flex items-center w-full rounded-lg p-2   bg-white  mb-7 ">
+          <CiSearch size={25} className="fill-slate-400" />
+          <input
+            placeholder="نام کاربر را جستجو کنید"
+            className="outline-none w-full px-2"
+          />
+        </div>
       </div>
       <div className="flex items-center justify-center  flex-wrap  ">
         {new Array(7).fill(undefined).map((_: any, index: number) => {
@@ -124,6 +126,7 @@ const Dashboard = (props: Props) => {
       </div>
       <div className="py-4 text-center !font-aria_sbold">
         <StyledPagination
+          showSizeChanger={false}
           locale={{ items_per_page: '/ صفحه' }}
           className="!font-aria_sbold"
           total={200}
