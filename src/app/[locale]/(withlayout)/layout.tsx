@@ -1,4 +1,4 @@
-"use client"
+'use client';
 import Layout from '@/components/layout';
 import { ConfigProvider } from 'antd';
 
@@ -8,7 +8,7 @@ interface LocaleParams {
 
 export default function LocaleLayout({ children }: LocaleParams) {
   return (
-    <ConfigProvider direction='rtl'>
+    <ConfigProvider direction="rtl">
       <Layout>{children}</Layout>
     </ConfigProvider>
   );
