@@ -8,9 +8,6 @@ dependencies:
   '@reduxjs/toolkit':
     specifier: ^2.0.1
     version: 2.0.1(react-redux@9.0.4)(react@18.2.0)
-  '@types/styled-components':
-    specifier: ^5.1.34
-    version: 5.1.34
   antd:
     specifier: ^5.12.4
     version: 5.12.4(react-dom@18.2.0)(react@18.2.0)
@@ -58,6 +55,9 @@ devDependencies:
   '@types/react-dom':
     specifier: ^18
     version: 18.2.17
+  '@types/styled-components':
+    specifier: ^5.1.34
+    version: 5.1.34
   autoprefixer:
     specifier: ^10.0.1
     version: 10.4.16(postcss@8.4.32)
@@ -564,7 +564,7 @@ packages:
     dependencies:
       '@types/react': 18.2.45
       hoist-non-react-statics: 3.3.2
-    dev: false
+    dev: true
 
   /@types/json5@0.0.29:
     resolution: {integrity: sha512-dRLjCWHYg4oaA77cxO64oO+7JwCwnIzkZPdrrC71jQmQtlhM556pwKo5bUzqvZndkVbeFLIIi+9TC40JNF5hNQ==}
@@ -601,7 +601,7 @@ packages:
       '@types/hoist-non-react-statics': 3.3.5
       '@types/react': 18.2.45
       csstype: 3.1.3
-    dev: false
+    dev: true
 
   /@types/stylis@4.2.5:
     resolution: {integrity: sha512-1Xve+NMN7FWjY14vLoY5tL3BVEQ/n42YLwaqJIPYhotZ9uBHt87VceMwWQpzmdEt2TNXIorIFG+YeCUUW7RInw==}
@@ -1823,7 +1823,7 @@ packages:
     resolution: {integrity: sha512-/gGivxi8JPKWNm/W0jSmzcMPpfpPLc3dY/6GxhX2hQ9iGj3aDfklV4ET7NjKpSinLpJ5vafa9iiGIEZg10SfBw==}
     dependencies:
       react-is: 16.13.1
-    dev: false
+    dev: true
 
   /husky@8.0.3:
     resolution: {integrity: sha512-+dQSyqPh4x1hlO1swXBiNb2HzTDN1I2IGLQx1GrBuiqFJfoMrnZWwVmatvSiO+Iz8fBUnf+lekwNo4c2LlXItg==}
@@ -3098,6 +3098,7 @@ packages:
 
   /react-is@16.13.1:
     resolution: {integrity: sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==}
+    dev: true
 
   /react-is@18.2.0:
     resolution: {integrity: sha512-xWGDIW6x921xtzPkhiULtthJHoJvBbF3q26fzloPCK0hsvxtPVelvftw3zjbHWSkR2km9Z+4uxbDDK/6Zw9B8w==}
