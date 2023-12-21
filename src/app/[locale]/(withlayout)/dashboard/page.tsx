@@ -104,7 +104,7 @@ const Dashboard = (props: Props) => {
             نور زبانی است که بی اراده ما را به هم متصل می کند
           </h2>
         </div>
-        <div className="px-3">
+        <div className="">
           <div className="flex items-center w-full rounded-lg p-2   bg-white  mb-7 ">
             <CiSearch size={25} className="fill-slate-400" />
             <input
@@ -113,12 +113,13 @@ const Dashboard = (props: Props) => {
             />
           </div>
         </div>
-        <div className="flex items-center justify-center  flex-wrap  ">
+        <div className="grid justify-center items-center gap-3 grid-cols-12  ">
+          {/* <div className="flex items-center justify-center  flex-wrap space-x-3  "> */}
           {new Array(7).fill(undefined).map((_: any, index: number) => {
             return (
               <MemberItem
                 key={index.toString()}
-                className="md:w-1/2 lg:w-1/4  p-3 "
+                className="col-span-12 md:col-span-6 lg:col-span-3"
                 name={mockName}
                 career={mockCareer}
                 description={mockDescription}

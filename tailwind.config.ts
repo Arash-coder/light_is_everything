@@ -42,6 +42,10 @@ const config: Config = {
       screens: {
         max_xs: { max: '330px' },
         min_xs: { min: '330px' }
+      },
+      width: {
+        "calc_w_1/4-3": "calc(25% - 0.75rem)",
+        "calc_w_1/4-6": "calc(25% - 1.25rem)",
       }
     }
   },
