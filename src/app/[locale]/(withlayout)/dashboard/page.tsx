@@ -96,7 +96,9 @@ const mockDescription =
 
 const Dashboard = (props: Props) => {
   return (
-    <div className="px-10  ">
+    <div className='bg-zinc-300'>
+
+      <div className=" custom_container">
       <div className="text-center font-aria_bold  mb-7 ">
         <h2 className="text-4xl ">Light Is Everything</h2>
         <h2 className="">نور زبانی است که بی اراده ما را به هم متصل می کند</h2>
@@ -133,6 +135,7 @@ const Dashboard = (props: Props) => {
           pageSize={10}
         />
       </div>
+    </div>
     </div>
   );
 };
