@@ -38,6 +38,10 @@ const config: Config = {
       backgroundImage: {
         'bg-sign-in': "url('/assets/images/bg-sign-in.svg')",
         'bg-sign-up': "url('/assets/images/bg-sign-up.svg')"
+      },
+      screens: {
+        max_xs: { max: '330px' },
+        min_xs: { min: '330px' }
       }
     }
   },
