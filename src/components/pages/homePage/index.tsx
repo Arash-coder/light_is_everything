@@ -28,9 +28,9 @@ const HomePage = () => {
             alt="header-bg"
             src={headerBg}
           />
-          <div className="z-10 md:relative w-full md:w-auto">
+          {/* <div className="z-10 md:relative w-full md:w-auto">
             <div className="md:absolute w-full md:w-auto top-0 -translate-y-[65%] right-0">
-              <h2 className="font-aria_xbold text-4xl md:text-8xl text-center">
+              <h2 className="font-aria_xbold text-calc_10vw  text-center">
                 نورهمه‌چیزه...
               </h2>
               <p className="font-aria_sbold md:text-xl mt-4 text-center md:text-right">
@@ -42,6 +42,20 @@ const HomePage = () => {
                   به‌ما‌بپیوندید
                 </button>
               </div>
+            </div>
+          </div> */}
+          <div className="w-full relative text-center md:text-left ">
+            <div className=" w-full absolute top-0 flex flex-col items-center md:items-end px-3 -translate-y-[100%]  md:-translate-y-[65%] -translate-x-[50%]  left-[50%] md:-right-20 md:translate-x-0">
+              <h2 className="font-aria_xbold  text-calc_10vw lg:text-8xl">
+                نورهمه‌چیزه...
+              </h2>
+              <p className="font-aria_sbold md:text-xl mt-4 text-center md:text-right">
+                نورزبانی‌است‌که‌بی‌اراده‌مارابهم‌وصل‌می‌کند٬{' '}
+                <br className="md:hidden" /> مارابهم‌متصل‌می‌کند.
+              </p>
+              <button className="bg-primary font-aria_sbold text-light mt-4 py-2 px-5 text-base rounded-3xl">
+                به‌ما‌بپیوندید
+              </button>
             </div>
           </div>
         </section>
