@@ -96,46 +96,47 @@ const mockDescription =
 
 const Dashboard = (props: Props) => {
   return (
-    <div className='bg-zinc-300'>
-
+    <div className="bg-zinc-300">
       <div className=" custom_container">
-      <div className="text-center font-aria_bold  mb-7 ">
-        <h2 className="text-4xl ">Light Is Everything</h2>
-        <h2 className="">نور زبانی است که بی اراده ما را به هم متصل می کند</h2>
-      </div>
-      <div className="px-3">
-        <div className="flex items-center w-full rounded-lg p-2   bg-white  mb-7 ">
-          <CiSearch size={25} className="fill-slate-400" />
-          <input
-            placeholder="نام کاربر را جستجو کنید"
-            className="outline-none w-full px-2"
+        <div className="text-center font-aria_bold  mb-7 ">
+          <h2 className="text-4xl ">Light Is Everything</h2>
+          <h2 className="">
+            نور زبانی است که بی اراده ما را به هم متصل می کند
+          </h2>
+        </div>
+        <div className="px-3">
+          <div className="flex items-center w-full rounded-lg p-2   bg-white  mb-7 ">
+            <CiSearch size={25} className="fill-slate-400" />
+            <input
+              placeholder="نام کاربر را جستجو کنید"
+              className="outline-none w-full px-2"
+            />
+          </div>
+        </div>
+        <div className="flex items-center justify-center  flex-wrap  ">
+          {new Array(7).fill(undefined).map((_: any, index: number) => {
+            return (
+              <MemberItem
+                key={index.toString()}
+                className="md:w-1/2 lg:w-1/4  p-3 "
+                name={mockName}
+                career={mockCareer}
+                description={mockDescription}
+                profilePicture={profile2}
+              />
+            );
+          })}
+        </div>
+        <div className="py-4 text-center !font-aria_sbold">
+          <StyledPagination
+            showSizeChanger={false}
+            locale={{ items_per_page: '/ صفحه' }}
+            className="!font-aria_sbold"
+            total={200}
+            pageSize={10}
           />
         </div>
       </div>
-      <div className="flex items-center justify-center  flex-wrap  ">
-        {new Array(7).fill(undefined).map((_: any, index: number) => {
-          return (
-            <MemberItem
-              key={index.toString()}
-              className="md:w-1/2 lg:w-1/4  p-3 "
-              name={mockName}
-              career={mockCareer}
-              description={mockDescription}
-              profilePicture={profile2}
-            />
-          );
-        })}
-      </div>
-      <div className="py-4 text-center !font-aria_sbold">
-        <StyledPagination
-          showSizeChanger={false}
-          locale={{ items_per_page: '/ صفحه' }}
-          className="!font-aria_sbold"
-          total={200}
-          pageSize={10}
-        />
-      </div>
-    </div>
     </div>
   );
 };
