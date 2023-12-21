@@ -6,15 +6,17 @@ import { MdMenu } from 'react-icons/md';
 import { createRef } from 'react';
 import Logo from '@/../public/assets/images/logo.png';
 import Image from 'next/image';
+import { usePathname } from 'next/navigation';
 
 const Header = () => {
   const mobileNavRef = createRef<HTMLDivElement>();
-
+  const pathName = usePathname()
+  console.log("PATHNAME ", pathName)
   const toggleMenu = () => {
     mobileNavRef.current?.classList.toggle(styles.openMenu);
   };
   return (
-    <header className="absolute top-0 z-10 w-full">
+    <header className={`${pathName == '/' && 'absolute'} top-0 z-10 w-full`}>
       <nav className="hidden md:flex custom_container  items-center justify-between py-10">
         <ul className="flex items-center gap-10">
           <li className="font-aria_sbold">

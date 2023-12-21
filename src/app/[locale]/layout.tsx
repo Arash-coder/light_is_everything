@@ -27,6 +27,7 @@ export default function LocaleLayout({
 
   return (
     <>
+
       <NextIntlClientProvider
         timeZone="Asia/Kabul"
         locale={locale}
@@ -34,6 +35,7 @@ export default function LocaleLayout({
       >
         {children}
       </NextIntlClientProvider>
+
     </>
   );
 }

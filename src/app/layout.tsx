@@ -11,7 +11,7 @@ export default function RootLayout({
 }: LocaleParams) {
   return (
     <html lang={locale} dir="rtl">
-      <body className="dark">{children}</body>
+      <body className=" bg-zinc-300 font-aria_regular">{children}</body>
     </html>
   );
 }
