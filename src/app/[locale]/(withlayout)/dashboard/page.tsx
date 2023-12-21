@@ -30,7 +30,7 @@ const MemberItem = ({
   return (
     <div {...props}>
       <div
-        className={`bg-primary text-center rounded-xl break-words overflow-hidden`}
+        className={`bg-white text-center rounded-xl break-words overflow-hidden`}
       >
         <div className="p-4">
           <Image
@@ -101,7 +101,7 @@ const Dashboard = (props: Props) => {
         <h2 className="text-4xl ">Light Is Everything</h2>
         <h2 className="">نور زبانی است که بی اراده ما را به هم متصل می کند</h2>
       </div>
-      <div className="flex items-center w-full rounded-lg p-2  bg-primary  mb-7 ">
+      <div className="flex items-center w-full rounded-lg p-2  bg-white  mb-7 ">
         <CiSearch size={25} className="fill-slate-400" />
         <input
           placeholder="نام کاربر را جستجو کنید"
