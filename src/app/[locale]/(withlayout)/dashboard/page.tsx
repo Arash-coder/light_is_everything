@@ -1,6 +1,6 @@
 'use client';
 import Image, { StaticImageData } from 'next/image';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { CiSearch } from 'react-icons/ci';
 import profile2 from '@/../public/assets/images/profile-2.png';
 import Link from 'next/link';
@@ -94,10 +94,18 @@ const mockCareer = 'عکاس';
 const mockDescription =
   'پیشتر از ۱۰ سال هست که در زمینه‌های عکاسی و گرافیک به صورت حرفه ای مشغول به کار هستم. در این مدت با مجموعه‌ها و سازمان‌‌های مختلف همکاری کردم و در کنار هنرمندان و اساتید مختلف تجربه کسب کردم. چند سال مشغول به طراحی پوستر بودم';
 
-const Dashboard = (props: Props) => {
+const Dashboard = () => {
+  useEffect(() => {
+    const body = document.body;
+
+    if (body) {
+      body.classList.add('bg-zinc-300');
+    }
+  }, []);
+
   return (
-    <div className="bg-zinc-300">
-      <div className=" custom_container">
+    <div className="">
+      <div className="custom_container">
         <div className="text-center font-aria_bold  mb-7 ">
           <h2 className="text-4xl ">Light Is Everything</h2>
           <h2 className="">
