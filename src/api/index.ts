@@ -16,7 +16,7 @@ export const lumosAPI = createApi({
     }
   }),
   endpoints: (builder) => ({
-    landingInfo: builder.query<any, string>({
+    landingInfo: builder.query({
       query: () => `/landing/info/`
     }),
     usersMe: builder.query<any, string>({
