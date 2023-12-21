@@ -45,11 +45,11 @@ const HomePage = () => {
             </div>
           </div> */}
           <div className="w-full relative text-center md:text-left ">
-            <div className=" w-full absolute top-0 flex flex-col items-center md:items-end px-3 -translate-y-[100%]  md:-translate-y-[65%] -translate-x-[50%]  left-[50%] md:-right-20 md:translate-x-0">
-              <h2 className="font-aria_xbold  text-calc_10vw lg:text-8xl">
+            <div className=" w-full absolute top-0 flex flex-col items-center md:items-start px-3 -translate-y-[70%]  md:-translate-y-[65%] -translate-x-[50%] -right-[50%] md:right-0  ">
+              <h2 className="font-aria_xbold  text-calc_15/2vw lg:text-8xl">
                 نورهمه‌چیزه...
               </h2>
-              <p className="font-aria_sbold md:text-xl mt-4 text-center md:text-right">
+              <p className="font-aria_sbold md:text-lg lg:text-xl mt-4 text-center md:text-right">
                 نورزبانی‌است‌که‌بی‌اراده‌مارابهم‌وصل‌می‌کند٬{' '}
                 <br className="md:hidden" /> مارابهم‌متصل‌می‌کند.
               </p>
