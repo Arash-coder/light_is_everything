@@ -1,8 +1,8 @@
-import React from 'react'
+import React from 'react';
 
 type Props = {
-  children: any
-}
+  children: any;
+};
 
 const Dashboardlayout = ({ children }: Props) => {
   return (
@@ -10,7 +10,7 @@ const Dashboardlayout = ({ children }: Props) => {
       <div>Dashboardlayout</div>
       {children}
     </>
-  )
-}
+  );
+};
 
-export default Dashboardlayout
+export default Dashboardlayout;
