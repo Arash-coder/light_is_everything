@@ -11,7 +11,6 @@ import { usePathname } from 'next/navigation';
 const Header = () => {
   const mobileNavRef = createRef<HTMLDivElement>();
   const pathName = usePathname();
-  console.log('PATHNAME ', pathName);
   const toggleMenu = () => {
     mobileNavRef.current?.classList.toggle(styles.openMenu);
   };
