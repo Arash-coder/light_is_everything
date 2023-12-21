@@ -22,7 +22,7 @@ html {
   @apply w-[95%] max-w-[1150px] mx-auto;
 }
 
-@media(max-width:768px){
+@media (max-width: 768px) {
   .custom_container {
     @apply w-[80%] max-w-[1150px] mx-auto;
   }
