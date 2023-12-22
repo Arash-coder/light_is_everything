@@ -64,3 +64,22 @@ html {
 .text-align-last-start {
   text-align-last: right;
 }
+.btn {
+  @apply bg-primary font-aria_sbold text-light  py-2 px-5 text-base rounded-3xl;
+  &.ghost {
+    @apply bg-transparent text-black;
+    svg {
+      @apply fill-black;
+    }
+  }
+  &.disabled {
+    @apply text-gray-400 cursor-not-allowed;
+    svg {
+      @apply fill-gray-400;
+    }
+  }
+  svg{
+    @apply fill-white;
+  }
+    
+}
