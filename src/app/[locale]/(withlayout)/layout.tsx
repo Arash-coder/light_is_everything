@@ -1,6 +1,6 @@
 'use client';
 import Layout from '@/components/layout';
-import { ConfigProvider } from 'antd';
+import { ConfigProvider, Empty } from 'antd';
 
 interface LocaleParams {
   children: React.ReactNode;
@@ -8,7 +8,18 @@ interface LocaleParams {
 
 export default function LocaleLayout({ children }: LocaleParams) {
   return (
-    <ConfigProvider direction="rtl">
+    <ConfigProvider
+      renderEmpty={() => <Empty description="اطلاعاتی یافت نشد" />}
+      theme={{
+
+        token: {
+          fontFamily: "aria_sbold",
+
+        },
+
+      }}
+      direction="rtl"
+    >
       <Layout>{children}</Layout>
     </ConfigProvider>
   );

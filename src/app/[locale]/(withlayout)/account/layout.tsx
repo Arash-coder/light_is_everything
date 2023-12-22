@@ -46,10 +46,10 @@ const Accountlayout = ({ children }: Props) => {
   const router = useRouter();
   const pathname = usePathname();
   return (
-    <div className="custom_container flex gap-3">
-      <div className="p-8 bg-neutral-200 rounded-xl py-12">
+    <div className="custom_container flex justify-stretch items-stretch gap-3">
+      <div className="p-8 bg-neutral-200 rounded-xl py-12 ">
         <Image
-          className="w-40 h-40 object-contain rounded-full  border-black border-4 mb-8"
+          className="w-40  object-contain rounded-full  border-black border-4 mb-8"
           alt="profile"
           src={profile2}
         />

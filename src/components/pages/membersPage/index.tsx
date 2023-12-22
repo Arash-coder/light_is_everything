@@ -71,24 +71,22 @@ const MemberItem = ({
 //   )
 // }
 
-const StyledPagination = styled(Pagination)`
-  * {
-    font-family: aria_bold !important;
-  }
-  .ant-pagination-item-active {
-    background-color: black !important;
-    border-radius: 50px !important;
-    border: none !important;
-  }
-  .ant-pagination-item-active a {
-    height: 100% !important;
-    margin: auto !important;
-    display: flex !important;
-    justify-content: center !important;
-    align-items: center !important;
-    color: white !important;
-  }
-`;
+// const StyledPagination = styled(Pagination)`
+
+//   .ant-pagination-item-active {
+//     background-color: black !important;
+//     border-radius: 50px !important;
+//     border: none !important;
+//   }
+//   .ant-pagination-item-active a {
+//     height: 100% !important;
+//     margin: auto !important;
+//     display: flex !important;
+//     justify-content: center !important;
+//     align-items: center !important;
+//     color: white !important;
+//   }
+// `;
 const mockName = 'فاطمه یکتا ریاحی فرد';
 const mockCareer = 'عکاس';
 const mockDescription = `پیشتر از ۱۰ سال هست که در زمینه‌های عکاسی و گرافیک به صورت حرفه ای مشغول به کار هستم. در این مدت با مجموعه‌ها و سازمان‌‌های مختلف همکاری کردم و در کنار هنرمندان و اساتید مختلف تجربه کسب کردم. چند سال مشغول به طراحی پوستر بودم`;
@@ -125,7 +123,7 @@ const Index = () => {
             return (
               <MemberItem
                 key={index.toString()}
-                className="col-span-12 md:col-span-6 lg:col-span-3"
+                className="col-span-2 md:col-span-12 md:col-span-6 lg:col-span-3"
                 name={mockName}
                 career={mockCareer}
                 description={mockDescription}
@@ -135,10 +133,10 @@ const Index = () => {
           })}
         </div>
         <div className="py-4 text-center !font-aria_sbold">
-          <StyledPagination
+          <Pagination
             showSizeChanger={false}
             locale={{ items_per_page: '/ صفحه' }}
-            className="!font-aria_sbold"
+            className="noxPagination"
             total={200}
             pageSize={10}
           />

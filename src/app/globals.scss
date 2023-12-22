@@ -82,3 +82,28 @@ html {
     @apply fill-white;
   }
 }
+.divider {
+  @apply h-[1px] w-full bg-zinc-300 my-10;
+}
+.noxTable {
+  thead th {
+    @apply bg-primary #{!important};
+    @apply text-white #{!important};
+  }
+}
+.noxPagination {
+  .ant-pagination-item-active {
+    @apply bg-black #{!important};
+    @apply rounded-full #{!important};
+    @apply border-none #{!important};
+    
+  }
+  .ant-pagination-item-active a {
+    height: 100% !important;
+    margin: auto !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    @apply text-white #{!important};
+  }
+}
