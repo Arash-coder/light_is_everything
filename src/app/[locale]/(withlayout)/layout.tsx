@@ -11,12 +11,9 @@ export default function LocaleLayout({ children }: LocaleParams) {
     <ConfigProvider
       renderEmpty={() => <Empty description="اطلاعاتی یافت نشد" />}
       theme={{
-
         token: {
-          fontFamily: "aria_sbold",
-
-        },
-
+          fontFamily: 'aria_sbold'
+        }
       }}
       direction="rtl"
     >
