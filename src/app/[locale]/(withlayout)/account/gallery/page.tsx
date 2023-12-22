@@ -1,11 +1,9 @@
-import React from 'react'
+import React from 'react';
 
-type Props = {}
+type Props = {};
 
 const Accountgallery = (props: Props) => {
-  return (
-    <div>Accountgallery</div>
-  )
-}
+  return <div>Accountgallery</div>;
+};
 
-export default Accountgallery
+export default Accountgallery;

@@ -1,11 +1,9 @@
-import React from 'react'
+import React from 'react';
 
-type Props = {}
+type Props = {};
 
 const AccountInfo = (props: Props) => {
-  return (
-    <div>AccountInfo</div>
-  )
-}
+  return <div>AccountInfo</div>;
+};
 
-export default AccountInfo
+export default AccountInfo;
