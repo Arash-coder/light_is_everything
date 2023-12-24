@@ -61,7 +61,8 @@ const Accountgallery = (props: Props) => {
           <Table
             scroll={{ x: 400 }}
             pagination={{
-              pageSize: 5
+              pageSize: 5,
+              className: 'm-auto flex !justify-center items-center'
             }}
             className="noxTable noxPagination w-full"
             dataSource={dataSource}
