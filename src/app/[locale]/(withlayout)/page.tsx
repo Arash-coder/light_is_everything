@@ -6,5 +6,7 @@ import { landingData } from '@/types/landing';
 export default async function Home() {
   const data: { data: landingData } = await Axios.get(URLS.landing);
 
+  console.log('data', data);
+
   return <HomePage data={data.data} />;
 }
