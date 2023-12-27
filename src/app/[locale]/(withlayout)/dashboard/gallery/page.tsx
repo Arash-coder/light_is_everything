@@ -1,6 +1,6 @@
 'use client';
 import React from 'react';
-import { Input, InputArea, Upload } from '../info/page';
+import { Input, InputArea, Upload } from '../profile/page';
 import { MdOutlineAddPhotoAlternate } from 'react-icons/md';
 import { Table } from 'antd';
 import { ColumnType, ColumnsType } from 'antd/es/table';

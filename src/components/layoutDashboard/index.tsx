@@ -42,7 +42,7 @@ const Button = ({
   );
 };
 
-const Accountlayout = ({ children }: Props) => {
+const DashboardLayout = ({ children }: Props) => {
   const router = useRouter();
   const pathname = usePathname();
   return (
@@ -79,4 +79,4 @@ const Accountlayout = ({ children }: Props) => {
   );
 };
 
-export default Accountlayout;
+export default DashboardLayout;

@@ -2,17 +2,10 @@
 const withNextIntl = require('next-intl/plugin')();
 
 const nextConfig = {
-  env: {
-    BASE_URL: process.env.BASE_URL
-  },
+  output: 'standalone',
   images: {
-    remotePatterns: [
-      {
-        hostname: 'swiperjs.com'
-      }
-    ]
-  },
-  output: 'standalone'
+    domains: [`${process.env.NEXT_PUBLIC_IMAGE_URL}`]
+  }
 };
 
 module.exports = withNextIntl(nextConfig);

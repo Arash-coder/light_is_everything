@@ -6,12 +6,14 @@ import clip from '@/../public/assets/images/clip.jpg';
 import Image from 'next/image';
 import { FaLocationDot } from 'react-icons/fa6';
 import { MdNavigateNext, MdNavigateBefore } from 'react-icons/md';
+import { event } from '@/types/landing';
 
 type Props = {
   className?: string;
+  data: event[];
 };
 
-const Slider1 = ({ className }: Props) => {
+const Slider1 = ({ className, data }: Props) => {
   const swiperRef: any = useRef(null);
   const NextSlide = () => swiperRef.current.slideNext();
   const PrevSlide = () => swiperRef.current.slidePrev();
@@ -34,25 +36,40 @@ const Slider1 = ({ className }: Props) => {
         }}
         className={`text-white text-center ${className}`}
       >
-        <SwiperSlide>
-          <Image className="rounded-3xl object-cover" alt="clip" src={clip} />
-          <div className="flex mt-4 mb-16 items-center">
-            <div className="bg-light p-1 rounded-md">
-              <FaLocationDot color="var(--background)" />
-            </div>
-            <p className="text-light font-aria_regular text-xs md:text-base ms-1 md:ms-4">
-              هفته‌ی شانزدهم
-            </p>
-            <p className="font-aria_regular text-light ms-1 md:ms-4">|</p>
-            <p className="text-light font-aria_regular text-xs md:text-base ms-4">
-              محله‌ی دیباجی جنوبی
-            </p>
-            <p className="font-aria_regular text-light ms-1 md:ms-4">|</p>
-            <p className="text-light font-aria_regular text-xs md:text-base ms-4">
-              14 مهر 1402
-            </p>
-          </div>
-        </SwiperSlide>
+        {data.map((event) => {
+          return (
+            <SwiperSlide key={event.title}>
+              <div className="relative w-full h-[600px]">
+                <Image
+                  className="rounded-3xl object-cover"
+                  alt="clip"
+                  src={event.image_url}
+                  fill
+                />
+              </div>
+              <div className="flex mt-4 mb-16 items-center">
+                <div className="bg-light p-1 rounded-md">
+                  <FaLocationDot color="var(--background)" />
+                </div>
+                <p className="text-light font-aria_regular text-xs md:text-base ms-1 md:ms-4">
+                  {event.title}
+                </p>
+                <p className="font-aria_regular text-light ms-1 md:ms-4">|</p>
+                <p className="text-light font-aria_regular text-xs md:text-base ms-4">
+                  {event.location}
+                </p>
+                <p className="font-aria_regular text-light ms-1 md:ms-4">|</p>
+                <p className="text-light font-aria_regular text-xs md:text-base ms-4">
+                  {event.description}
+                </p>
+                <p className="font-aria_regular text-light ms-1 md:ms-4">|</p>
+                <p className="text-light font-aria_regular text-xs tracking-wider md:text-base ms-4">
+                  {event.display_date}
+                </p>
+              </div>
+            </SwiperSlide>
+          );
+        })}
       </Swiper>
       <div
         onClick={PrevSlide}

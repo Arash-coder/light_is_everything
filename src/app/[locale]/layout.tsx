@@ -16,6 +16,8 @@ interface LocaleParams {
   };
 }
 
+export const revalidate = 0;
+
 export default function LocaleLayout({
   children,
   params: { locale }

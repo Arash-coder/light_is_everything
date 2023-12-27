@@ -12,11 +12,9 @@ import Slider1 from '@/components/Slider1';
 import Slider2 from '@/components/Slider2';
 import CountUp from 'react-countup';
 import { VscTriangleDown } from 'react-icons/vsc';
-import { lumosAPI } from '@/api';
+import { landingData } from '@/types/landing';
 
-const HomePage = () => {
-  const { data, error, isLoading } = lumosAPI.useLandingInfoQuery('bulbasaur');
-
+const HomePage = ({ data }: { data: landingData }) => {
   return (
     <>
       <main className="overflow-x-hidden">
@@ -50,8 +48,7 @@ const HomePage = () => {
                 نورهمه‌چیزه...
               </h2>
               <p className="font-aria_sbold md:text-lg lg:text-xl mt-4 text-center md:text-right">
-                نورزبانی‌است‌که‌بی‌اراده‌مارابهم‌وصل‌می‌کند٬{' '}
-                <br className="md:hidden" /> مارابهم‌متصل‌می‌کند.
+                {data.quotes[0].text}
               </p>
               <button className="bg-primary font-aria_sbold text-light mt-4 py-2 px-5 text-base rounded-3xl">
                 به‌ما‌بپیوندید
@@ -81,29 +78,25 @@ const HomePage = () => {
             </div>
           </div>
           <div className="flex gap-10 flex-col md:flex-row justify-between items-center text-light mt-16 custom_container">
-            <div className="flex flex-col flex-1 items-center ">
-              <div className="text-7xl md:text-9xl font-aria_sbold">
-                <CountUp end={93} duration={5} />
-              </div>
-              <div className="font-aria_sbold text-lg">
-                مسافت طی شده در یک فتوواک
-              </div>
-            </div>
-            <div className="flex flex-col flex-1 items-center">
-              <div className="text-7xl md:text-9xl font-aria_sbold">
-                <CountUp end={350} duration={5} />
-              </div>
-              <div className="font-aria_sbold text-lg">نفر با ما همراه شدن</div>
-            </div>
-            <div className="flex flex-col flex-1 items-center ">
-              <div className="text-7xl md:text-9xl font-aria_sbold">
-                <CountUp end={17} duration={5} />
-              </div>
-              <div className="font-aria_sbold text-lg">دورهمی برکزار شده</div>
-            </div>
+            {data.metric_counters.length > 0 &&
+              data.metric_counters.map((metric) => {
+                return (
+                  <div
+                    key={metric.title}
+                    className="flex flex-col flex-1 items-center "
+                  >
+                    <div className="text-7xl md:text-9xl font-aria_sbold">
+                      <CountUp end={parseInt(metric.count)} duration={5} />
+                    </div>
+                    <div className="font-aria_sbold text-lg">
+                      {metric.title}
+                    </div>
+                  </div>
+                );
+              })}
           </div>
           <div className="custom_container mt-16 relative">
-            <Slider1 />
+            {data.events.length > 0 && <Slider1 data={data.events} />}
             <VscTriangleDown
               className="absolute -bottom-14 right-[50%] translate-x-[50%] "
               color="var(--background)"
@@ -187,7 +180,7 @@ const HomePage = () => {
           <h2 className="font-aria_bold text-light text-calc_10vw md:text-calc_5vw lg:text-6xl my-5 md:my-10 ">
             نظرات‌ همراهان‌ ما
           </h2>
-          <Slider2 />
+          {data.user_reviews.length > 0 && <Slider2 data={data.user_reviews} />}
         </section>
         <section className="w-full relative h-[50vh] flex items-center">
           <Image

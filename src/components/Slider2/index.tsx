@@ -6,28 +6,35 @@ import profile from '@/../public/assets/images/profile.png';
 // import required modules
 import { Pagination } from 'swiper/modules';
 import Image from 'next/image';
+import { user_review } from '@/types/landing';
 
-const CommentsComponent = () => {
+const CommentsComponent = ({
+  image,
+  name,
+  description
+}: {
+  image: string;
+  name: string;
+  description: string;
+}) => {
   return (
     <div className="bg-black flex flex-col h-full items-center p-3">
       <Image
         alt="profile"
         className="rounded-full md:!h-28 !h-16 md:!w-28 !w-16 object-cover"
-        src={profile}
+        src={image}
+        width={28}
+        height={28}
       />
-      <h3 className="text-light font-aria_regular text-xl mt-2">
-        مهتا پارسافر
-      </h3>
+      <h3 className="text-light font-aria_regular text-xl mt-2">{name}</h3>
       <p className="text-light mt-4 max-w-md text-center text-base md:text-lg font-aria_normal">
-        محصولات نور به دسته‌ای از محصولات اشاره دارد که به نوعی با استفاده از
-        نور یا برافی تولید نور، کنترل نور یا بهره‌برداری از خواص نور طراحی
-        شده‌اند.
+        {description}
       </p>
     </div>
   );
 };
 
-export default function App() {
+export default function App({ data }: { data: user_review[] }) {
   return (
     <>
       <Swiper
@@ -38,15 +45,17 @@ export default function App() {
         modules={[Pagination]}
         className="mySwiper !h-[300px] !w-full !bg-black "
       >
-        <SwiperSlide>
-          <CommentsComponent />
-        </SwiperSlide>
-        <SwiperSlide>
-          <CommentsComponent />
-        </SwiperSlide>
-        <SwiperSlide>
-          <CommentsComponent />
-        </SwiperSlide>
+        {data.map((review) => {
+          return (
+            <SwiperSlide key={review.full_name}>
+              <CommentsComponent
+                image={review.avatar_image_url}
+                name={review.full_name}
+                description={review.text}
+              />
+            </SwiperSlide>
+          );
+        })}
       </Swiper>
     </>
   );
