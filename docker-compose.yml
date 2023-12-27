@@ -2,9 +2,6 @@ version: '3'
 services:
   light_is_everything_front:
     build: .
-    args:
-      https_proxy: http://new.asdfghj.ir:3129
-      http_proxy: http://new.asdfghj.ir:3129
     ports:
       - 3000:3000
     networks:
