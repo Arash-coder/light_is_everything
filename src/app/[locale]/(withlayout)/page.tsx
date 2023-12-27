@@ -8,5 +8,11 @@ export default async function Home() {
 
   console.log('data', data);
 
-  return <HomePage data={data.data} />;
+  // return <HomePage data={data.data} />;
+
+  return (
+    <>
+      <div>hello test</div>
+    </>
+  );
 }
