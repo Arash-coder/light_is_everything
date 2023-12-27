@@ -18,7 +18,9 @@ const Axios = axios.create({
     'Access-Control-Allow-Methods': '*',
     'Access-Control-Allow-Headers': '*',
     mode: 'no-cors'
-  }
+  },
+  timeout: 5000,
+  signal: AbortSignal.timeout(5000)
 });
 
 Axios.interceptors.request.use(
