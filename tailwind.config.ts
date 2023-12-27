@@ -12,7 +12,8 @@ const config: Config = {
         background: 'var(--background)',
         light: 'var(--light-color)',
         background_slider: 'var(--background-slider)',
-        blue: 'var(--primary-blue)'
+        blue: 'var(--primary-blue)',
+        error: 'var(--error)'
       },
       fontFamily: {
         aria_regular: ['aria_regular'],

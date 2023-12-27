@@ -1,5 +1,9 @@
 const URLS = {
-  landing: '/landing/info'
+  landing: '/landing/info',
+  auth: {
+    sign_up: '/users/signup/',
+    sign_in: '/users/login/'
+  }
 };
 
 export default URLS;

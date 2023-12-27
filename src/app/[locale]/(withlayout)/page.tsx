@@ -1,5 +1,5 @@
 import HomePage from '@/components/pages/homePage';
-import { Fetch } from '@/services/config';
+import Fetch from '@/services/configFetch';
 import URLS from '@/services/urls';
 import { landingData } from '@/types/landing';
 

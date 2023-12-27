@@ -6,7 +6,7 @@ import { getCookie } from 'cookies-next';
 const useAuthClient = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-  const token = getCookie('token');
+  const token = getCookie('access');
 
   useEffect(() => {
     if (token) {

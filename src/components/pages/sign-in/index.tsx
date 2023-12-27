@@ -6,11 +6,59 @@ import Logo from '@/../public/assets/images/logo.png';
 import Image from 'next/image';
 import { IoEyeOutline, IoEyeOffOutline } from 'react-icons/io5';
 import { useState } from 'react';
+import { MdError } from 'react-icons/md';
+import Loading from '@/components/loading';
+import { useRouter } from 'next/navigation';
+import { motion } from 'framer-motion';
+import Axios from '@/services/configAxios';
+import URLS from '@/services/urls';
+import { useForm } from 'react-hook-form';
+import { responseLogin, signinInputs } from '@/types/authentication';
+import { setCookie } from 'cookies-next';
 
 const SignInPage = () => {
+  const router = useRouter();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors }
+  }: any = useForm();
   const [show_password, setShow_password] = useState(false);
+  const [loading, setLoading] = useState(false);
+
+  const LoginHandler = (e: signinInputs) => {
+    if (loading) {
+      return;
+    } else {
+      setLoading(true);
+      Axios.post(URLS.auth.sign_in, {
+        username: e.username,
+        password: e.password
+      })
+        .then((res) => {
+          const { access, refresh }: responseLogin = res.data;
+
+          setCookie('access', access);
+          setCookie('refresh', refresh);
+          router.push('/dashboard/profile');
+        })
+        .catch((err: any) => {
+          alert(err.message);
+        })
+        .finally(() => {
+          setLoading(false);
+        });
+    }
+  };
+
   return (
-    <div className="w-screen max_xs:h-full min_xs:h-screen bg-bg-sign-in bg-cover relative flex justify-center items-center">
+    <div className="w-screen max_xs:h-full min_xs:h-screen relative flex justify-center items-center">
+      <Image
+        src={'/assets/images/bg-sign-in.svg'}
+        alt="bg-sign-in"
+        fill
+        className="object-cover -z-50"
+      />
       <Link
         href={'/'}
         className="absolute  right-[3%] top-[3%] flex items-center gap-2 transition-all hover:gap-4 cursor-pointer text-light font-aria_medium text-base "
@@ -50,13 +98,33 @@ const SignInPage = () => {
           <p className="font-aria_sbold text-center text-xs md:text-sm mt-2">
             برای ورود لطفا نام کاربری و رمز عبور خود را وارد نمایید.
           </p>
-          <input
-            dir="ltr"
-            type="text"
-            className="mt-4 placeholder:text-right bg-[#E8F0FE] focus:outline-none font-aria_sbold w-full px-4 py-2 rounded-lg"
-            placeholder="نام کاربری"
-          />
-          <div className="mt-4 flex items-center  bg-[#E8F0FE]  w-full  rounded-lg">
+          <div className="relative">
+            <motion.input
+              animate={
+                errors.username && { border: '0.5px solid var(--error)' }
+              }
+              dir="ltr"
+              type="text"
+              className="mt-4 placeholder:text-right bg-[#E8F0FE] focus:outline-none font-aria_sbold w-full px-4 py-2 rounded-lg"
+              placeholder="نام کاربری"
+              {...register('username', {
+                required: 'نام کاربری را وارد کنید'
+              })}
+            />
+            <div className="absolute left-2 mt-2 top-[50%] -translate-y-[50%]">
+              <motion.div
+                initial={{ y: 100, opacity: 0 }}
+                animate={errors.username && { opacity: 1, y: 0 }}
+              >
+                <MdError color="var(--error)" size="20px" />
+              </motion.div>
+            </div>
+          </div>
+
+          <motion.div
+            animate={errors.password && { border: '0.5px solid var(--error)' }}
+            className="relative mt-4 flex items-center  bg-[#E8F0FE]  w-full  rounded-lg"
+          >
             <div
               onClick={() => setShow_password(!show_password)}
               className="w-[15%] flex justify-center cursor-pointer"
@@ -70,18 +138,32 @@ const SignInPage = () => {
             <input
               dir="ltr"
               type={show_password ? 'text' : 'password'}
-              className=" flex-1 bg-transparent focus:outline-none font-aria_sbold px-4 py-2"
+              className=" flex-1 bg-transparent focus:outline-none  font-aria_sbold px-4 py-2"
               placeholder="رمز"
+              {...register('password', {
+                required: true
+              })}
             />
-          </div>
+            <div className="absolute right-10 z-50 top-[50%] -translate-y-[50%]">
+              <motion.div
+                initial={{ y: 100, opacity: 0 }}
+                animate={errors.password && { opacity: 1, y: 0 }}
+              >
+                <MdError color="var(--error)" size="20px" />
+              </motion.div>
+            </div>
+          </motion.div>
           <div className="mt-7 md:mt-14">
             <div className="font-aria_sbold flex items-center justify-center gap-2">
               <p>مرا به خاطر بسپار</p>
               <input type="checkbox" className="bg-[#E8F0FE]" name="" id="" />
             </div>
             <div className="flex justify-center">
-              <button className="mt-4 bg-primary font-aria_bold text-base md:text-lg w-[200px] rounded-lg py-2 text-light">
-                ورود
+              <button
+                onClick={handleSubmit(LoginHandler)}
+                className="mt-4 flex justify-center bg-primary font-aria_bold text-base md:text-lg w-[200px] rounded-lg py-2 text-light"
+              >
+                {loading ? <Loading /> : 'ورود'}
               </button>
             </div>
           </div>
