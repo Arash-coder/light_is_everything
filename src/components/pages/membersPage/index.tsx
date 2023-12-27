@@ -1,12 +1,14 @@
 'use client';
 
 import Image, { StaticImageData } from 'next/image';
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { CiSearch } from 'react-icons/ci';
-import profile2 from '@/../public/assets/images/profile-2.png';
 import Link from 'next/link';
 import { Pagination } from 'antd';
-import styled from 'styled-components';
+import { usersResponse } from '@/types/members';
+import Axios from '@/services/configAxios';
+import URLS from '@/services/urls';
+import Loading from '@/components/loading';
 
 interface IMemberItem
   extends React.DetailedHTMLProps<
@@ -17,12 +19,14 @@ interface IMemberItem
   career: string;
   description: string;
   profilePicture: string | StaticImageData;
+  username: string;
 }
 const MemberItem = ({
   name,
   career,
   description,
   profilePicture,
+  username,
   ...props
 }: IMemberItem) => {
   return (
@@ -32,9 +36,11 @@ const MemberItem = ({
       >
         <div className="pt-4">
           <Image
-            className="w-28 h-28 object-contain m-auto mb-2"
+            className="w-28 h-28 object-contain rounded-full m-auto mb-2"
             src={profilePicture}
             alt="profile-2"
+            width={28}
+            height={28}
           />
           <div className="font-aria_xbold mb-2 text-sm">{name}</div>
           <div className="mb-2 text-sm">{career}</div>
@@ -43,7 +49,7 @@ const MemberItem = ({
           </div>
         </div>
         <Link
-          href={'#'}
+          href={`/family/${username}`}
           className="p-3 mt-4 bg-black text-white flex justify-center items-center"
         >
           دیدن پروفایل
@@ -52,52 +58,36 @@ const MemberItem = ({
     </div>
   );
 };
-// const Pagination = () => {
-//   const itemsLength = 10
-//   return (
-//     <div className='flex gap-2 items-start justify-center'>
-//       <MdArrowForwardIos />
-//       {
-//         new Array(7).fill(undefined).map((_: any, index: number) => {
-//           return (
-//             <div key={index.toString()}>
-//               {index + 1}
-//             </div>
-//           )
-//         })
-//       }
-//       <MdArrowBackIos />
-//     </div>
-//   )
-// }
 
-// const StyledPagination = styled(Pagination)`
+const Index = ({ data }: { data: usersResponse }) => {
+  const [currentPage, setCurrentPage] = useState(1);
+  const [filteredData, setFilteredData] = useState(data.results);
+  const [loading, setLoading] = useState(false);
 
-//   .ant-pagination-item-active {
-//     background-color: black !important;
-//     border-radius: 50px !important;
-//     border: none !important;
-//   }
-//   .ant-pagination-item-active a {
-//     height: 100% !important;
-//     margin: auto !important;
-//     display: flex !important;
-//     justify-content: center !important;
-//     align-items: center !important;
-//     color: white !important;
-//   }
-// `;
-const mockName = 'فاطمه یکتا ریاحی فرد';
-const mockCareer = 'عکاس';
-const mockDescription = `پیشتر از ۱۰ سال هست که در زمینه‌های عکاسی و گرافیک به صورت حرفه ای مشغول به کار هستم. در این مدت با مجموعه‌ها و سازمان‌‌های مختلف همکاری کردم و در کنار هنرمندان و اساتید مختلف تجربه کسب کردم. چند سال مشغول به طراحی پوستر بودم`;
-const Index = () => {
   useEffect(() => {
     const body = document.body;
 
     if (body) {
       body.classList.add('bg-zinc-300');
     }
+
+    return () => body.classList.remove('bg-zinc-300');
   }, []);
+
+  useEffect(() => {
+    setLoading(true);
+    Axios.get(URLS.members(currentPage, 12))
+      .then((res) => {
+        const { results }: usersResponse = res.data;
+        setFilteredData(results);
+      })
+      .catch((err) => {
+        console.log(err.message);
+      })
+      .finally(() => {
+        setLoading(false);
+      });
+  }, [currentPage]);
 
   return (
     <div className="">
@@ -117,28 +107,49 @@ const Index = () => {
             />
           </div>
         </div>
-        <div className="grid justify-center items-center gap-3 grid-cols-12  ">
-          {/* <div className="flex items-center justify-center  flex-wrap space-x-3  "> */}
-          {new Array(7).fill(undefined).map((_: any, index: number) => {
-            return (
-              <MemberItem
-                key={index.toString()}
-                className="col-span-2 md:col-span-12 md:col-span-6 lg:col-span-3"
-                name={mockName}
-                career={mockCareer}
-                description={mockDescription}
-                profilePicture={profile2}
-              />
-            );
-          })}
-        </div>
+        {loading ? (
+          <>
+            <div className="flex justify-center items-center h-[70vh]">
+              <Loading />
+            </div>
+          </>
+        ) : (
+          <>
+            <div className="grid justify-center items-center gap-3 grid-cols-12  ">
+              {filteredData.length > 0 ? (
+                filteredData.map((member, index: number) => {
+                  return (
+                    <MemberItem
+                      key={index.toString()}
+                      className="col-span-2 md:col-span-6 lg:col-span-3"
+                      name={member.full_name}
+                      career={member.career_title}
+                      description={member.biography}
+                      profilePicture={member.avatar_image_url}
+                      username={member.username}
+                    />
+                  );
+                })
+              ) : (
+                <>
+                  <div>
+                    <p>موردی برای نمایش وجود ندارد</p>
+                  </div>
+                </>
+              )}
+            </div>
+          </>
+        )}
         <div className="py-4 text-center !font-aria_sbold">
           <Pagination
             showSizeChanger={false}
-            locale={{ items_per_page: '/ صفحه' }}
+            // locale={{ items_per_page: '/ صفحه' }}
             className="noxPagination"
-            total={200}
-            pageSize={10}
+            total={data.count}
+            pageSize={12 * currentPage}
+            onChange={(e) => {
+              setCurrentPage(e);
+            }}
           />
         </div>
       </div>

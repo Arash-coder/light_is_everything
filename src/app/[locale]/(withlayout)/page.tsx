@@ -1,10 +1,10 @@
 import HomePage from '@/components/pages/homePage';
-import Fetch from '@/services/configFetch';
+import Axios from '@/services/configAxios';
 import URLS from '@/services/urls';
 import { landingData } from '@/types/landing';
 
 export default async function Home() {
-  const data: landingData = await Fetch(URLS.landing);
+  const data: { data: landingData } = await Axios.get(URLS.landing);
 
-  return <HomePage data={data} />;
+  return <HomePage data={data.data} />;
 }

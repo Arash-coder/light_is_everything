@@ -1,14 +1,6 @@
 'use client';
 
 import Image from 'next/image';
-import grid1 from '@/../public/assets/images/grid-1.svg';
-import grid2 from '@/../public/assets/images/grid-2.svg';
-import grid3 from '@/../public/assets/images/grid-3.svg';
-import grid4 from '@/../public/assets/images/grid-4.svg';
-import grid5 from '@/../public/assets/images/grid-5.svg';
-import grid6 from '@/../public/assets/images/grid-6.svg';
-import grid7 from '@/../public/assets/images/grid-7.svg';
-import grid8 from '@/../public/assets/images/grid-8.svg';
 
 // framer-motion
 import { AnimatePresence, motion } from 'framer-motion';
@@ -21,10 +13,14 @@ import { IoCloseCircle } from 'react-icons/io5';
 // masonry
 import Masonry, { ResponsiveMasonry } from 'react-responsive-masonry';
 import { useEffect, useState } from 'react';
+import { userProfile } from '@/types/user';
+import Axios from '@/services/configAxios';
+import URLS from '@/services/urls';
 
-const UserProfilePage = () => {
+const UserProfilePage = ({ data }: { data: userProfile }) => {
   const [showModal, setShowModal] = useState(false);
   const [image, setImage] = useState('');
+  const [posts, setPosts] = useState([]);
 
   useEffect(() => {
     if (showModal) {
@@ -42,14 +38,27 @@ const UserProfilePage = () => {
     }
   }, [showModal]);
 
-  const images = [grid1, grid2, grid3, grid4, grid5, grid6, grid7, grid8];
+  useEffect(() => {
+    Axios.get(URLS.userPosts(data.username));
+  }, []);
+
+  const images = [
+    '/assets/images/grid-1.svg',
+    '/assets/images/grid-2.svg',
+    '/assets/images/grid-3.svg',
+    '/assets/images/grid-4.svg',
+    '/assets/images/grid-5.svg',
+    '/assets/images/grid-6.svg',
+    '/assets/images/grid-7.svg',
+    '/assets/images/grid-8.svg'
+  ];
 
   return (
     <>
       <div className={`custom_container relative pt-10`}>
         <div className="flex justify-center">
           <Image
-            src={'/assets/images/profile-2.png'}
+            src={data.avatar_image_url}
             width={200}
             height={100}
             alt="profile"
@@ -57,13 +66,10 @@ const UserProfilePage = () => {
           />
         </div>
         <h2 className="font-aria_sbold text-center mt-4 text-3xl">
-          ارسلان عیوض زاده
+          {data.full_name}
         </h2>
         <p className="font-aria_sbold text-center mt-2 text-base max-w-md mx-auto">
-          پیشتر از ۱۰ سال هست که در زمینه‌های عکاسی و گرافیک به صورت حرفه ای
-          مشغول به کار هستم. در این مدت با مجموعه‌ها و سازمان‌‌های مختلف همکاری
-          کردم و در کنار هنرمندان و اساتید مختلف تجربه کسب کردم. چند سال مشغول
-          به طراحی پوستر بودم
+          {data.biography}
         </p>
         <div className="flex justify-center gap-10 items-center mt-10">
           <FaInstagram size="25px" className="cursor-pointer" />
@@ -85,7 +91,9 @@ const UserProfilePage = () => {
                         setImage(image);
                         setShowModal(true);
                       }}
-                      className="cursor-pointer"
+                      width={1000}
+                      height={100}
+                      className="cursor-pointer object-cover"
                     />
                   </motion.div>
                 );

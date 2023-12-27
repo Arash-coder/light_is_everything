@@ -1,7 +1,7 @@
 export const HeaderLinks = [
   {
     name: 'خانواده‌ی‌نور',
-    url: '/members'
+    url: '/family'
   },
   {
     name: 'گالری‌نور',
