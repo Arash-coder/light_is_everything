@@ -4,12 +4,7 @@ const withNextIntl = require('next-intl/plugin')();
 const nextConfig = {
   output: 'standalone',
   images: {
-    remotePatterns: [
-      {
-        protocol: 'https',
-        hostname: process.env.NEXT_PUBLIC_IMAGE_URL
-      }
-    ]
+    domains: [process.env.NEXT_PUBLIC_IMAGE_URL]
   }
 };
 
