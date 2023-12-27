@@ -1,9 +1,10 @@
 'use client';
 import React from 'react';
-import { Input, InputArea, Upload } from '../profile/page';
+import Input from '@/components/input';
+import Upload from '@/components/upload';
+import InputArea from '@/components/textarea';
 import { MdOutlineAddPhotoAlternate } from 'react-icons/md';
 import { Table } from 'antd';
-import { ColumnType, ColumnsType } from 'antd/es/table';
 import Image from 'next/image';
 
 import profile from '@/../public/assets/images/profile.png';
