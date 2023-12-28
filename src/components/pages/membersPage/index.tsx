@@ -123,7 +123,7 @@ const Index = ({ data }: { data: usersResponse }) => {
                       key={index.toString()}
                       className="col-span-2 md:col-span-6 lg:col-span-3"
                       name={member.full_name}
-                      career={member.career_title}
+                      career={member.career.title}
                       description={member.biography}
                       profilePicture={member.avatar_image_url}
                       username={member.username}

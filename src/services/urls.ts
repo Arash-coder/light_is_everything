@@ -14,7 +14,7 @@ const URLS = {
   userprofile: (username: string) => `/users/profile/${username}/`,
   userPosts: (username: string) => `/posts/${username}/`,
   gallery: {
-    create_post: '/panel/posts/',
+    create_post: '/panel/posts/add/',
     get_posts: '/panel/posts/'
   }
 };

@@ -6,22 +6,28 @@ import InputArea from '@/components/textarea';
 import { MdOutlineAddPhotoAlternate } from 'react-icons/md';
 import { Table } from 'antd';
 import Image from 'next/image';
-
-import profile from '@/../public/assets/images/profile.png';
+import { FaHourglass } from 'react-icons/fa';
 import { Controller, useForm } from 'react-hook-form';
 import { galleyInputs } from '@/types/galllery';
 import Axios from '@/services/configAxios';
 import URLS from '@/services/urls';
 import Loading from '@/components/loading';
-type Props = {};
+import { post } from '@/types/post';
+import { FaCheckCircle } from 'react-icons/fa';
+import { IoIosCloseCircle } from 'react-icons/io';
+
+type Props = {
+  data: post[];
+};
 
 const Accountgallery = (props: Props) => {
   const [image_url, setImage_url] = useState<null | string>();
   const [image_file, setImage_file] = useState<any>();
   const [loading, setLoading] = useState(false);
 
+  // console.log('post', props.data);
+
   const {
-    register,
     control,
     handleSubmit,
     formState: { errors }
@@ -176,7 +182,14 @@ const Accountgallery = (props: Props) => {
               className: 'm-auto flex !justify-center items-center'
             }}
             className="noxTable noxPagination w-full"
-            dataSource={dataSource}
+            dataSource={props.data.map((post) => {
+              return {
+                preview: post.compressed_content_url,
+                name: post.title,
+                createdAt: post.display_created_at,
+                state: post.status
+              };
+            })}
             columns={columns}
           />
         </div>
@@ -196,8 +209,10 @@ const columns: any = [
     render(val: any) {
       return (
         <Image
-          src={profile}
+          src={val}
           alt="profile"
+          width={16}
+          height={16}
           className="w-16 h-16 m-auto object-contain"
         />
       );
@@ -223,7 +238,33 @@ const columns: any = [
     key: 'state',
     title: 'وضعیت',
     align: 'center',
-    width: 100
+    width: 100,
+    render(val: 'P' | 'R' | 'A') {
+      if (val === 'P') {
+        return (
+          <>
+            <div className="flex justify-center items-center">
+              <FaHourglass color="#0C609D" size="20px" />
+              <p className="text-[#0C609D]">در درست بررسی</p>
+            </div>
+          </>
+        );
+      } else if (val === 'R') {
+        return (
+          <div className="flex justify-center items-center gap-2">
+            <IoIosCloseCircle color="#BA2424" size="20px" />
+            <p className="text-[#BA2424]">رد شده</p>
+          </div>
+        );
+      } else {
+        return (
+          <div className="flex justify-center items-center gap-2">
+            <FaCheckCircle color="#0B9C2B" size="20px" />
+            <p className="text-[#0B9C2B]">منتشر شده</p>
+          </div>
+        );
+      }
+    }
   }
 ];
 
