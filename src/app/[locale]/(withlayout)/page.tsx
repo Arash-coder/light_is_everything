@@ -7,7 +7,7 @@ import axios from 'axios';
 export default async function Home() {
   try {
     const data: { data: landingData } = await axios.get(
-      'http://light_backend_web/landing/info/'
+      'http://light_backend_web:8000/landing/info/'
     );
 
     console.log('data', data);
