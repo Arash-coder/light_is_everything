@@ -3,17 +3,40 @@ import Link from 'next/link';
 import { HeaderLinks } from '../navigation';
 import styles from './index.module.scss';
 import { MdMenu } from 'react-icons/md';
-import { createRef } from 'react';
+import { createRef, useEffect, useState } from 'react';
 import Logo from '@/../public/assets/images/logo.png';
 import Image from 'next/image';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
+import useAuthClient from '@/hooks/useAuthClient';
+import Axios from '@/services/configAxios';
+import URLS from '@/services/urls';
+import { member } from '@/types/members';
+import { motion } from 'framer-motion';
+import { CgProfile } from 'react-icons/cg';
+import { deleteCookie } from 'cookies-next';
 
 const Header = () => {
+  const router = useRouter();
+  const { isLoggedIn } = useAuthClient();
   const mobileNavRef = createRef<HTMLDivElement>();
   const pathName = usePathname();
+  const [data, setData] = useState<null | member>();
+  const [menuProfile, setMenuProfile] = useState(false);
   const toggleMenu = () => {
     mobileNavRef.current?.classList.toggle(styles.openMenu);
   };
+
+  useEffect(() => {
+    Axios.get(URLS.auth.me)
+      .then((res) => {
+        const data: member = res.data;
+        setData(data);
+      })
+      .catch((err) => {
+        console.log(err.message);
+      });
+  }, []);
+
   return (
     <header
       className={`${
@@ -42,14 +65,73 @@ const Header = () => {
             );
           })}
         </ul>
-        <ul className="flex items-center gap-10">
-          <li className={`font-aria_sbold ${styles.link}`}>
-            <Link href={'/authentication/sign-in'}>ورود</Link>
-          </li>
-          <li className={`font-aria_sbold ${styles.link}`}>
-            <Link href={'/authentication/sign-up'}>ثبت‌نام</Link>
-          </li>
-        </ul>
+        {isLoggedIn ? (
+          <ul className="cursor-pointer relative">
+            {data && (
+              <>
+                <div
+                  onClick={() => setMenuProfile(!menuProfile)}
+                  className="flex gap-5"
+                >
+                  <div>
+                    <h2 className="text-sm">{data.full_name}</h2>
+                    <h3 dir="ltr" className="text-sm">
+                      {data.username}
+                    </h3>
+                  </div>
+                  <Image
+                    onClick={() => setMenuProfile(!menuProfile)}
+                    src={data.avatar_image_url}
+                    alt="image-profile"
+                    width={40}
+                    height={40}
+                    className="object-cover rounded-full border border-black"
+                  />
+                </div>
+              </>
+            )}
+
+            <motion.div
+              initial={{ y: -300, opacity: 0 }}
+              animate={
+                menuProfile ? { opacity: 1, y: 0 } : { y: -300, opacity: 0 }
+              }
+              className="absolute w-[200px] z-50  -right-[80px]  -bottom-28 bg-zinc-300 rounded-lg"
+            >
+              <div className="border-b border-gray-500">
+                <Link
+                  onClick={() => setMenuProfile(false)}
+                  className="flex items-center gap-3 p-3"
+                  href={'/dashboard/profile'}
+                >
+                  <CgProfile size="20px" />
+                  <p className="text-sm">پروفایل‌کاربری</p>
+                </Link>
+              </div>
+              <div
+                onClick={() => {
+                  deleteCookie('access');
+                  deleteCookie('refresh');
+                  setMenuProfile(false);
+                  router.push('/');
+                }}
+                className="flex items-center gap-3 p-3 cursor-pointer"
+              >
+                <CgProfile size="20px" className="opacity-0" />
+                <p className="text-sm text-error">خروج</p>
+              </div>
+            </motion.div>
+          </ul>
+        ) : (
+          <ul className="flex items-center gap-10">
+            <li className={`font-aria_sbold ${styles.link}`}>
+              <Link href={'/authentication/sign-in'}>ورود</Link>
+            </li>
+            <li className={`font-aria_sbold ${styles.link}`}>
+              <Link href={'/authentication/sign-up'}>ثبت‌نام</Link>
+            </li>
+          </ul>
+        )}
       </nav>
 
       <nav ref={mobileNavRef} className="md:hidden ">
