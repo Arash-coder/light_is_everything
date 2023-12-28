@@ -1,11 +1,13 @@
 'use client';
-import React from 'react';
-import profile2 from '@/../public/assets/images/profile-2.png';
+import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
 import { MdAccountCircle } from 'react-icons/md';
 import { RiGalleryFill } from 'react-icons/ri';
 import { FaWallet } from 'react-icons/fa6';
 import { usePathname, useRouter } from 'next/navigation';
+import { member } from '@/types/members';
+import Axios from '@/services/configAxios';
+import URLS from '@/services/urls';
 
 type Props = { children: React.ReactNode };
 
@@ -43,27 +45,37 @@ const Button = ({
 };
 
 const DashboardLayout = ({ children }: Props) => {
+  const [data, setData] = useState<null | member>();
+
+  useEffect(() => {
+    Axios.get(URLS.auth.me).then((res: { data: member }) => {
+      setData(res.data);
+    });
+  }, []);
+
   const router = useRouter();
   const pathname = usePathname();
   return (
     <div className="custom_container flex flex-col md:flex-row  justify-stretch items-stretch gap-3">
       <div className="p-8 bg-neutral-200 rounded-xl py-12 ">
         <Image
-          className="w-40  object-contain rounded-full  border-black border-4 mb-8 mx-auto"
+          className="w-40  object-contain rounded-full  border-black border-2 mb-8 mx-auto"
           alt="profile"
-          src={profile2}
+          width={40}
+          height={40}
+          src={data?.avatar_image_url ?? ''}
         />
         <Button
           className="mb-4"
-          onClick={() => router?.push('/account/info')}
-          focused={pathname.includes('/account/info')}
+          onClick={() => router?.push('/dashboard/profile')}
+          focused={pathname.includes('/dashboard/profile')}
           icon={<MdAccountCircle size={20} />}
           text="پروفایل کاربری"
         />
         <Button
           className="mb-4"
-          onClick={() => router?.push('/account/gallery')}
-          focused={pathname.includes('/account/gallery')}
+          onClick={() => router?.push('/dashboard/gallery')}
+          focused={pathname.includes('/dashboard/gallery')}
           icon={<RiGalleryFill size={20} />}
           text="گالری"
         />

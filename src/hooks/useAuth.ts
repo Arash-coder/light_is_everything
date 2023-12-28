@@ -5,7 +5,8 @@ function useAuth() {
   const token = cookieStore.get('access');
 
   return {
-    isLogin: token?.value ? true : false
+    isLogin: token?.value ? true : false,
+    token: token?.value
   };
 }
 

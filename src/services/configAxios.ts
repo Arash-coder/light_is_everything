@@ -26,6 +26,7 @@ const Axios = axios.create({
 Axios.interceptors.request.use(
   (config) => {
     const token = getCookie('access');
+    // console.log('token', token);
     if (token) {
       config.headers.Authorization = `Bearer ${token}`;
     }
@@ -40,24 +41,24 @@ Axios.interceptors.response.use(
     const original = err.config;
     const status = err.response ? err.response.status : null;
     if (status === 401) {
-      try {
-        const res = await axios.post(
-          process.env.NEXT_PUBLIC_BASE_URL + URLS.auth.refresh,
-          {
-            refresh: getCookie('refresh')
-          }
-        );
-        console.log('res', res);
-
-        setCookie('access', res.data.access);
-        return await Axios(original);
-      } catch (error) {
-        console.log('error', error);
-
-        deleteCookie('access');
-        // redirect('/');
-        return Promise.reject(error);
-      }
+      // deleteCookie('access');
+      // redirect('/');
+      // try {
+      //   const res = await axios.post(
+      //     process.env.NEXT_PUBLIC_BASE_URL + URLS.auth.refresh,
+      //     {
+      //       refresh: getCookie('refresh')
+      //     }
+      //   );
+      //   console.log('res', res);
+      //   setCookie('access', res.data.access);
+      //   return await Axios(original);
+      // } catch (error) {
+      //   console.log('error', error);
+      //   deleteCookie('access');
+      //   // redirect('/');
+      //   return Promise.reject(error);
+      // }
     }
     return Promise.resolve(err);
   }
