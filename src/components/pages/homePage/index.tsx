@@ -13,6 +13,7 @@ import Slider2 from '@/components/Slider2';
 import CountUp from 'react-countup';
 import { VscTriangleDown } from 'react-icons/vsc';
 import { landingData } from '@/types/landing';
+import Typewriter from 'typewriter-effect';
 
 const HomePage = ({ data }: { data: landingData }) => {
   return (
@@ -47,9 +48,15 @@ const HomePage = ({ data }: { data: landingData }) => {
               <h2 className="font-aria_xbold  text-calc_15/2vw lg:text-8xl">
                 نورهمه‌چیزه...
               </h2>
-              <p className="font-aria_sbold md:text-lg lg:text-xl mt-4 text-center md:text-right">
-                {data.quotes[0].text}
-              </p>
+              <div className="font-aria_sbold md:text-lg lg:text-xl mt-4 text-center md:text-right">
+                <Typewriter
+                  options={{
+                    strings: data.quotes.map((quote) => quote.text),
+                    autoStart: true,
+                    loop: true
+                  }}
+                />
+              </div>
               <button className="bg-primary font-aria_sbold text-light mt-4 py-2 px-5 text-base rounded-3xl">
                 به‌ما‌بپیوندید
               </button>
