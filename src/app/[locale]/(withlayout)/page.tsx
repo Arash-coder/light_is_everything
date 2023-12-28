@@ -2,13 +2,10 @@ import HomePage from '@/components/pages/homePage';
 import Axios from '@/services/configAxios';
 import URLS from '@/services/urls';
 import { landingData } from '@/types/landing';
-import axios from 'axios';
 
 export default async function Home() {
   try {
-    const data: { data: landingData } = await axios.get(
-      'http://light_backend_web:8000/landing/info/'
-    );
+    const data: { data: landingData } = await Axios.get(URLS.landing);
 
     console.log('data', data);
     console.log('data.data', data.data);
