@@ -16,11 +16,13 @@ import { useEffect, useState } from 'react';
 import { userProfile } from '@/types/user';
 import Axios from '@/services/configAxios';
 import URLS from '@/services/urls';
+import { postInPublic } from '@/types/post';
+import Link from 'next/link';
 
 const UserProfilePage = ({ data }: { data: userProfile }) => {
   const [showModal, setShowModal] = useState(false);
-  const [image, setImage] = useState('');
-  const [posts, setPosts] = useState([]);
+  const [image, setImage] = useState<null | postInPublic>();
+  const [posts, setPosts] = useState<null | postInPublic[]>();
 
   useEffect(() => {
     if (showModal) {
@@ -39,19 +41,12 @@ const UserProfilePage = ({ data }: { data: userProfile }) => {
   }, [showModal]);
 
   useEffect(() => {
-    Axios.get(URLS.userPosts(data.username));
+    Axios.get(URLS.userPosts(data.username)).then(
+      (res: { data: { results: postInPublic[] } }) => {
+        setPosts(res.data.results);
+      }
+    );
   }, []);
-
-  const images = [
-    '/assets/images/grid-1.svg',
-    '/assets/images/grid-2.svg',
-    '/assets/images/grid-3.svg',
-    '/assets/images/grid-4.svg',
-    '/assets/images/grid-5.svg',
-    '/assets/images/grid-6.svg',
-    '/assets/images/grid-7.svg',
-    '/assets/images/grid-8.svg'
-  ];
 
   return (
     <>
@@ -72,37 +67,45 @@ const UserProfilePage = ({ data }: { data: userProfile }) => {
           {data.biography}
         </p>
         <div className="flex justify-center gap-10 items-center mt-10">
-          <FaInstagram size="25px" className="cursor-pointer" />
-          <FaLinkedin size="25px" className="cursor-pointer" />
-          <LuMailOpen size="25px" className="cursor-pointer" />
+          <Link href={data.instagram_url} target="_blank">
+            <FaInstagram size="25px" className="cursor-pointer" />
+          </Link>
+          <Link href={data.linkedin_url} target="_blank">
+            <FaLinkedin size="25px" className="cursor-pointer" />
+          </Link>
+          <Link href={`mailto:${data.email}`} target="_blank">
+            <LuMailOpen size="25px" className="cursor-pointer" />
+          </Link>
         </div>
         <div className="mt-8 pb-10">
           <ResponsiveMasonry
             columnsCountBreakPoints={{ 350: 1, 750: 2, 900: 4 }}
           >
             <Masonry gutter="10px">
-              {images.map((image) => {
-                return (
-                  <motion.div layoutId={image} key={image}>
-                    <Image
-                      src={image}
-                      alt="svg"
-                      onClick={() => {
-                        setImage(image);
-                        setShowModal(true);
-                      }}
-                      width={1000}
-                      height={100}
-                      className="cursor-pointer object-cover"
-                    />
-                  </motion.div>
-                );
-              })}
+              {posts &&
+                posts?.length > 0 &&
+                posts.map((post) => {
+                  return (
+                    <motion.div layoutId={post.content_url} key={post.title}>
+                      <Image
+                        src={post.content_url}
+                        alt="svg"
+                        onClick={() => {
+                          setImage(post);
+                          setShowModal(true);
+                        }}
+                        width={1000}
+                        height={100}
+                        className="cursor-pointer object-cover"
+                      />
+                    </motion.div>
+                  );
+                })}
             </Masonry>
           </ResponsiveMasonry>
         </div>
       </div>
-      {showModal && (
+      {showModal && image && (
         <div className="fixed w-screen h-screen top-0 overflow-y-auto right-0 bg-[#FFFFFFF2] flex justify-center">
           <div className="custom_container mt-[calc(100vh-90vh)]">
             <button
@@ -113,80 +116,36 @@ const UserProfilePage = ({ data }: { data: userProfile }) => {
               بستن
             </button>
             <AnimatePresence>
-              <motion.div layoutId={image} className="relative h-full w-full">
-                <Image src={image} className="object-fill" fill alt="modal" />
+              <motion.div
+                layoutId={image?.content_url}
+                className="relative h-full w-full"
+              >
+                <Image
+                  src={image?.content_url}
+                  className="object-cover"
+                  fill
+                  alt="modal"
+                />
               </motion.div>
             </AnimatePresence>
             <h3 className="font-aria_xbold text-3xl text-center mt-5 mb-3">
-              غروب رباط کریم
+              {image.title}
             </h3>
             <p className="font-aria_sbold text-xl text-justify">
-              پیشتر از ۱۰ سال هست که در زمینه‌های عکاسی و گرافیک به صورت حرفه ای
-              مشغول به کار هستم. در این مدت با مجموعه‌ها و سازمان‌‌های مختلف
-              همکاری کردم و در کنار هنرمندان و اساتید مختلف تجربه کسب کردم. چند
-              سال مشغول به طراحی پوستر بودمپیشتر از ۱۰ سال هست که در زمینه‌های
-              عکاسی و گرافیک به صورت حرفه ای مشغول به کار هستم. در این مدت با
-              مجموعه‌ها و سازمان‌‌های مختلف همکاری کردم و در کنار هنرمندان و
-              اساتید مختلف تجربه کسب کردم. چند سال مشغول به طراحی پوستر
-              بودمپیشتر از ۱۰ سال هست که در زمینه‌های عکاسی و گرافیک به صورت
-              حرفه ای مشغول به کار هستم. در این مدت با مجموعه‌ها و سازمان‌‌های
-              مختلف همکاری کردم و در کنار هنرمندان و اساتید مختلف تجربه کسب
-              کردم. چند سال مشغول به طراحی پوستر بودمر هستم. در این مدت با
-              مجموعه‌ها و سازمان‌‌های مختلف همکاری کردم و در کنار هنرمندان و
-              اساتید مختلف تجربه کسب کردم. چند سال مشغول به طراحی پوستر بودم
+              {image.caption}
             </p>
             <div className="flex items-center flex-wrap gap-3 mt-4">
-              <button className="bg-primary mb-4 flex items-center gap-1 font-aria_sbold text-light py-3 px-4 text-base  rounded-xl">
-                فوتوشاپ
-              </button>
-              <button className="bg-primary mb-4 flex items-center gap-1 font-aria_sbold text-light py-3 px-4 text-base  rounded-xl">
-                فوتوشاپ
-              </button>
-              <button className="bg-primary mb-4 flex items-center gap-1 font-aria_sbold text-light py-3 px-4 text-base  rounded-xl">
-                فوتوشاپ
-              </button>
-              <button className="bg-primary mb-4 flex items-center gap-1 font-aria_sbold text-light py-3 px-4 text-base  rounded-xl">
-                فوتوشاپ
-              </button>
-              <button className="bg-primary mb-4 flex items-center gap-1 font-aria_sbold text-light py-3 px-4 text-base  rounded-xl">
-                فوتوشاپ
-              </button>
-              <button className="bg-primary mb-4 flex items-center gap-1 font-aria_sbold text-light py-3 px-4 text-base  rounded-xl">
-                فوتوشاپ
-              </button>
-              <button className="bg-primary mb-4 flex items-center gap-1 font-aria_sbold text-light py-3 px-4 text-base  rounded-xl">
-                فوتوشاپ
-              </button>
-              <button className="bg-primary mb-4 flex items-center gap-1 font-aria_sbold text-light py-3 px-4 text-base  rounded-xl">
-                فوتوشاپ
-              </button>
-              <button className="bg-primary mb-4 flex items-center gap-1 font-aria_sbold text-light py-3 px-4 text-base  rounded-xl">
-                فوتوشاپ
-              </button>
-              <button className="bg-primary mb-4 flex items-center gap-1 font-aria_sbold text-light py-3 px-4 text-base  rounded-xl">
-                فوتوشاپ
-              </button>
-              <button className="bg-primary mb-4 flex items-center gap-1 font-aria_sbold text-light py-3 px-4 text-base  rounded-xl">
-                فوتوشاپ
-              </button>
-              <button className="bg-primary mb-4 flex items-center gap-1 font-aria_sbold text-light py-3 px-4 text-base  rounded-xl">
-                فوتوشاپ
-              </button>
-              <button className="bg-primary mb-4 flex items-center gap-1 font-aria_sbold text-light py-3 px-4 text-base  rounded-xl">
-                فوتوشاپ
-              </button>
-              <button className="bg-primary mb-4 flex items-center gap-1 font-aria_sbold text-light py-3 px-4 text-base  rounded-xl">
-                فوتوشاپ
-              </button>
-              <button className="bg-primary mb-4 flex items-center gap-1 font-aria_sbold text-light py-3 px-4 text-base  rounded-xl">
-                فوتوشاپ
-              </button>
-              <button className="bg-primary mb-4 flex items-center gap-1 font-aria_sbold text-light py-3 px-4 text-base  rounded-xl">
-                فوتوشاپ
-              </button>
-              <button className="bg-primary mb-4 flex items-center gap-1 font-aria_sbold text-light py-3 px-4 text-base  rounded-xl">
-                فوتوشاپ
-              </button>
+              {image.prepared_tags.length > 0 &&
+                image.prepared_tags.map((tag) => {
+                  return (
+                    <button
+                      key={tag}
+                      className="bg-primary mb-4 flex items-center gap-1 font-aria_sbold text-light py-3 px-4 text-base  rounded-xl"
+                    >
+                      {tag}
+                    </button>
+                  );
+                })}
             </div>
           </div>
         </div>
