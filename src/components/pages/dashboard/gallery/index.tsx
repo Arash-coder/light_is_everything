@@ -213,7 +213,7 @@ const columns: any = [
           alt="profile"
           width={16}
           height={16}
-          className="w-16 h-16 m-auto object-contain"
+          className="w-16 h-16 m-auto rounded-xl object-contain"
         />
       );
     },
@@ -266,21 +266,4 @@ const columns: any = [
       }
     }
   }
-];
-
-const dataObject = {
-  name: 'لورم ایپسوم ',
-  createdAt: '25 آذر 1402',
-  state: 'در دست بررسی'
-};
-const dataSource = [
-  dataObject,
-  dataObject,
-  dataObject,
-  dataObject,
-  dataObject,
-  dataObject,
-  dataObject,
-  dataObject,
-  dataObject
 ];

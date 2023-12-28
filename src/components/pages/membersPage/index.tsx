@@ -44,7 +44,7 @@ const MemberItem = ({
           />
           <div className="font-aria_xbold mb-2 text-sm">{name}</div>
           <div className="mb-2 text-sm">{career}</div>
-          <div className="font-aria_sbold text-justify px-8 text-[13px]">
+          <div className="font-aria_sbold text-center px-8 text-[13px]">
             {description}
           </div>
         </div>
@@ -146,7 +146,7 @@ const Index = ({ data }: { data: usersResponse }) => {
             // locale={{ items_per_page: '/ صفحه' }}
             className="noxPagination"
             total={data.count}
-            pageSize={12 * currentPage}
+            pageSize={12}
             onChange={(e) => {
               setCurrentPage(e);
             }}
