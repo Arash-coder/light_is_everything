@@ -9,6 +9,15 @@ import Loading from '@/components/loading';
 import Axios from '@/services/configAxios';
 import URLS from '@/services/urls';
 
+const validateURL = (url: string) => {
+  try {
+    new URL(url);
+    return true;
+  } catch (error) {
+    return false;
+  }
+};
+
 const UserSociaMedia = ({ data }: { data: member }) => {
   const [loading, setLoading] = useState(false);
 
@@ -43,10 +52,17 @@ const UserSociaMedia = ({ data }: { data: member }) => {
             control={control}
             defaultValue={data.telegram_url}
             rules={{
-              required: true
+              required: 'فیلد الزامی',
+              validate: (value) => validateURL(value) || 'لینک نامعتبر'
             }}
             render={({ field }) => (
-              <Input {...field} label="آیدی تلگرام" placeholder="آیدی تلگرام" />
+              <Input
+                {...field}
+                error={errors.telegram}
+                errorMessage={errors?.telegram?.message}
+                label="آیدی تلگرام"
+                placeholder="آیدی تلگرام"
+              />
             )}
           />
         </div>
@@ -56,11 +72,14 @@ const UserSociaMedia = ({ data }: { data: member }) => {
             defaultValue={data.instagram_url}
             control={control}
             rules={{
-              required: true
+              required: 'فیلد الزامی',
+              validate: (value) => validateURL(value) || 'لینک نامعتبر'
             }}
             render={({ field }) => (
               <Input
                 {...field}
+                error={errors.instagram}
+                errorMessage={errors?.instagram?.message}
                 label="لینک اینسستاگرام | آیدی"
                 placeholder="لینک اینسستاگرام | آیدی"
               />
@@ -73,11 +92,14 @@ const UserSociaMedia = ({ data }: { data: member }) => {
             name="linkedin"
             control={control}
             rules={{
-              required: true
+              required: 'فیلد الزامی',
+              validate: (value) => validateURL(value) || 'لینک نامعتبر'
             }}
             render={({ field }) => (
               <Input
                 {...field}
+                error={errors.linkedin}
+                errorMessage={errors?.linkedin?.message}
                 label="آدرس لینکدین"
                 placeholder="آدرس لینکدین"
               />
@@ -90,10 +112,17 @@ const UserSociaMedia = ({ data }: { data: member }) => {
             defaultValue={data.twitter_url}
             control={control}
             rules={{
-              required: true
+              required: 'فیلد الزامی',
+              validate: (value) => validateURL(value) || 'لینک نامعتبر'
             }}
             render={({ field }) => (
-              <Input {...field} label="ایکس " placeholder="ایکس" />
+              <Input
+                error={errors.x}
+                errorMessage={errors?.x?.message}
+                {...field}
+                label="ایکس "
+                placeholder="ایکس"
+              />
             )}
           />
         </div>

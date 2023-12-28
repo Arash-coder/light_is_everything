@@ -67,13 +67,13 @@ const UserProfilePage = ({ data }: { data: userProfile }) => {
           {data.biography}
         </p>
         <div className="flex justify-center gap-10 items-center mt-10">
-          <Link href={data.instagram_url} target="_blank">
+          <Link href={data.instagram_url ?? ''} target="_blank">
             <FaInstagram size="25px" className="cursor-pointer" />
           </Link>
-          <Link href={data.linkedin_url} target="_blank">
+          <Link href={data.linkedin_url ?? ''} target="_blank">
             <FaLinkedin size="25px" className="cursor-pointer" />
           </Link>
-          <Link href={`mailto:${data.email}`} target="_blank">
+          <Link href={`mailto:${data.email ?? ''}`} target="_blank">
             <LuMailOpen size="25px" className="cursor-pointer" />
           </Link>
         </div>
