@@ -13,9 +13,12 @@ import { useState } from 'react';
 import { MdError } from 'react-icons/md';
 import Loading from '@/components/loading';
 import { useRouter } from 'next/navigation';
+import { IoEyeOffOutline, IoEyeOutline } from 'react-icons/io5';
 
 const SignUpPage = () => {
   const router = useRouter();
+  const [show_password, setShow_password] = useState(false);
+  const [show_confirm_password, setShow_confirm_password] = useState(false);
   const [loading, setLoading] = useState(false);
   const {
     register,
@@ -36,8 +39,7 @@ const SignUpPage = () => {
         email: e.email,
         first_name: e.first_name,
         last_name: e.last_name,
-        phone_number: e.mobile,
-        instagram_url: 'test'
+        phone_number: `098${e.mobile}`
       })
         .then(() => {
           router.push('/authentication/sign-in');
@@ -138,12 +140,14 @@ const SignUpPage = () => {
             </div>
           </div>
 
-          <div className="relative">
+          <motion.div
+            animate={errors.mobile && { border: '0.5px solid var(--error)' }}
+            className="relative flex items-center overflow-hidden rounded-lg bg-[#E8F0FE] mt-4"
+          >
             <motion.input
-              animate={errors.mobile && { border: '0.5px solid var(--error)' }}
               dir="ltr"
               type="text"
-              className="mt-4 placeholder:text-right bg-[#E8F0FE] focus:outline-none font-aria_sbold w-full px-4 py-2 rounded-lg"
+              className=" placeholder:text-right bg-transparent focus:outline-none font-aria_sbold w-full px-4 py-2 "
               placeholder="شماره موبایل"
               {...register('mobile', {
                 required: 'شماره موبایل را وارد کنید'
@@ -153,7 +157,8 @@ const SignUpPage = () => {
                 // }
               })}
             />
-            <div className="absolute right-[100px] mt-2 top-[50%] -translate-y-[50%]">
+            <div className="translate-x-2">98+</div>
+            <div className="absolute right-[100px]  top-[50%] -translate-y-[50%]">
               <motion.div
                 initial={{ y: 100, opacity: 0 }}
                 animate={errors.mobile && { opacity: 1, y: 0 }}
@@ -161,7 +166,7 @@ const SignUpPage = () => {
                 <MdError color="var(--error)" size="20px" />
               </motion.div>
             </div>
-          </div>
+          </motion.div>
           <div className="relative">
             <motion.input
               animate={errors.email && { border: '0.5px solid var(--error)' }}
@@ -209,19 +214,30 @@ const SignUpPage = () => {
             </div>
           </div>
 
-          <div className="relative">
-            <motion.input
-              animate={
-                errors.password && { border: '0.5px solid var(--error)' }
-              }
-              type="password"
-              className="mt-4 placeholder:text-right bg-[#E8F0FE] focus:outline-none font-aria_sbold w-full px-4 py-2 rounded-lg"
-              placeholder="رمز عبور"
+          <motion.div
+            animate={errors.password && { border: '0.5px solid var(--error)' }}
+            className="relative mt-4 flex items-center  bg-[#E8F0FE]  w-full  rounded-lg"
+          >
+            <div
+              onClick={() => setShow_password(!show_password)}
+              className="w-[15%] flex justify-center cursor-pointer"
+            >
+              {!show_password ? (
+                <IoEyeOutline size="20px" />
+              ) : (
+                <IoEyeOffOutline size="20px" />
+              )}
+            </div>
+            <input
+              dir="ltr"
+              type={show_password ? 'text' : 'password'}
+              className=" flex-1 bg-transparent focus:outline-none  font-aria_sbold px-4 py-2"
+              placeholder="رمز"
               {...register('password', {
-                required: 'رمز خود را وارد کنید'
+                required: true
               })}
             />
-            <div className="absolute left-2 mt-2 top-[50%] -translate-y-[50%]">
+            <div className="absolute right-10 z-50 top-[50%] -translate-y-[50%]">
               <motion.div
                 initial={{ y: 100, opacity: 0 }}
                 animate={errors.password && { opacity: 1, y: 0 }}
@@ -229,28 +245,34 @@ const SignUpPage = () => {
                 <MdError color="var(--error)" size="20px" />
               </motion.div>
             </div>
-          </div>
+          </motion.div>
 
-          <div className="relative">
-            <motion.input
-              animate={
-                errors.confirm_password && {
-                  border: '0.5px solid var(--error)'
-                }
-              }
-              type="password"
-              className="mt-4 placeholder:text-right bg-[#E8F0FE] focus:outline-none font-aria_sbold w-full px-4 py-2 rounded-lg"
+          <motion.div
+            animate={
+              errors.confirm_password && { border: '0.5px solid var(--error)' }
+            }
+            className="relative mt-4 flex items-center  bg-[#E8F0FE]  w-full  rounded-lg"
+          >
+            <div
+              onClick={() => setShow_password(!show_confirm_password)}
+              className="w-[15%] flex justify-center cursor-pointer"
+            >
+              {!show_confirm_password ? (
+                <IoEyeOutline size="20px" />
+              ) : (
+                <IoEyeOffOutline size="20px" />
+              )}
+            </div>
+            <input
+              dir="ltr"
+              type={show_confirm_password ? 'text' : 'password'}
+              className=" flex-1 bg-transparent focus:outline-none  font-aria_sbold px-4 py-2"
               placeholder="تکراررمز عبور"
               {...register('confirm_password', {
-                required: 'لطفا تکرار رمز خود را وارد کنید',
-                validate: (val: string) => {
-                  if (watch('password') != val) {
-                    return 'تکرار رمز تطابق ندارد';
-                  }
-                }
+                required: true
               })}
             />
-            <div className="absolute left-2 mt-2 top-[50%] -translate-y-[50%]">
+            <div className="absolute right-10 z-50 top-[50%] -translate-y-[50%]">
               <motion.div
                 initial={{ y: 100, opacity: 0 }}
                 animate={errors.confirm_password && { opacity: 1, y: 0 }}
@@ -258,7 +280,8 @@ const SignUpPage = () => {
                 <MdError color="var(--error)" size="20px" />
               </motion.div>
             </div>
-          </div>
+          </motion.div>
+
           <div className="mt-4 ">
             <div className="font-aria_sbold flex items-center justify-center gap-2">
               <p>مرا به خاطر بسپار</p>
