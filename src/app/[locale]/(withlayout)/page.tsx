@@ -5,16 +5,12 @@ import { landingData } from '@/types/landing';
 
 export default async function Home() {
   try {
-    // const data: { data: landingData } = await Axios.get(URLS.landing);
-
-    const res = await fetch('https://api.lightiseverything.ir/landing/info');
-
-    const data = await res.json();
+    const data: { data: landingData } = await Axios.get(URLS.landing);
 
     console.log('data', data);
     console.log('data.data', data.data);
 
-    return <HomePage data={data} />;
+    return <HomePage data={data.data} />;
   } catch (error: any) {
     console.log('err', error);
     console.log('err2', error.message);
