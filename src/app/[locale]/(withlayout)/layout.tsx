@@ -1,6 +1,8 @@
 'use client';
 import Layout from '@/components/layout';
 import { ConfigProvider, Empty } from 'antd';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 interface LocaleParams {
   children: React.ReactNode;
@@ -18,6 +20,7 @@ export default function LocaleLayout({ children }: LocaleParams) {
       direction="rtl"
     >
       <Layout>{children}</Layout>
+      <ToastContainer />
     </ConfigProvider>
   );
 }

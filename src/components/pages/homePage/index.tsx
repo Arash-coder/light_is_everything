@@ -14,6 +14,7 @@ import CountUp from 'react-countup';
 import { VscTriangleDown } from 'react-icons/vsc';
 import { landingData } from '@/types/landing';
 import Typewriter from 'typewriter-effect';
+import Link from 'next/link';
 
 const HomePage = ({ data }: { data: landingData }) => {
   return (
@@ -57,9 +58,11 @@ const HomePage = ({ data }: { data: landingData }) => {
                   }}
                 />
               </div>
-              <button className="bg-primary font-aria_sbold text-light mt-4 py-2 px-5 text-base rounded-3xl">
-                به‌ما‌بپیوندید
-              </button>
+              <Link href={'/authentication/sign-up'}>
+                <button className="bg-primary font-aria_sbold text-light mt-4 py-2 px-5 text-base rounded-3xl">
+                  به‌ما‌بپیوندید
+                </button>
+              </Link>
             </div>
           </div>
         </section>

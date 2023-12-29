@@ -15,6 +15,7 @@ import Loading from '@/components/loading';
 import { post } from '@/types/post';
 import { FaCheckCircle } from 'react-icons/fa';
 import { IoIosCloseCircle } from 'react-icons/io';
+import { toast } from 'react-toastify';
 
 type Props = {
   data: post[];
@@ -41,10 +42,10 @@ const Accountgallery = (props: Props) => {
           setImage_url(URL.createObjectURL(file));
           setImage_file(file);
         } else {
-          alert('File size exceeds the limit of 7MB.');
+          toast.error('سایز عکس باید کمتر از 7 مگابایت باشد');
         }
       } else {
-        alert('Please upload a JPG file.');
+        toast.error('فرمت عکس باید JPG باشد');
       }
     }
   };
@@ -106,6 +107,9 @@ const Accountgallery = (props: Props) => {
                             />
                             <div className="text-neutral-400">
                               توجه! فرم بارگزاری تصویر JPEG باشد{' '}
+                            </div>
+                            <div className="text-neutral-400">
+                              محدودیت حجم (7MB)
                             </div>
                             <div className="btn !rounded-lg mt-8">
                               افزودن تصویر

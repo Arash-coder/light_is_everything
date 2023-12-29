@@ -7,6 +7,7 @@ import { Controller, useForm } from 'react-hook-form';
 import Loading from '../loading';
 import Axios from '@/services/configAxios';
 import URLS from '@/services/urls';
+import { toast } from 'react-toastify';
 
 const UserPassword = () => {
   const [loading, setLoading] = useState(false);
@@ -27,9 +28,13 @@ const UserPassword = () => {
       Axios.put(URLS.auth.password, {
         password: e.password,
         password_confirmation: e.confirm_password
-      }).finally(() => {
-        setLoading(false);
-      });
+      })
+        .then(() => {
+          toast.success('تغییرات با موفقیت ذخیره شد');
+        })
+        .finally(() => {
+          setLoading(false);
+        });
     }
   };
 

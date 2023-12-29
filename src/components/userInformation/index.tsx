@@ -12,6 +12,7 @@ import URLS from '@/services/urls';
 import { career, updateProfileInputs } from '@/types/authentication';
 import Image from 'next/image';
 import Loading from '../loading';
+import { toast } from 'react-toastify';
 
 const UserInformation = ({ data }: { data: member }) => {
   const [careers, setCareers] = useState<null | career[]>();
@@ -48,16 +49,24 @@ const UserInformation = ({ data }: { data: member }) => {
           headers: {
             'Content-Type': 'multipart/form-data;'
           }
-        }).finally(() => {
-          setLoading(false);
-        });
+        })
+          .then(() => {
+            toast.success('تغییرات با موفقیت ذخیره شد');
+          })
+          .finally(() => {
+            setLoading(false);
+          });
       } else {
         Axios.patch(URLS.auth.update, {
           biography: e.bio,
           career_id: e.carrier
-        }).finally(() => {
-          setLoading(false);
-        });
+        })
+          .then(() => {
+            toast.success('تغییرات با موفقیت ذخیره شد');
+          })
+          .finally(() => {
+            setLoading(false);
+          });
       }
     }
   };

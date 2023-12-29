@@ -9,6 +9,7 @@ import { usersResponse } from '@/types/members';
 import Axios from '@/services/configAxios';
 import URLS from '@/services/urls';
 import Loading from '@/components/loading';
+import axios from 'axios';
 
 interface IMemberItem
   extends React.DetailedHTMLProps<
@@ -76,7 +77,8 @@ const Index = ({ data }: { data: usersResponse }) => {
 
   useEffect(() => {
     setLoading(true);
-    Axios.get(URLS.members(currentPage, 12))
+    axios
+      .get(process.env.NEXT_PUBLIC_BASE_URL + URLS.members(currentPage, 12))
       .then((res) => {
         const { results }: usersResponse = res.data;
         setFilteredData(results);

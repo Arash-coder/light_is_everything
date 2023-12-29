@@ -8,8 +8,12 @@ import { Controller, useForm } from 'react-hook-form';
 import Loading from '@/components/loading';
 import Axios from '@/services/configAxios';
 import URLS from '@/services/urls';
+import { toast } from 'react-toastify';
 
 const validateURL = (url: string) => {
+  if (!url) {
+    return true;
+  }
   try {
     new URL(url);
     return true;
@@ -37,9 +41,13 @@ const UserSociaMedia = ({ data }: { data: member }) => {
         linkedin_url: e.linkedin,
         telegram_url: e.telegram,
         instagram_url: e.instagram
-      }).finally(() => {
-        setLoading(false);
-      });
+      })
+        .then(() => {
+          toast.success('تغییرات با موفقیت ذخیره شد');
+        })
+        .finally(() => {
+          setLoading(false);
+        });
     }
   };
 
@@ -52,7 +60,7 @@ const UserSociaMedia = ({ data }: { data: member }) => {
             control={control}
             defaultValue={data.telegram_url}
             rules={{
-              required: 'فیلد الزامی',
+              required: false,
               validate: (value) => validateURL(value) || 'لینک نامعتبر'
             }}
             render={({ field }) => (
@@ -72,7 +80,7 @@ const UserSociaMedia = ({ data }: { data: member }) => {
             defaultValue={data.instagram_url}
             control={control}
             rules={{
-              required: 'فیلد الزامی',
+              required: false,
               validate: (value) => validateURL(value) || 'لینک نامعتبر'
             }}
             render={({ field }) => (
@@ -92,7 +100,7 @@ const UserSociaMedia = ({ data }: { data: member }) => {
             name="linkedin"
             control={control}
             rules={{
-              required: 'فیلد الزامی',
+              required: false,
               validate: (value) => validateURL(value) || 'لینک نامعتبر'
             }}
             render={({ field }) => (
@@ -112,7 +120,7 @@ const UserSociaMedia = ({ data }: { data: member }) => {
             defaultValue={data.twitter_url}
             control={control}
             rules={{
-              required: 'فیلد الزامی',
+              required: false,
               validate: (value) => validateURL(value) || 'لینک نامعتبر'
             }}
             render={({ field }) => (
