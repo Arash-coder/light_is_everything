@@ -26,7 +26,7 @@ const Accountgallery = (props: Props) => {
   const [image_file, setImage_file] = useState<any>();
   const [loading, setLoading] = useState(false);
 
-  // console.log('post', props.data);
+  console.log('post', props.data);
 
   const {
     control,
@@ -67,9 +67,13 @@ const Accountgallery = (props: Props) => {
           headers: {
             'Content-Type': 'multipart/form-data;'
           }
-        }).finally(() => {
-          setLoading(false);
-        });
+        })
+          .then(() => {
+            toast.success('پست با موفقیت ایجاد شد');
+          })
+          .finally(() => {
+            setLoading(false);
+          });
       }
     }
   };

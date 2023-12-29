@@ -5,6 +5,8 @@ interface LocaleParams {
   };
 }
 
+export const revalidate = 0; // revalidate at most every hour
+
 export default function RootLayout({
   children,
   params: { locale }
