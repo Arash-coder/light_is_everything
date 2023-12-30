@@ -20,7 +20,11 @@ export default function LocaleLayout({ children }: LocaleParams) {
       direction="rtl"
     >
       <Layout>{children}</Layout>
-      <ToastContainer />
+      <ToastContainer
+        className="font-aria_sbold"
+        bodyClassName="font-aria_sbold"
+        rtl
+      />
     </ConfigProvider>
   );
 }

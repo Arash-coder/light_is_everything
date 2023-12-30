@@ -1,7 +1,7 @@
 'use client';
 
 import Image from 'next/image';
-
+import { Typewriter } from 'react-simple-typewriter';
 import headerBg from '@/../public/assets/images/header-bg.png';
 import cards from '@/../public/assets/images/cards.png';
 import zarinpal from '@/../public/assets/images/zarinpal.png';
@@ -13,7 +13,6 @@ import Slider2 from '@/components/Slider2';
 import CountUp from 'react-countup';
 import { VscTriangleDown } from 'react-icons/vsc';
 import { landingData } from '@/types/landing';
-import Typewriter from 'typewriter-effect';
 import Link from 'next/link';
 
 const HomePage = ({ data }: { data: landingData }) => {
@@ -51,11 +50,13 @@ const HomePage = ({ data }: { data: landingData }) => {
               </h2>
               <div className="font-aria_sbold md:text-lg lg:text-xl mt-4 text-center md:text-right">
                 <Typewriter
-                  options={{
-                    strings: data.quotes.map((quote) => quote.text),
-                    autoStart: true,
-                    loop: true
-                  }}
+                  words={data.quotes.map((quote) => quote.text)}
+                  loop={5}
+                  cursor
+                  cursorStyle="|"
+                  typeSpeed={70}
+                  deleteSpeed={50}
+                  delaySpeed={1000}
                 />
               </div>
               <Link href={'/authentication/sign-up'}>

@@ -64,6 +64,50 @@ const Index = ({ data }: { data: usersResponse }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [filteredData, setFilteredData] = useState(data.results);
   const [loading, setLoading] = useState(false);
+  const [searchTerm, setSearchTerm] = useState('');
+  const [debouncedSearchTerm, setDebouncedSearchTerm] = useState('');
+  const [count, setCount] = useState(data.count);
+
+  useEffect(() => {
+    const delaySearch = setTimeout(() => {
+      setDebouncedSearchTerm(searchTerm);
+    }, 500); // Adjust the delay time here (e.g., 500ms)
+
+    return () => clearTimeout(delaySearch);
+  }, [searchTerm]);
+
+  const performSearch = (term: string) => {
+    // Perform your search logic here using the debouncedSearchTerm
+
+    setLoading(true);
+    axios
+      .get(process.env.NEXT_PUBLIC_BASE_URL + URLS.search_user(term))
+      .then((res) => {
+        const { results, count }: usersResponse = res.data;
+        setFilteredData(results);
+        setCount(count);
+      })
+      .catch((err) => {
+        console.log(err.message);
+      })
+      .finally(() => {
+        setLoading(false);
+      });
+  };
+
+  useEffect(() => {
+    if (debouncedSearchTerm.length === 0) {
+      GetMembers();
+    }
+
+    if (debouncedSearchTerm) {
+      performSearch(debouncedSearchTerm);
+    }
+  }, [debouncedSearchTerm]);
+
+  const handleInputChange = (e: any) => {
+    setSearchTerm(e.target.value);
+  };
 
   useEffect(() => {
     const body = document.body;
@@ -75,13 +119,14 @@ const Index = ({ data }: { data: usersResponse }) => {
     return () => body.classList.remove('bg-zinc-300');
   }, []);
 
-  useEffect(() => {
+  const GetMembers = () => {
     setLoading(true);
     axios
       .get(process.env.NEXT_PUBLIC_BASE_URL + URLS.members(currentPage, 12))
       .then((res) => {
-        const { results }: usersResponse = res.data;
+        const { results, count }: usersResponse = res.data;
         setFilteredData(results);
+        setCount(count);
       })
       .catch((err) => {
         console.log(err.message);
@@ -89,6 +134,10 @@ const Index = ({ data }: { data: usersResponse }) => {
       .finally(() => {
         setLoading(false);
       });
+  };
+
+  useEffect(() => {
+    GetMembers();
   }, [currentPage]);
 
   return (
@@ -106,6 +155,8 @@ const Index = ({ data }: { data: usersResponse }) => {
             <input
               placeholder="نام کاربر را جستجو کنید"
               className="outline-none w-full px-2"
+              value={searchTerm}
+              onChange={handleInputChange}
             />
           </div>
         </div>
@@ -117,7 +168,13 @@ const Index = ({ data }: { data: usersResponse }) => {
           </>
         ) : (
           <>
-            <div className="grid justify-center items-center gap-3 grid-cols-12">
+            <div
+              className={`${
+                filteredData.length > 0
+                  ? 'grid justify-center items-center gap-3 grid-cols-12'
+                  : 'w-full h-[50vh] flex items-center '
+              }`}
+            >
               {filteredData.length > 0 ? (
                 filteredData.map((member, index: number) => {
                   return (
@@ -134,7 +191,7 @@ const Index = ({ data }: { data: usersResponse }) => {
                 })
               ) : (
                 <>
-                  <div>
+                  <div className="flex justify-center w-full">
                     <p>موردی برای نمایش وجود ندارد</p>
                   </div>
                 </>
@@ -147,7 +204,7 @@ const Index = ({ data }: { data: usersResponse }) => {
             showSizeChanger={false}
             // locale={{ items_per_page: '/ صفحه' }}
             className="noxPagination"
-            total={data.count}
+            total={count}
             pageSize={12}
             onChange={(e) => {
               setCurrentPage(e);

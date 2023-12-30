@@ -16,7 +16,8 @@ const URLS = {
   gallery: {
     create_post: '/panel/posts/add/',
     get_posts: '/panel/posts/'
-  }
+  },
+  search_user: (name: string) => `/users/?search=${name}`
 };
 
 export default URLS;

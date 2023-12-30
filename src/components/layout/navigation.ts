@@ -16,3 +16,26 @@ export const HeaderLinks = [
     url: '/'
   }
 ];
+
+export const HeaderLinksMobile = [
+  {
+    name: 'صفحه‌اصلی',
+    url: '/'
+  },
+  {
+    name: 'خانواده‌ی‌نور',
+    url: '/family'
+  },
+  {
+    name: 'گالری‌نور',
+    url: '/'
+  },
+  {
+    name: 'بلاگ‌نور',
+    url: '/'
+  },
+  {
+    name: 'هفته‌نامه',
+    url: '/'
+  }
+];
