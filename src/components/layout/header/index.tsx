@@ -27,15 +27,17 @@ const Header = () => {
   };
 
   useEffect(() => {
-    Axios.get(URLS.auth.me)
-      .then((res) => {
-        const data: member = res.data;
-        setData(data);
-      })
-      .catch((err) => {
-        console.log(err.message);
-      });
-  }, []);
+    if (isLoggedIn) {
+      Axios.get(URLS.auth.me)
+        .then((res) => {
+          const data: member = res.data;
+          setData(data);
+        })
+        .catch((err) => {
+          console.log(err.message);
+        });
+    }
+  }, [isLoggedIn]);
 
   return (
     <header

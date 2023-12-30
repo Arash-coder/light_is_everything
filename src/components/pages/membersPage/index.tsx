@@ -117,13 +117,13 @@ const Index = ({ data }: { data: usersResponse }) => {
           </>
         ) : (
           <>
-            <div className="grid justify-center items-center gap-3 grid-cols-12  ">
+            <div className="grid justify-center items-center gap-3 grid-cols-12">
               {filteredData.length > 0 ? (
                 filteredData.map((member, index: number) => {
                   return (
                     <MemberItem
                       key={index.toString()}
-                      className="col-span-2 md:col-span-6 lg:col-span-3"
+                      className="col-span-12 md:col-span-6 lg:col-span-3"
                       name={member.full_name}
                       career={member.career.title}
                       description={member.biography}

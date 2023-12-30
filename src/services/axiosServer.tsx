@@ -3,7 +3,7 @@
 import { getCookie, setCookie, deleteCookie } from 'cookies-next';
 import axios from 'axios';
 import URLS from './urls';
-import { redirect } from 'next/navigation';
+import { cookies } from 'next/headers';
 
 ////constants////
 const BASEURL = process.env.NEXT_PUBLIC_BASE_URL;
@@ -25,10 +25,11 @@ const Axios = axios.create({
 
 Axios.interceptors.request.use(
   (config) => {
-    const token = getCookie('access');
+    const cookieStore = cookies();
+    const token = cookieStore.get('access');
     // console.log('token', token);
     if (token) {
-      config.headers.Authorization = `Bearer ${token}`;
+      config.headers.Authorization = `Bearer ${token.value}`;
     }
     return config;
   },
@@ -38,6 +39,8 @@ Axios.interceptors.request.use(
 Axios.interceptors.response.use(
   (res) => res,
   async (err) => {
+    const cookieStore = cookies();
+    const refresh = cookieStore.get('refresh');
     const original = err.config;
     const status = err.response ? err.response.status : null;
     if (status === 401) {
@@ -47,17 +50,15 @@ Axios.interceptors.response.use(
         const res = await axios.post(
           process.env.NEXT_PUBLIC_BASE_URL + URLS.auth.refresh,
           {
-            refresh: getCookie('refresh')
+            refresh: refresh?.value
           }
         );
-        console.log('res', res);
-        setCookie('access', res.data.access);
+        cookieStore.set('access', res.data.access);
         return await Axios(original);
       } catch (error) {
         console.log('error', error);
-        deleteCookie('access');
-        deleteCookie('refresh');
-        window.location.reload();
+        cookieStore.delete('access');
+        cookieStore.delete('refresh');
         return Promise.reject(error);
       }
     }

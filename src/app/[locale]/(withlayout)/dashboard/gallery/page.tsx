@@ -1,18 +1,12 @@
 import Page from '@/components/pages/dashboard/gallery';
 import useAuth from '@/hooks/useAuth';
-import Axios from '@/services/configAxios';
+import Axios from '@/services/axiosServer';
 import URLS from '@/services/urls';
 import { post } from '@/types/post';
 
 const Index = async () => {
-  const isLogin = useAuth();
   const data: { data: { results: post[] } } = await Axios.get(
-    URLS.gallery.get_posts,
-    {
-      headers: {
-        Authorization: `Bearer ${isLogin.token}`
-      }
-    }
+    URLS.gallery.get_posts
   );
 
   return <Page data={data.data.results} />;
