@@ -90,6 +90,10 @@ html {
     @apply bg-primary #{!important};
     @apply text-white #{!important};
   }
+  td {
+
+    background-color: white !important;
+  }
 }
 .noxPagination {
   .ant-pagination-item-active {

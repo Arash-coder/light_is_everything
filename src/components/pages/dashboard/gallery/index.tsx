@@ -184,7 +184,7 @@ const Accountgallery = (props: Props) => {
           <div className="divider" />
           <h2 className="text-xl mb-4">عکس های آپلود شده</h2>
           <Table
-            scroll={{ x: 400 }}
+            // scroll={{ x: 400 }}
             pagination={{
               pageSize: 5,
               className: 'm-auto flex !justify-center items-center'
@@ -225,28 +225,29 @@ const columns: any = [
         />
       );
     },
-    width: 100
+    // width: 100
   },
   {
     dataIndex: 'name',
     key: 'name',
     title: 'نام اثر',
     align: 'center',
-    width: 100
+    // width: 100
   },
   {
     dataIndex: 'createdAt',
     key: 'createdAt',
     title: 'تاریخ ثبت',
     align: 'center',
-    width: 100
+    // width: 100,
+    // className: '!hidden !md:block'
   },
   {
     dataIndex: 'state',
     key: 'state',
     title: 'وضعیت',
     align: 'center',
-    width: 100,
+    // width: 100,
     render(val: 'P' | 'R' | 'A') {
       if (val === 'P') {
         return (
