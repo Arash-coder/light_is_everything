@@ -9,7 +9,7 @@ export const useDimentions = () => {
       setHeight(window.innerHeight);
       setWidth(window.innerWidth);
     };
-    handleResize()
+    handleResize();
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, []);
