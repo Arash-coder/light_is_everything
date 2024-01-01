@@ -27,7 +27,6 @@ const Accountgallery = (props: Props) => {
   const [image_file, setImage_file] = useState<any>();
   const [loading, setLoading] = useState(false);
 
-
   const {
     control,
     handleSubmit,
@@ -49,7 +48,7 @@ const Accountgallery = (props: Props) => {
       }
     }
   };
-  const { height, width } = useDimentions()
+  const { height, width } = useDimentions();
 
   const UploadPostHandler = (e: galleyInputs) => {
     if (loading) {
@@ -199,7 +198,9 @@ const Accountgallery = (props: Props) => {
                 state: post.status
               };
             })}
-            columns={columns.filter((item: any) => width > 600 ? item : item.dataIndex != 'createdAt')}
+            columns={columns.filter((item: any) =>
+              width > 600 ? item : item.dataIndex != 'createdAt'
+            )}
           />
         </div>
       </div>
@@ -239,7 +240,7 @@ const columns: any = [
     dataIndex: 'createdAt',
     key: 'createdAt',
     title: 'تاریخ ثبت',
-    align: 'center',
+    align: 'center'
     // width: 100,
     // className: '!max-w-0 !md:max-w-32'
   },
