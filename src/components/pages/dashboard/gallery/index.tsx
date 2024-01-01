@@ -48,7 +48,7 @@ const Accountgallery = (props: Props) => {
       }
     }
   };
-  const { height, width } = useDimentions();
+  const { width } = useDimentions();
 
   const UploadPostHandler = (e: galleyInputs) => {
     if (loading) {
