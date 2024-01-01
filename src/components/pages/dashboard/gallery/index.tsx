@@ -16,6 +16,7 @@ import { post } from '@/types/post';
 import { FaCheckCircle } from 'react-icons/fa';
 import { IoIosCloseCircle } from 'react-icons/io';
 import { toast } from 'react-toastify';
+import { useDimentions } from '@/hooks/useDimentions';
 
 type Props = {
   data: post[];
@@ -26,7 +27,6 @@ const Accountgallery = (props: Props) => {
   const [image_file, setImage_file] = useState<any>();
   const [loading, setLoading] = useState(false);
 
-  console.log('post', props.data);
 
   const {
     control,
@@ -49,6 +49,7 @@ const Accountgallery = (props: Props) => {
       }
     }
   };
+  const { height, width } = useDimentions()
 
   const UploadPostHandler = (e: galleyInputs) => {
     if (loading) {
@@ -198,7 +199,7 @@ const Accountgallery = (props: Props) => {
                 state: post.status
               };
             })}
-            columns={columns}
+            columns={columns.filter((item: any) => width > 600 ? item : item.dataIndex != 'createdAt')}
           />
         </div>
       </div>
@@ -238,9 +239,9 @@ const columns: any = [
     dataIndex: 'createdAt',
     key: 'createdAt',
     title: 'تاریخ ثبت',
-    align: 'center'
+    align: 'center',
     // width: 100,
-    // className: '!hidden !md:block'
+    // className: '!max-w-0 !md:max-w-32'
   },
   {
     dataIndex: 'state',
