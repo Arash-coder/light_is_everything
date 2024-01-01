@@ -224,21 +224,21 @@ const columns: any = [
           className="w-16 h-16 m-auto rounded-xl object-contain"
         />
       );
-    },
+    }
     // width: 100
   },
   {
     dataIndex: 'name',
     key: 'name',
     title: 'نام اثر',
-    align: 'center',
+    align: 'center'
     // width: 100
   },
   {
     dataIndex: 'createdAt',
     key: 'createdAt',
     title: 'تاریخ ثبت',
-    align: 'center',
+    align: 'center'
     // width: 100,
     // className: '!hidden !md:block'
   },
