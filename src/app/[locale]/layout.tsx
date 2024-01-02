@@ -22,7 +22,7 @@ export default function LocaleLayout({
   children,
   params: { locale }
 }: LocaleParams) {
-  // Validate that the incoming `locale` parameter is valid
+  // Validate that the incoming `locale` parameter is a valid
   if (!locales.includes(locale as any)) notFound();
 
   const messages = useMessages();
