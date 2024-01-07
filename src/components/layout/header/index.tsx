@@ -64,8 +64,17 @@ const Header = () => {
           </li>
           {HeaderLinks.map((link) => {
             return (
-              <li key={link.name} className={`font-aria_sbold ${styles.link}`}>
-                <Link href={link.url}>{link.name}</Link>
+              <li
+                key={link.name}
+                className={`font-aria_sbold ${
+                  link.disabled ? 'opacity-50 cursor-not-allowed' : styles.link
+                }`}
+              >
+                {link.disabled ? (
+                  <p>{link.name}</p>
+                ) : (
+                  <Link href={link.url}>{link.name}</Link>
+                )}
               </li>
             );
           })}
@@ -209,11 +218,17 @@ const Header = () => {
             return (
               <li
                 key={link.name}
-                className={`font-aria_sbold p-1 rounded-lg flex justify-center items-center hover:scale-125 transition-all `}
+                className={`font-aria_sbold p-1 ${
+                  link.disabled && 'opacity-50'
+                } rounded-lg flex justify-center items-center hover:scale-125 transition-all `}
               >
-                <Link onClick={toggleMenu} href={link.url}>
-                  {link.name}
-                </Link>
+                {link.disabled ? (
+                  <p>{link.name}</p>
+                ) : (
+                  <Link onClick={toggleMenu} href={link.url}>
+                    {link.name}
+                  </Link>
+                )}
               </li>
             );
           })}

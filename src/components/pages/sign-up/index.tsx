@@ -14,6 +14,7 @@ import { MdError } from 'react-icons/md';
 import Loading from '@/components/loading';
 import { useRouter } from 'next/navigation';
 import { IoEyeOffOutline, IoEyeOutline } from 'react-icons/io5';
+import { toast } from 'react-toastify';
 
 const SignUpPage = () => {
   const router = useRouter();
@@ -44,7 +45,9 @@ const SignUpPage = () => {
         .then(() => {
           router.push('/authentication/sign-in');
         })
-        .catch((err) => {})
+        .catch((err) => {
+          toast.error(err.message);
+        })
         .finally(() => {
           setLoading(false);
         });

@@ -84,31 +84,48 @@ const UserProfilePage = ({ data }: { data: userProfile }) => {
           )}
         </div>
         <div className="mt-8 pb-10">
-          <ResponsiveMasonry
-            columnsCountBreakPoints={{ 350: 1, 750: 2, 900: 4 }}
-          >
-            <Masonry gutter="10px">
-              {posts &&
-                posts?.length > 0 &&
-                posts.map((post) => {
-                  return (
-                    <motion.div layoutId={post.content_url} key={post.title}>
-                      <Image
-                        src={post.content_url}
-                        alt="svg"
-                        onClick={() => {
-                          setImage(post);
-                          setShowModal(true);
-                        }}
-                        width={1000}
-                        height={100}
-                        className="cursor-pointer object-cover"
-                      />
-                    </motion.div>
-                  );
-                })}
-            </Masonry>
-          </ResponsiveMasonry>
+          {posts && posts.length > 0 ? (
+            <ResponsiveMasonry
+              columnsCountBreakPoints={{ 350: 1, 750: 2, 900: 4 }}
+            >
+              <Masonry gutter="10px">
+                {posts &&
+                  posts?.length > 0 &&
+                  posts.map((post) => {
+                    return (
+                      <motion.div layoutId={post.content_url} key={post.title}>
+                        <Image
+                          src={post.content_url}
+                          alt="svg"
+                          priority={true}
+                          onClick={() => {
+                            setImage(post);
+                            setShowModal(true);
+                          }}
+                          width={1000}
+                          height={100}
+                          className="cursor-pointer object-cover"
+                        />
+                      </motion.div>
+                    );
+                  })}
+              </Masonry>
+            </ResponsiveMasonry>
+          ) : (
+            <>
+              <div className="w-full h-[30vh] flex-col flex items-center justify-center">
+                <Image
+                  src="/assets/images/noimage.svg"
+                  alt="no image"
+                  width={150}
+                  height={100}
+                />
+                <h3 className="mt-10 text-2xl font-aria_bold">
+                  پستی برای نمایش وجود ندارد
+                </h3>
+              </div>
+            </>
+          )}
         </div>
       </div>
       {showModal && image && (
@@ -122,14 +139,14 @@ const UserProfilePage = ({ data }: { data: userProfile }) => {
               بستن
             </button>
             <AnimatePresence>
-              <motion.div
-                layoutId={image?.content_url}
-                className="relative h-full w-full"
-              >
+              <motion.div layoutId={image?.content_url} className="">
                 <Image
                   src={image?.content_url}
-                  className="object-cover"
-                  fill
+                  className="w-full h-auto"
+                  priority={true}
+                  sizes="100%"
+                  width={0}
+                  height={0}
                   alt="modal"
                 />
               </motion.div>

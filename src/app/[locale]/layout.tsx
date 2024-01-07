@@ -8,6 +8,7 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/effect-coverflow';
 import 'swiper/css/pagination';
+import { Viewport } from 'next';
 
 interface LocaleParams {
   children: React.ReactNode;
@@ -15,6 +16,13 @@ interface LocaleParams {
     locale: string;
   };
 }
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 1,
+  userScalable: false
+};
 
 export const revalidate = 0;
 

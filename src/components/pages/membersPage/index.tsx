@@ -191,8 +191,17 @@ const Index = ({ data }: { data: usersResponse }) => {
                 })
               ) : (
                 <>
-                  <div className="flex justify-center w-full">
-                    <p>موردی برای نمایش وجود ندارد</p>
+                  <div className="flex flex-col justify-center w-full h-[80vh] items-center">
+                    <Image
+                      src="/assets/images/noperson.svg"
+                      alt="person"
+                      width={100}
+                      height={100}
+                      className="ml-7"
+                    />
+                    <h3 className="mt-10 text-2xl font-aria_bold">
+                      موردی برای نمایش وجود ندارد
+                    </h3>
                   </div>
                 </>
               )}

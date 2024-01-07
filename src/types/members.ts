@@ -14,6 +14,7 @@ export type member = {
   first_name: string;
   last_name: string;
   phone_number: string;
+  is_verified: boolean;
 };
 
 export type usersResponse = {

@@ -5,15 +5,18 @@ export const HeaderLinks = [
   },
   {
     name: 'گالری‌نور',
-    url: '/'
+    url: '/',
+    disabled: true
   },
   {
     name: 'بلاگ‌نور',
-    url: '/'
+    url: '/',
+    disabled: true
   },
   {
     name: 'هفته‌نامه',
-    url: '/'
+    url: '/',
+    disabled: true
   }
 ];
 
@@ -28,14 +31,17 @@ export const HeaderLinksMobile = [
   },
   {
     name: 'گالری‌نور',
-    url: '/'
+    url: '/',
+    disabled: true
   },
   {
     name: 'بلاگ‌نور',
-    url: '/'
+    url: '/',
+    disabled: true
   },
   {
     name: 'هفته‌نامه',
-    url: '/'
+    url: '/',
+    disabled: true
   }
 ];

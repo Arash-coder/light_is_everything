@@ -128,8 +128,8 @@ const UserSociaMedia = ({ data }: { data: member }) => {
                 error={errors.x}
                 errorMessage={errors?.x?.message}
                 {...field}
-                label="ایکس "
-                placeholder="ایکس"
+                label="لینک ایکس"
+                placeholder="لینک ایکس"
               />
             )}
           />

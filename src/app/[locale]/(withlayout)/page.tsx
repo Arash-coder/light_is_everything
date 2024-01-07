@@ -7,9 +7,6 @@ export default async function Home() {
   try {
     const data: { data: landingData } = await Axios.get(URLS.landing);
 
-    // console.log('data', data);
-    // console.log('data.data', data.data);
-
     return <HomePage data={data.data} />;
   } catch (error: any) {
     console.log('err', error);

@@ -40,6 +40,13 @@ Axios.interceptors.response.use(
   async (err) => {
     const original = err.config;
     const status = err.response ? err.response.status : null;
+    if (
+      err.response.data.detail ===
+      'No active account found with the given credentials'
+    ) {
+      return;
+    }
+
     if (status === 401) {
       deleteCookie('access');
 
@@ -54,7 +61,6 @@ Axios.interceptors.response.use(
         setCookie('access', res.data.access);
         return await Axios(original);
       } catch (error) {
-        console.log('error', error);
         deleteCookie('access');
         deleteCookie('refresh');
         window.location.reload();

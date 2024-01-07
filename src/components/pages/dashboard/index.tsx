@@ -14,7 +14,14 @@ type Props = {
 const AccountInfo = (props: Props) => {
   return (
     <div className="grow mb-20">
-      <h2 className="font-aria_bold text-3xl mb-8">پروفایل</h2>
+      <h2 className="font-aria_bold text-3xl mb-8">
+        پروفایل{' '}
+        {props.data.is_verified ? (
+          <span className="text-[#088123] text-sm">(تایید شده)</span>
+        ) : (
+          <span className="text-[#0C609D] text-sm">(در انتظار تایید)</span>
+        )}
+      </h2>
       <div className="font-aria_sbold">
         <h2 className="text-xl mb-4">اطلاعات کاربری</h2>
         <div>

@@ -2,7 +2,6 @@
 import React, { useRef } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Autoplay } from 'swiper/modules';
-import clip from '@/../public/assets/images/clip.jpg';
 import Image from 'next/image';
 import { FaLocationDot } from 'react-icons/fa6';
 import { MdNavigateNext, MdNavigateBefore } from 'react-icons/md';
@@ -21,7 +20,7 @@ const Slider1 = ({ className, data }: Props) => {
     <div className="relative max-w-sceen">
       <div
         onClick={NextSlide}
-        className="absolute cursor-pointer z-10 top-[50%] -translate-y-[50%] -left-16 text-light"
+        className="absolute cursor-pointer z-10 -left-10 top-[40%] md:top-[50%] -translate-y-[50%] md:-left-16 text-light"
       >
         <MdNavigateBefore size="50" color="var(--forth-color)" />
       </div>
@@ -39,7 +38,7 @@ const Slider1 = ({ className, data }: Props) => {
         {data.map((event) => {
           return (
             <SwiperSlide key={event.title}>
-              <div className="relative w-full h-[600px]">
+              <div className="relative w-full h-[200px] md:h-[600px]">
                 <Image
                   className="rounded-3xl object-cover"
                   alt="clip"
@@ -73,7 +72,7 @@ const Slider1 = ({ className, data }: Props) => {
       </Swiper>
       <div
         onClick={PrevSlide}
-        className="absolute cursor-pointer z-10 -right-16 top-[50%] text-light -translate-y-[50%]"
+        className="absolute cursor-pointer z-10 -right-10 top-[40%] md:-right-16 md:top-[50%] text-light -translate-y-[50%]"
       >
         <MdNavigateNext size="50" color="var(--forth-color)" />
       </div>

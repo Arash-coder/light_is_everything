@@ -45,8 +45,8 @@ const HomePage = ({ data }: { data: landingData }) => {
           </div> */}
           <div className="w-full relative text-center md:text-left ">
             <div className=" w-full absolute top-0 flex flex-col items-center md:items-start px-3 -translate-y-[70%]  md:-translate-y-[65%] -translate-x-[50%] -right-[50%] md:right-0  ">
-              <h2 className="font-aria_xbold  text-calc_15/2vw lg:text-8xl">
-                نورهمه‌چیزه...
+              <h2 className="font-aria_xbold  text-calc_15/2vw lg:text-7xl">
+                درجستوجوی‌نور...
               </h2>
               <div className="font-aria_sbold md:text-lg lg:text-xl mt-4 text-center md:text-right">
                 <Typewriter
@@ -72,7 +72,7 @@ const HomePage = ({ data }: { data: landingData }) => {
             <div className="text-light font-aria_sbold text-xl text-center pt-16">
               نور زبانی ست مشترک برای از بین بردن تاریکی ها
             </div>
-            <div className="text-light text-center text-2xl font-aria_xbold mt-4">
+            <div className="text-light text-2xl text-justify md:text-center font-aria_xbold mt-4">
               نور، آن جادویی است که در روزنه‌های زندگی ما رقص می‌کند. او انعکاس
               می‌یابد و در لمس اعوجاج پنجره‌ها، جان می‌گیرد. نور، از صبح تا
               غروب, با شعاع‌های لطافت خود سکوت را از تاریکی میگیرد و آرامش را به
@@ -145,9 +145,11 @@ const HomePage = ({ data }: { data: landingData }) => {
           <div className="text-calc_10vw md:text-7xl mb-6 font-aria_light">
             همین امروز به ما بپیوندید
           </div>
-          <button className="bg-primary font-aria_sbold text-light mt-4 py-2 px-5 text-base rounded-3xl">
-            به‌ ما‌ بپیوندید
-          </button>
+          <Link href={'/authentication/sign-up'}>
+            <button className="bg-primary font-aria_sbold text-light mt-4 py-2 px-5 text-base rounded-3xl">
+              به‌ ما‌ بپیوندید
+            </button>
+          </Link>
         </div>
 
         <div className="relative h-[40vh] md:h-[75vh]">
@@ -212,11 +214,11 @@ const HomePage = ({ data }: { data: landingData }) => {
             alt="donate"
             className="-z-10 absolute w-full h-full"
           />
-          <div className="flex gap-5 flex-col md:flex-row justify-between items-center custom_container !max-w-3xl z-10">
-            <button className="bg-primary font-aria_sbold text-light  py-3 px-5 text-base rounded-3xl">
-              از ما حمایت‌ کنید
-            </button>
-            <div className="flex  items-center gap-5 text-justify">
+          <div className="flex flex-col md:flex-row justify-between items-center custom_container  z-10">
+            <div className="flex items-center gap-10">
+              <button className="bg-primary font-aria_sbold text-light  py-3 px-5 text-base rounded-3xl">
+                از ما حمایت‌ کنید
+              </button>
               <div>
                 <p className="font-aria_bold text-lg md:text-4xl">
                   از خانواده‌ نور‌ حمایت‌ کنید
@@ -226,7 +228,9 @@ const HomePage = ({ data }: { data: landingData }) => {
                   بود
                 </p>
               </div>
-              <Image src={zarinpal} alt="zarinpal" width={60} />
+            </div>
+            <div className="flex  items-center ">
+              <Image src={zarinpal} alt="zarinpal" width={80} />
             </div>
           </div>
         </section>

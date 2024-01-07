@@ -15,6 +15,7 @@ import URLS from '@/services/urls';
 import { useForm } from 'react-hook-form';
 import { responseLogin, signinInputs } from '@/types/authentication';
 import { setCookie } from 'cookies-next';
+import { toast } from 'react-toastify';
 
 const SignInPage = () => {
   const router = useRouter();
@@ -43,14 +44,13 @@ const SignInPage = () => {
           router.push('/dashboard/profile');
         })
         .catch((err: any) => {
-          alert(err.message);
+          toast.error(err.message);
         })
         .finally(() => {
           setLoading(false);
         });
     }
   };
-
   return (
     <div className="w-screen max_xs:h-full min_xs:h-screen relative flex justify-center items-center">
       <Image
