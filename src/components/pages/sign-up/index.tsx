@@ -15,6 +15,7 @@ import Loading from '@/components/loading';
 import { useRouter } from 'next/navigation';
 import { IoEyeOffOutline, IoEyeOutline } from 'react-icons/io5';
 import { toast } from 'react-toastify';
+import NumberConvertor from '@/utils/numberConvertor';
 
 const SignUpPage = () => {
   const router = useRouter();
@@ -40,10 +41,12 @@ const SignUpPage = () => {
         email: e.email,
         first_name: e.first_name,
         last_name: e.last_name,
-        phone_number: `098${e.mobile}`
+        phone_number: `+98${NumberConvertor(e.mobile)}`
       })
-        .then(() => {
-          router.push('/authentication/sign-in');
+        .then((res: any) => {
+          if (res.status === 200 || res.status === 201) {
+            router.push('/authentication/sign-in');
+          }
         })
         .catch((err) => {
           toast.error(err.message);
@@ -53,7 +56,6 @@ const SignUpPage = () => {
         });
     }
   };
-
   return (
     <div className="w-screen h-full md:h-screen relative flex justify-center items-center">
       <Image
@@ -201,7 +203,7 @@ const SignUpPage = () => {
                 errors.username && { border: '0.5px solid var(--error)' }
               }
               type="text"
-              className="mt-4 placeholder:text-right bg-[#E8F0FE] focus:outline-none font-aria_sbold w-full px-4 py-2 rounded-lg"
+              className="mt-4 placeholder:text-right bg-[#E8F0FE] focus:outline-none font-aria_en w-full px-4 py-2 rounded-lg"
               placeholder="نام کاربری"
               {...register('username', {
                 required: 'نام کاربری را وارد کنید'
@@ -257,7 +259,7 @@ const SignUpPage = () => {
             className="relative mt-4 flex items-center  bg-[#E8F0FE]  w-full  rounded-lg"
           >
             <div
-              onClick={() => setShow_password(!show_confirm_password)}
+              onClick={() => setShow_confirm_password(!show_confirm_password)}
               className="w-[15%] flex justify-center cursor-pointer"
             >
               {!show_confirm_password ? (

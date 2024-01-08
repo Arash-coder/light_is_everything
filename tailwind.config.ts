@@ -27,7 +27,8 @@ const config: Config = {
         aria_xlight: ['aria_xlight'],
         aria_xbold: ['aria_xbold'],
         aria_bold: ['aria_bold'],
-        aria_black: ['aria_black']
+        aria_black: ['aria_black'],
+        aria_en: ['aria_en']
       },
       fontSize: {
         calc_5vw: 'calc(5vw )',

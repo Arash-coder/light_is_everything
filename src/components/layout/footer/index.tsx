@@ -5,8 +5,8 @@ import { FaHeart, FaInstagram } from 'react-icons/fa';
 const Footer = () => {
   return (
     <footer className="bg-black text-light ">
-      <div className="custom_container py-24 flex justify-between items-start">
-        <div className="w-[80%]">
+      <div className="custom_container py-24 flex flex-wrap md:flex-nowrap justify-between items-start">
+        <div className="w-full md:w-[80%]">
           <div className="flex items-center">
             <Image
               src="/assets/images/logo.png"
@@ -19,15 +19,15 @@ const Footer = () => {
               در جستجوی نور ...
             </h2>
           </div>
-          <p className="text-justify w-[70%] mt-5">
+          <p className="text-justify w-full md:w-[70%] mt-5">
             نور، آن جادویی است که در روزنه‌های زندگی ما رقص می‌کند. او انعکاس
             می‌یابد و در لمس اعوجاج پنجره‌ها، جان می‌گیرد. نور، از صبح تا غروب,
             با شعاع‌های لطافت خود سکوت را از تاریکی میگیرد و آرامش را به
             دستانمان هدیه می‌دهد.
           </p>
         </div>
-        <div className="flex w-[50%] justify-between">
-          <ul className="flex flex-col gap-5">
+        <div className="flex flex-col  items-start gap-10 md:flex-row w-full md:w-[50%] justify-between">
+          <ul className="flex flex-col gap-5 mt-10 md:mt-0">
             <li>
               <Link href="/family">خانواده نور</Link>
             </li>
@@ -38,7 +38,7 @@ const Footer = () => {
               <Link href="/authentication/sign-in">ثبت نام</Link>
             </li>
           </ul>
-          <div className="flex flex-col">
+          <div className="flex flex-col items-center mx-auto md:mx-0">
             <Link
               className="bg-[#D9D9D9] w-full  py-2 rounded-md "
               target="_blank"

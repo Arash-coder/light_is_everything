@@ -31,6 +31,7 @@ export type updateProfileInputs = {
   email: string;
   bio: string;
   carrier: number;
+  username: string;
 };
 
 export type updatePasswordInputs = {

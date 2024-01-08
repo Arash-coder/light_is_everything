@@ -3,6 +3,7 @@ import { redirect } from 'next/navigation';
 // hooks
 import useAuth from '@/hooks/useAuth';
 import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function RootLayout({
   children

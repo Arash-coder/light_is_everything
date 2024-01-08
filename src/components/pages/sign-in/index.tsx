@@ -36,21 +36,22 @@ const SignInPage = () => {
         username: e.username,
         password: e.password
       })
-        .then((res) => {
-          const { access, refresh }: responseLogin = res.data;
+        .then((res: any) => {
+          if (res.status === 200 || res.status === 201) {
+            const { access, refresh }: responseLogin = res.data;
 
-          setCookie('access', access);
-          setCookie('refresh', refresh);
-          router.push('/dashboard/profile');
+            setCookie('access', access);
+            setCookie('refresh', refresh);
+            router.push('/dashboard/profile');
+          }
         })
-        .catch((err: any) => {
-          toast.error(err.message);
-        })
+        .catch(() => {})
         .finally(() => {
           setLoading(false);
         });
     }
   };
+
   return (
     <div className="w-screen max_xs:h-full min_xs:h-screen relative flex justify-center items-center">
       <Image
@@ -105,7 +106,7 @@ const SignInPage = () => {
               }
               dir="ltr"
               type="text"
-              className="mt-4 placeholder:text-right bg-[#E8F0FE] focus:outline-none font-aria_sbold w-full px-4 py-2 rounded-lg"
+              className="mt-4 placeholder:text-right bg-[#E8F0FE] focus:outline-none font-aria_en w-full px-4 py-2 rounded-lg"
               placeholder="نام کاربری"
               {...register('username', {
                 required: 'نام کاربری را وارد کنید'
@@ -138,7 +139,7 @@ const SignInPage = () => {
             <input
               dir="ltr"
               type={show_password ? 'text' : 'password'}
-              className=" flex-1 bg-transparent focus:outline-none  font-aria_sbold px-4 py-2"
+              className=" flex-1 bg-transparent focus:outline-none  font-aria_en px-4 py-2"
               placeholder="رمز"
               {...register('password', {
                 required: true

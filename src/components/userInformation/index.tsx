@@ -45,6 +45,8 @@ const UserInformation = ({ data }: { data: member }) => {
         formData.append('avatar_image', image_file);
         formData.append('biography', e.bio);
         formData.append('career_id', JSON.stringify(e.carrier));
+        formData.append('username', e.username);
+
         Axios.patch(URLS.auth.update, formData, {
           headers: {
             'Content-Type': 'multipart/form-data;'
@@ -59,7 +61,8 @@ const UserInformation = ({ data }: { data: member }) => {
       } else {
         Axios.patch(URLS.auth.update, {
           biography: e.bio,
-          career_id: e.carrier
+          career_id: e.carrier,
+          username: e.username
         })
           .then(() => {
             toast.success('تغییرات با موفقیت ذخیره شد');
@@ -139,22 +142,27 @@ const UserInformation = ({ data }: { data: member }) => {
           control={control}
           defaultValue={data.email}
           render={({ field }) => (
-            <Input {...field} disabled label="ایمیل *" placeholder="ایمیل" />
+            <Input
+              {...field}
+              className="font-aria_en"
+              disabled
+              label="ایمیل *"
+              placeholder="ایمیل"
+            />
           )}
         />
       </div>
       <div className="col-span-2 md:col-span-1">
         <Controller
-          name="bio"
+          name="username"
           control={control}
-          defaultValue={data.biography}
+          defaultValue={data.username}
           render={({ field }) => (
-            <InputArea
+            <Input
               {...field}
-              rows={10}
-              label="درباره من *"
-              placeholder="درباره من"
-              className=""
+              className="font-aria_en"
+              label="نام کاربری"
+              placeholder="نام کاربری"
             />
           )}
         />
@@ -185,33 +193,50 @@ const UserInformation = ({ data }: { data: member }) => {
             </>
           )}
         />
-        <div className="grow relative flex flex-col">
-          <Upload
-            onChange={UploadHandler}
-            placeholderComponent={
-              <div className="py-5 flex flex-col items-center justify-center ">
-                {image_url ? (
-                  <Image
-                    src={image_url}
-                    width={40}
-                    height={40}
-                    alt="image"
-                    className="object-cover rounded-full w-32 h-32"
+      </div>
+
+      <div className="col-span-2 md:col-span-1">
+        <Controller
+          name="bio"
+          control={control}
+          defaultValue={data.biography}
+          render={({ field }) => (
+            <InputArea
+              {...field}
+              rows={10}
+              label="درباره من *"
+              placeholder="درباره من"
+              className="w-full h-full"
+            />
+          )}
+        />
+      </div>
+      <div className="col-span-2 md:col-span-1 flex flex-col">
+        <Upload
+          onChange={UploadHandler}
+          placeholderComponent={
+            <div className="py-5 flex flex-col items-center justify-center ">
+              {image_url ? (
+                <Image
+                  src={image_url}
+                  width={40}
+                  height={40}
+                  alt="image"
+                  className="object-cover rounded-full w-32 h-32"
+                />
+              ) : (
+                <>
+                  <MdOutlineAddPhotoAlternate
+                    size={80}
+                    className="fill-neutral-400"
                   />
-                ) : (
-                  <>
-                    <MdOutlineAddPhotoAlternate
-                      size={80}
-                      className="fill-neutral-400"
-                    />
-                    <div className="text-neutral-400">افزودن عکس پروفایل</div>
-                  </>
-                )}
-              </div>
-            }
-            label="عکس پروفایل"
-          />
-        </div>
+                  <div className="text-neutral-400">افزودن عکس پروفایل</div>
+                </>
+              )}
+            </div>
+          }
+          label="عکس پروفایل"
+        />
       </div>
       <div className="col-span-2 md:col-span-1 flex flex-col"></div>
       <div className="flex justify-end mt-6">

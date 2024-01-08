@@ -27,22 +27,6 @@ const HomePage = ({ data }: { data: landingData }) => {
             alt="header-bg"
             src={headerBg}
           />
-          {/* <div className="z-10 md:relative w-full md:w-auto">
-            <div className="md:absolute w-full md:w-auto top-0 -translate-y-[65%] right-0">
-              <h2 className="font-aria_xbold text-calc_10vw  text-center">
-                نورهمه‌چیزه...
-              </h2>
-              <p className="font-aria_sbold md:text-xl mt-4 text-center md:text-right">
-                نورزبانی‌است‌که‌بی‌اراده‌مارابهم‌وصل‌می‌کند٬{' '}
-                <br className="md:hidden" /> مارابهم‌متصل‌می‌کند.
-              </p>
-              <div className="flex justify-center md:justify-start">
-                <button className="bg-primary font-aria_sbold text-light mt-4 py-2 px-5 text-base  rounded-3xl">
-                  به‌ما‌بپیوندید
-                </button>
-              </div>
-            </div>
-          </div> */}
           <div className="w-full relative text-center md:text-left ">
             <div className=" w-full absolute top-0 flex flex-col items-center md:items-start px-3 -translate-y-[70%]  md:-translate-y-[65%] -translate-x-[50%] -right-[50%] md:right-0  ">
               <h2 className="font-aria_xbold  text-calc_15/2vw lg:text-7xl">
@@ -142,7 +126,7 @@ const HomePage = ({ data }: { data: landingData }) => {
           </div>
         </div>
         <div className="text-center py-8 md:py-16 bg-background_slider ">
-          <div className="text-calc_10vw md:text-7xl mb-6 font-aria_light">
+          <div className="text-calc_5vw md:text-7xl mb-6 font-aria_light">
             همین امروز به ما بپیوندید
           </div>
           <Link href={'/authentication/sign-up'}>
@@ -214,23 +198,33 @@ const HomePage = ({ data }: { data: landingData }) => {
             alt="donate"
             className="-z-10 absolute w-full h-full"
           />
-          <div className="flex flex-col md:flex-row justify-between items-center custom_container  z-10">
-            <div className="flex items-center gap-10">
-              <button className="bg-primary font-aria_sbold text-light  py-3 px-5 text-base rounded-3xl">
-                از ما حمایت‌ کنید
+          <div className="flex flex-col gap-10 md:gap-0 md:flex-row justify-between items-center custom_container  z-10">
+            <div className="flex items-center gap-5 md:gap-10">
+              <button className="bg-primary font-aria_sbold text-light w-[200px] md:w-auto  py-3 px-5 text-base rounded-3xl">
+                <Link
+                  target="_blank"
+                  href={'https://zarinp.al/light_is_everything'}
+                >
+                  از ما حمایت‌ کنید
+                </Link>
               </button>
               <div>
                 <p className="font-aria_bold text-lg md:text-4xl">
                   از خانواده‌ نور‌ حمایت‌ کنید
                 </p>
-                <p className="font-aria_light text-sm md:text-2xl sm:text-2xl md:tracking-widest mt-2">
+                <p className="font-aria_light text-sm md:text-2xl sm:text-2xl mt-2">
                   کمک های شما چه مادی و چه معنوی در شکوه خانواده نور موثر خواهد
                   بود
                 </p>
               </div>
             </div>
             <div className="flex  items-center ">
-              <Image src={zarinpal} alt="zarinpal" width={80} />
+              <Link
+                target="_blank"
+                href={'https://zarinp.al/light_is_everything'}
+              >
+                <Image src={zarinpal} alt="zarinpal" width={80} />
+              </Link>
             </div>
           </div>
         </section>

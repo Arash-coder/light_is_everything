@@ -129,7 +129,7 @@ const UserProfilePage = ({ data }: { data: userProfile }) => {
         </div>
       </div>
       {showModal && image && (
-        <div className="fixed w-screen h-screen top-0 overflow-y-auto right-0 bg-[#FFFFFFF2] flex justify-center">
+        <div className="fixed w-screen h-screen top-0 overflow-y-auto right-0 z-50 bg-[#FFFFFFF2] flex justify-center">
           <div className="custom_container mt-[calc(100vh-90vh)]">
             <button
               onClick={() => setShowModal(false)}

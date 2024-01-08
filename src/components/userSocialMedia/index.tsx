@@ -65,6 +65,7 @@ const UserSociaMedia = ({ data }: { data: member }) => {
             }}
             render={({ field }) => (
               <Input
+                className="font-aria_en"
                 {...field}
                 error={errors.telegram}
                 errorMessage={errors?.telegram?.message}
@@ -85,6 +86,7 @@ const UserSociaMedia = ({ data }: { data: member }) => {
             }}
             render={({ field }) => (
               <Input
+                className="font-aria_en"
                 {...field}
                 error={errors.instagram}
                 errorMessage={errors?.instagram?.message}
@@ -105,6 +107,7 @@ const UserSociaMedia = ({ data }: { data: member }) => {
             }}
             render={({ field }) => (
               <Input
+                className="font-aria_en"
                 {...field}
                 error={errors.linkedin}
                 errorMessage={errors?.linkedin?.message}
@@ -125,6 +128,7 @@ const UserSociaMedia = ({ data }: { data: member }) => {
             }}
             render={({ field }) => (
               <Input
+                className="font-aria_en"
                 error={errors.x}
                 errorMessage={errors?.x?.message}
                 {...field}

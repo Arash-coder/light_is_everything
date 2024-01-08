@@ -89,7 +89,7 @@ const Header = () => {
                 >
                   <div>
                     <h2 className="text-sm">{data.full_name}</h2>
-                    <h3 dir="ltr" className="text-sm">
+                    <h3 dir="ltr" className="text-sm font-aria_en">
                       {data.username}
                     </h3>
                   </div>

@@ -4,6 +4,7 @@ import { getCookie, setCookie, deleteCookie } from 'cookies-next';
 import axios from 'axios';
 import URLS from './urls';
 import { redirect } from 'next/navigation';
+import { toast } from 'react-toastify';
 
 ////constants////
 const BASEURL = process.env.NEXT_PUBLIC_BASE_URL;
@@ -40,6 +41,11 @@ Axios.interceptors.response.use(
   async (err) => {
     const original = err.config;
     const status = err.response ? err.response.status : null;
+    const errors = Object.keys(err.response.data);
+
+    errors.map((error) => {
+      toast.error(err.response.data[error][0]);
+    });
     if (
       err.response.data.detail ===
       'No active account found with the given credentials'
