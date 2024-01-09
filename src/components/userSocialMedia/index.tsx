@@ -37,13 +37,15 @@ const UserSociaMedia = ({ data }: { data: member }) => {
     } else {
       setLoading(true);
       Axios.patch(URLS.auth.update, {
-        twitter_url: e.x,
-        linkedin_url: e.linkedin,
-        telegram_url: e.telegram,
-        instagram_url: e.instagram
+        twitter_url: e.x || '',
+        linkedin_url: e.linkedin || '',
+        telegram_url: e.telegram || '',
+        instagram_url: e.instagram || ''
       })
-        .then(() => {
-          toast.success('تغییرات با موفقیت ذخیره شد');
+        .then((res) => {
+          if (res?.status === 200) {
+            toast.success('تغییرات با موفقیت ذخیره شد');
+          }
         })
         .finally(() => {
           setLoading(false);

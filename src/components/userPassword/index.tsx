@@ -13,7 +13,6 @@ const UserPassword = () => {
   const [loading, setLoading] = useState(false);
 
   const {
-    register,
     handleSubmit,
     formState: { errors },
     watch,
@@ -46,11 +45,13 @@ const UserPassword = () => {
             name="password"
             control={control}
             rules={{
-              required: true
+              required: 'رمز عبور جدید را وارد کنید'
             }}
             render={({ field }) => (
               <Input
                 {...field}
+                error={errors.password}
+                errorMessage={errors.password?.message}
                 label="رمز عبور جدید *"
                 placeholder="رمز عبور جدید"
               />
@@ -62,7 +63,7 @@ const UserPassword = () => {
             name="confirm_password"
             control={control}
             rules={{
-              required: true,
+              required: 'تکرار رمز عبور خود را وارد کنید',
               validate: (val: string) => {
                 if (watch('password') != val) {
                   return 'تکرار رمز تطابق ندارد';
@@ -72,6 +73,8 @@ const UserPassword = () => {
             render={({ field }) => (
               <Input
                 {...field}
+                error={errors?.confirm_password}
+                errorMessage={errors?.confirm_password?.message}
                 label="تکرار رمز عبور جدید * "
                 placeholder="تکرار رمز عبور جدید"
               />
