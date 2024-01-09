@@ -30,7 +30,7 @@ const HomePage = ({ data }: { data: landingData }) => {
           <div className="w-full relative text-center md:text-left ">
             <div className=" w-full absolute top-0 flex flex-col items-center md:items-start px-3 -translate-y-[70%]  md:-translate-y-[65%] -translate-x-[50%] -right-[50%] md:right-0  ">
               <h2 className="font-aria_xbold  text-calc_15/2vw lg:text-7xl">
-                درجستوجوی‌نور...
+                درجستجوی‌نور...
               </h2>
               <div className="font-aria_sbold md:text-lg lg:text-xl mt-4 text-center md:text-right">
                 <Typewriter
