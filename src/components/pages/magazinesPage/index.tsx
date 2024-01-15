@@ -31,14 +31,16 @@ const MagazineItem = ({
       <div
         className={`bg-white text-center rounded-2xl break-words overflow-hidden`}
       >
-        <div className="pt-4">
-          <Image
-            className="w-[300px] object-contain m-auto mb-2"
-            src={coverUrl}
-            alt="cover-2"
-            width={28}
-            height={28}
-          />
+        <div className="">
+          <div className='mb-2'>
+            <Image
+              className="object-contain m-auto"
+              src={coverUrl}
+              alt="cover-2"
+              width={1000}
+              height={300}
+            />
+          </div>
           <div className="font-aria_xbold mb-2 text-sm">{title}</div>
           <div className="font-aria_sbold text-center px-8 text-[13px]">
             {description}
@@ -164,11 +166,10 @@ const Index = ({ data }: { data: magazinesResponse }) => {
         ) : (
           <>
             <div
-              className={`${
-                filteredData.length > 0
-                  ? 'grid justify-center items-center gap-3 grid-cols-12'
-                  : 'w-full h-[50vh] flex items-center '
-              }`}
+              className={`${filteredData.length > 0
+                ? 'grid justify-center items-center gap-3 grid-cols-12'
+                : 'w-full h-[50vh] flex items-center '
+                }`}
             >
               {filteredData.length > 0 ? (
                 filteredData.map((magazine, index: number) => {
