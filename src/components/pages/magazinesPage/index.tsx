@@ -32,7 +32,7 @@ const MagazineItem = ({
         className={`bg-white text-center rounded-2xl break-words overflow-hidden`}
       >
         <div className="">
-          <div className='mb-2'>
+          <div className="mb-2">
             <Image
               className="object-contain m-auto"
               src={coverUrl}
@@ -166,10 +166,11 @@ const Index = ({ data }: { data: magazinesResponse }) => {
         ) : (
           <>
             <div
-              className={`${filteredData.length > 0
-                ? 'grid justify-center items-center gap-3 grid-cols-12'
-                : 'w-full h-[50vh] flex items-center '
-                }`}
+              className={`${
+                filteredData.length > 0
+                  ? 'grid justify-center items-center gap-3 grid-cols-12'
+                  : 'w-full h-[50vh] flex items-center '
+              }`}
             >
               {filteredData.length > 0 ? (
                 filteredData.map((magazine, index: number) => {

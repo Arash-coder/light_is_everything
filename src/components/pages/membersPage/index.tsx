@@ -45,7 +45,7 @@ const MemberItem = ({
           />
           <div className="font-aria_xbold mb-2 text-sm">{name}</div>
           <div className="mb-2 text-sm">{career}</div>
-          <div className="font-aria_sbold text-center px-8 text-[13px]">
+          <div className="font-aria_sbold text-center px-8 text-[13px] line-clamp-2">
             {description}
           </div>
         </div>
@@ -169,11 +169,10 @@ const Index = ({ data }: { data: usersResponse }) => {
         ) : (
           <>
             <div
-              className={`${
-                filteredData.length > 0
+              className={`${filteredData.length > 0
                   ? 'grid justify-center items-center gap-3 grid-cols-12'
                   : 'w-full h-[50vh] flex items-center '
-              }`}
+                }`}
             >
               {filteredData.length > 0 ? (
                 filteredData.map((member, index: number) => {
