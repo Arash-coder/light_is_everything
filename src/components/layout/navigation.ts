@@ -15,8 +15,8 @@ export const HeaderLinks = [
   },
   {
     name: 'هفته‌نامه',
-    url: '/',
-    disabled: true
+    url: '/magazines',
+    disabled: false
   }
 ];
 

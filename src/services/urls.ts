@@ -11,6 +11,8 @@ const URLS = {
   },
   members: (page: number, size: number) =>
     `/users/?page=${page}&page_size=${size}`,
+  magazines: (page: number, size: number) =>
+    `/magazines/?page=${page}&page_size=${size}`,
   userprofile: (username: string) => `/users/profile/${username}/`,
   userPosts: (username: string) => `/posts/${username}/`,
   gallery: {
