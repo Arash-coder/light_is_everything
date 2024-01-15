@@ -169,10 +169,11 @@ const Index = ({ data }: { data: usersResponse }) => {
         ) : (
           <>
             <div
-              className={`${filteredData.length > 0
+              className={`${
+                filteredData.length > 0
                   ? 'grid justify-center items-center gap-3 grid-cols-12'
                   : 'w-full h-[50vh] flex items-center '
-                }`}
+              }`}
             >
               {filteredData.length > 0 ? (
                 filteredData.map((member, index: number) => {
