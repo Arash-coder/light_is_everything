@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
 import { MdAccountCircle } from 'react-icons/md';
-import { RiGalleryFill } from 'react-icons/ri';
+import { RiGalleryFill, RiTelegramFill } from 'react-icons/ri';
 import { FaWallet } from 'react-icons/fa6';
 import { usePathname, useRouter } from 'next/navigation';
 import { member } from '@/types/members';
@@ -79,6 +79,22 @@ const DashboardLayout = ({ children }: Props) => {
           icon={<RiGalleryFill size={20} />}
           text="گالری"
         />
+        {data?.is_verified ? (
+          <Button
+            className="mb-4"
+            onClick={() => router?.push('https://t.me/+hPEdvWbOp65hNTc0')}
+            focused={pathname.includes('https://t.me/+hPEdvWbOp65hNTc0')}
+            icon={<RiTelegramFill size={20} />}
+            text="گروه تلگرام"
+          />
+        ) : (
+          <Button
+            className="mb-4"
+            disabled
+            icon={<RiTelegramFill size={20} />}
+            text="گروه تلگرام"
+          />
+        )}
         <Button
           disabled
           icon={<FaWallet size={20} />}
