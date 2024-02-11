@@ -43,6 +43,8 @@ Axios.interceptors.response.use(
     const status = err.response ? err.response.status : null;
     const errors = Object.keys(err.response.data);
 
+    // toast.error(err.response.data.detail);
+
     errors.map((error) => {
       toast.error(err.response.data[error][0]);
     });

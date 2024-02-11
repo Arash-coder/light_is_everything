@@ -40,6 +40,7 @@ const Slider1 = ({ className, data }: Props) => {
             <SwiperSlide key={event.title}>
               <div className="relative w-full h-[200px] md:h-[600px]">
                 <Image
+                  priority
                   className="rounded-3xl object-cover"
                   alt="clip"
                   src={event.image_url}
