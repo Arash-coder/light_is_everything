@@ -82,8 +82,8 @@ const DashboardLayout = ({ children }: Props) => {
         {data?.is_verified ? (
           <Button
             className="mb-4"
-            onClick={() => router?.push('https://t.me/+hPEdvWbOp65hNTc0')}
-            focused={pathname.includes('https://t.me/+hPEdvWbOp65hNTc0')}
+            onClick={() => router?.push('https://t.me/+LkRzBbTnF5tjNjBk')}
+            focused={pathname.includes('https://t.me/+LkRzBbTnF5tjNjBk')}
             icon={<RiTelegramFill size={20} />}
             text="گروه تلگرام"
           />
