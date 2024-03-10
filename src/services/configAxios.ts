@@ -46,7 +46,13 @@ Axios.interceptors.response.use(
     // toast.error(err.response.data.detail);
 
     errors.map((error) => {
-      toast.error(err.response.data[error][0]);
+      // alert(err.response.data[error][0]);
+      toast.error(
+        JSON.stringify(err.response.data[error])
+          .replace('[', '')
+          .replace(']', '')
+          .replace('"', '')
+      );
     });
     if (
       err.response.data.detail ===
