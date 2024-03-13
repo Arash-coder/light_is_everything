@@ -68,8 +68,14 @@ const Accountgallery = (props: Props) => {
             'Content-Type': 'multipart/form-data;'
           }
         })
-          .then(() => {
-            toast.success('پست با موفقیت ایجاد شد');
+          .then((res) => {
+            if (res?.status === 201) {
+              toast.success('پست با موفقیت ایجاد شد', {
+                onClose: (props1) => {
+                  setTimeout(() => window.location.reload(), 3000);
+                }
+              });
+            }
           })
           .finally(() => {
             setLoading(false);
