@@ -14,6 +14,10 @@ export type signinInputs = {
   password: string;
 };
 
+export type resetPasswordInputs = {
+  email: string;
+};
+
 export type responseLogin = {
   access: string;
   refresh: string;

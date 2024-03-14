@@ -3,6 +3,7 @@ const URLS = {
   auth: {
     sign_up: '/users/signup/',
     sign_in: '/users/login/',
+    reset_password: '/users/reset-password/',
     refresh: '/users/login/refresh/',
     me: '/users/me/',
     careers: '/users/careers/',
