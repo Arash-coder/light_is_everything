@@ -41,7 +41,7 @@ export const HeaderLinksMobile = [
   },
   {
     name: 'هفته‌نامه',
-    url: '/',
-    disabled: true
+    url: '/magazines',
+    disabled: false
   }
 ];
