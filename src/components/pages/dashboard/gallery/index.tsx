@@ -282,5 +282,29 @@ const columns: any = [
         );
       }
     }
+  },
+  {
+    dataIndex: 'delete',
+    key: 'delete',
+    title: 'امکانات',
+    align: 'center',
+    // width: 100,
+    render(_: any, data: any) {
+      const { name } = data;
+
+      const DeleteHandler = () => {
+        // call your api
+        // you can get id from data
+        // and whatever you want to do ...
+      };
+
+      return (
+        <>
+          <div className="flex justify-center items-center">
+            <button onClick={DeleteHandler}>حذف</button>
+          </div>
+        </>
+      );
+    }
   }
 ];
