@@ -92,8 +92,8 @@ const UserSociaMedia = ({ data }: { data: member }) => {
                 {...field}
                 error={errors.instagram}
                 errorMessage={errors?.instagram?.message}
-                label="لینک اینسستاگرام | آیدی"
-                placeholder="لینک اینسستاگرام | آیدی"
+                label="لینک اینستاگرام | آیدی"
+                placeholder="لینک اینستاگرام | آیدی"
               />
             )}
           />
